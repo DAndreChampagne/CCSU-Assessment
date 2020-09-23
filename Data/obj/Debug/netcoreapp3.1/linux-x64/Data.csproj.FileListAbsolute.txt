@@ -1,0 +1,15 @@
+/Users/dan/Google Drive/School/CCSU/CS510/project prototype/Data/bin/Debug/netcoreapp3.1/linux-x64/Data.deps.json
+/Users/dan/Google Drive/School/CCSU/CS510/project prototype/Data/bin/Debug/netcoreapp3.1/linux-x64/Data.runtimeconfig.json
+/Users/dan/Google Drive/School/CCSU/CS510/project prototype/Data/bin/Debug/netcoreapp3.1/linux-x64/Data.runtimeconfig.dev.json
+/Users/dan/Google Drive/School/CCSU/CS510/project prototype/Data/bin/Debug/netcoreapp3.1/linux-x64/Data.dll
+/Users/dan/Google Drive/School/CCSU/CS510/project prototype/Data/bin/Debug/netcoreapp3.1/linux-x64/Data.pdb
+/Users/dan/Google Drive/School/CCSU/CS510/project prototype/Data/bin/Debug/netcoreapp3.1/linux-x64/Models.dll
+/Users/dan/Google Drive/School/CCSU/CS510/project prototype/Data/bin/Debug/netcoreapp3.1/linux-x64/Models.pdb
+/Users/dan/Google Drive/School/CCSU/CS510/project prototype/Data/obj/Debug/netcoreapp3.1/linux-x64/Data.csprojAssemblyReference.cache
+/Users/dan/Google Drive/School/CCSU/CS510/project prototype/Data/obj/Debug/netcoreapp3.1/linux-x64/Data.AssemblyInfoInputs.cache
+/Users/dan/Google Drive/School/CCSU/CS510/project prototype/Data/obj/Debug/netcoreapp3.1/linux-x64/Data.AssemblyInfo.cs
+/Users/dan/Google Drive/School/CCSU/CS510/project prototype/Data/obj/Debug/netcoreapp3.1/linux-x64/Data.csproj.CoreCompileInputs.cache
+/Users/dan/Google Drive/School/CCSU/CS510/project prototype/Data/obj/Debug/netcoreapp3.1/linux-x64/Data.csproj.CopyComplete
+/Users/dan/Google Drive/School/CCSU/CS510/project prototype/Data/obj/Debug/netcoreapp3.1/linux-x64/Data.dll
+/Users/dan/Google Drive/School/CCSU/CS510/project prototype/Data/obj/Debug/netcoreapp3.1/linux-x64/Data.pdb
+/Users/dan/Google Drive/School/CCSU/CS510/project prototype/Data/obj/Debug/netcoreapp3.1/linux-x64/Data.genruntimeconfig.cache

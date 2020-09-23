@@ -1,0 +1,52 @@
+
+dotnet user-secrets set "Movies:ServiceApiKey" "12345"
+
+dotnet publish -r linux-x64 --self-contained false
+
+cd Data
+dotnet ef migrations add initial
+
+cd Web
+dotnet aspnet-codegenerator controller --force --model Models.School --dataContext Data.Contexts.AssessmentContext --relativeFolderPath "Areas/Admin/Controllers/" --controllerName SchoolsController --useAsyncActions --referenceScriptLibraries --useDefaultLayout
+dotnet aspnet-codegenerator controller --force --model Models.Role --dataContext Data.Contexts.AssessmentContext --relativeFolderPath "Areas/Admin/Controllers/" --controllerName RolesController --useAsyncActions --referenceScriptLibraries --useDefaultLayout
+dotnet aspnet-codegenerator controller --force --model Models.User --dataContext Data.Contexts.AssessmentContext --relativeFolderPath "Areas/Admin/Controllers/" --controllerName UsersController --useAsyncActions --referenceScriptLibraries --useDefaultLayout
+dotnet aspnet-codegenerator controller --force --model Models.Session --dataContext Data.Contexts.AssessmentContext --relativeFolderPath "Areas/Admin/Controllers/" --controllerName SessionsController --useAsyncActions --referenceScriptLibraries --useDefaultLayout
+dotnet aspnet-codegenerator controller --force --model Models.Section --dataContext Data.Contexts.AssessmentContext --relativeFolderPath "Areas/Admin/Controllers/" --controllerName SectionsController --useAsyncActions --referenceScriptLibraries --useDefaultLayout
+dotnet aspnet-codegenerator controller --force --model Models.Rubric --dataContext Data.Contexts.AssessmentContext --relativeFolderPath "Areas/Admin/Controllers/" --controllerName RubricsController --useAsyncActions --referenceScriptLibraries --useDefaultLayout
+
+# artifacts has been updated manually. don't scaffold it.
+dotnet aspnet-codegenerator controller --force --model Models.Artifact --dataContext Data.Contexts.AssessmentContext --relativeFolderPath "Areas/Admin/Controllers/" --controllerName ArtifactsController --useAsyncActions --referenceScriptLibraries --useDefaultLayout
+
+
+
+dotnet ef migrations add CreateIdentitySchema --context Web.Areas.Identity.Data.WebIdentityDbContext
+
+
+
+<form method="post" enctype="multipart/form-data" asp-area="Admin" asp-controller="Sections" asp-action="Upload">
+    <div class="form-group files color">
+        <label>Upload Your File </label>
+        <input type="file" name="files" class="form-control" multiple />
+    </div>
+    <div>
+        <input class="btn btn-primary" type="submit" />
+    </div>
+</form>
+
+
+public async Task<IActionResult> ViewFile(int? id) {
+    if (id == null)
+        return NotFound();
+
+    var file = await _context.Artifacts
+        .Where(x => x.Id == id)
+        .Select(x => x.File)
+        .FirstOrDefaultAsync();
+
+    return File(file, System.Net.Mime.MediaTypeNames.Application.Pdf);
+}
+
+
+<object data="data:application/pdf;base64, @System.Convert.ToBase64String(item.File, 0, item.File.Length)" type="application/pdf" width="100%" height="800px"> 
+    <p>It appears you don't have a PDF plugin for this browser. No biggie... you can <a target="_blank" asp-action="ViewFile" asp-route-id="@item.Id">click here to download the PDF file.</a></p>
+</object>

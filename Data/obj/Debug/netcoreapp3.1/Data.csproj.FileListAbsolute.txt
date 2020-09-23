@@ -1,0 +1,15 @@
+/Users/dan/Google Drive/School/CCSU/CS510/project prototype/Data/bin/Debug/netcoreapp3.1/Data.deps.json
+/Users/dan/Google Drive/School/CCSU/CS510/project prototype/Data/bin/Debug/netcoreapp3.1/Data.runtimeconfig.json
+/Users/dan/Google Drive/School/CCSU/CS510/project prototype/Data/bin/Debug/netcoreapp3.1/Data.runtimeconfig.dev.json
+/Users/dan/Google Drive/School/CCSU/CS510/project prototype/Data/bin/Debug/netcoreapp3.1/Data.dll
+/Users/dan/Google Drive/School/CCSU/CS510/project prototype/Data/bin/Debug/netcoreapp3.1/Data.pdb
+/Users/dan/Google Drive/School/CCSU/CS510/project prototype/Data/bin/Debug/netcoreapp3.1/Models.dll
+/Users/dan/Google Drive/School/CCSU/CS510/project prototype/Data/bin/Debug/netcoreapp3.1/Models.pdb
+/Users/dan/Google Drive/School/CCSU/CS510/project prototype/Data/obj/Debug/netcoreapp3.1/Data.csprojAssemblyReference.cache
+/Users/dan/Google Drive/School/CCSU/CS510/project prototype/Data/obj/Debug/netcoreapp3.1/Data.AssemblyInfoInputs.cache
+/Users/dan/Google Drive/School/CCSU/CS510/project prototype/Data/obj/Debug/netcoreapp3.1/Data.AssemblyInfo.cs
+/Users/dan/Google Drive/School/CCSU/CS510/project prototype/Data/obj/Debug/netcoreapp3.1/Data.csproj.CoreCompileInputs.cache
+/Users/dan/Google Drive/School/CCSU/CS510/project prototype/Data/obj/Debug/netcoreapp3.1/Data.csproj.CopyComplete
+/Users/dan/Google Drive/School/CCSU/CS510/project prototype/Data/obj/Debug/netcoreapp3.1/Data.dll
+/Users/dan/Google Drive/School/CCSU/CS510/project prototype/Data/obj/Debug/netcoreapp3.1/Data.pdb
+/Users/dan/Google Drive/School/CCSU/CS510/project prototype/Data/obj/Debug/netcoreapp3.1/Data.genruntimeconfig.cache

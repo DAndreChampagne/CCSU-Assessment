@@ -1,0 +1,9 @@
+/Users/dan/Google Drive/School/CCSU/CS510/project prototype/Model/bin/Debug/netcoreapp3.1/Model.deps.json
+/Users/dan/Google Drive/School/CCSU/CS510/project prototype/Model/bin/Debug/netcoreapp3.1/Model.dll
+/Users/dan/Google Drive/School/CCSU/CS510/project prototype/Model/bin/Debug/netcoreapp3.1/Model.pdb
+/Users/dan/Google Drive/School/CCSU/CS510/project prototype/Model/obj/Debug/netcoreapp3.1/Model.csprojAssemblyReference.cache
+/Users/dan/Google Drive/School/CCSU/CS510/project prototype/Model/obj/Debug/netcoreapp3.1/Model.AssemblyInfoInputs.cache
+/Users/dan/Google Drive/School/CCSU/CS510/project prototype/Model/obj/Debug/netcoreapp3.1/Model.AssemblyInfo.cs
+/Users/dan/Google Drive/School/CCSU/CS510/project prototype/Model/obj/Debug/netcoreapp3.1/Model.csproj.CoreCompileInputs.cache
+/Users/dan/Google Drive/School/CCSU/CS510/project prototype/Model/obj/Debug/netcoreapp3.1/Model.dll
+/Users/dan/Google Drive/School/CCSU/CS510/project prototype/Model/obj/Debug/netcoreapp3.1/Model.pdb
