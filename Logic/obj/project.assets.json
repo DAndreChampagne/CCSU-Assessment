@@ -9159,11 +9159,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/dan/Google Drive/School/CCSU/CS510/project prototype/Logic/Logic.csproj",
+      "projectUniqueName": "/Users/dan/Google Drive/School/CCSU/School - code/cs510/Assessment/CCSU-Assessment/Logic/Logic.csproj",
       "projectName": "Logic",
-      "projectPath": "/Users/dan/Google Drive/School/CCSU/CS510/project prototype/Logic/Logic.csproj",
+      "projectPath": "/Users/dan/Google Drive/School/CCSU/School - code/cs510/Assessment/CCSU-Assessment/Logic/Logic.csproj",
       "packagesPath": "/Users/dan/.nuget/packages/",
-      "outputPath": "/Users/dan/Google Drive/School/CCSU/CS510/project prototype/Logic/obj/",
+      "outputPath": "/Users/dan/Google Drive/School/CCSU/School - code/cs510/Assessment/CCSU-Assessment/Logic/obj/",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
@@ -9180,11 +9180,11 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "/Users/dan/Google Drive/School/CCSU/CS510/project prototype/Data/Data.csproj": {
-              "projectPath": "/Users/dan/Google Drive/School/CCSU/CS510/project prototype/Data/Data.csproj"
+            "/Users/dan/Google Drive/School/CCSU/School - code/cs510/Assessment/CCSU-Assessment/Data/Data.csproj": {
+              "projectPath": "/Users/dan/Google Drive/School/CCSU/School - code/cs510/Assessment/CCSU-Assessment/Data/Data.csproj"
             },
-            "/Users/dan/Google Drive/School/CCSU/CS510/project prototype/Models/Models.csproj": {
-              "projectPath": "/Users/dan/Google Drive/School/CCSU/CS510/project prototype/Models/Models.csproj"
+            "/Users/dan/Google Drive/School/CCSU/School - code/cs510/Assessment/CCSU-Assessment/Models/Models.csproj": {
+              "projectPath": "/Users/dan/Google Drive/School/CCSU/School - code/cs510/Assessment/CCSU-Assessment/Models/Models.csproj"
             }
           }
         }

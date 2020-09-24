@@ -1,0 +1,60 @@
+
+
+<div class="row">
+    <div class="col-md">
+        <p class="lead">Component 1 -- Team ???</p>
+        <p>This component implements that functionality related to uploading metadata into the system by the administrator.</p>
+        <ol>
+            <li>A CSV file containing the following course section metadata will be uploaded to the system:</li>
+            <ul>
+                <li>Course section CRN (for example, 41850)</li>
+                <li>Faculty ID (for example, 12345)</li>
+                <li>The system will parse the CSV file and verify that the data is consistent both internally and with any other data already in the system. In case of any errors, a detailed log will be displayed. Otherwise, all data from the CSV will be added to the database.</li>
+            </ul>
+            <li>A CSV file containing the following Rubric metadata will be uploaded to the system:</li>
+            <ul>
+                <li>Rubric ID </li>
+                <li>Rubric (5x5 table)</li>
+                <li>The system will parse the CSV file and verify that the data is consistent both internally and with any other data already in the system. In case of any errors, a detailed log will be displayed. Otherwise, all data from the CSV will be added to the database.</li>
+            </ul>
+            <li>A CSV file containing the following faculty metadata will be uploaded to the system:</li>
+            <ul>
+                <li>Faculty ID (for example, 12345)</li>
+                <li>Rubric ID </li>
+                <li>The system will parse the CSV file and verify that the data is consistent both internally and with any other data already in the system. In case of any errors, a detailed log will be displayed. Otherwise, all data from the CSV will be added to the database.</li>
+            </ul>
+            <li>The system will be able to display all information currently stored in the database in a user-friendly format. At least two separate reports will be needed:</li>
+            <ul>
+                <li>A list of all course sections and faculty assigned to each, and</li>
+                <li>A list of all faculty and rubrics assigned to them.</li>
+            </ul>
+        </ol>
+    </div>
+
+    <div class="col-md">
+        <p class="lead">Component 2 -- Team Grad</p>
+        <p>This component implements that functionality related to uploading artifacts into the system by the administrator. The database of system will be bootstrapped with information about the term IDs, course and section IDs. </p>
+        <ol>
+            <li>A CSV file containing the following artifact metadata will be uploaded to the system:</li>
+            <ul>
+                <li>Faculty ID (for example, 12345)</li>
+                <li>Course section CRN (for example, 41850)</li>
+                <li>Unique File Name</li>
+                <li>The system will parse the CSV file and verify that the data is consistent both internally and with any other data already in the system. In case of any errors, a detailed log will be displayed. Otherwise, all data from the CSV will be added to the database.</li>
+            </ul>
+            <li>A ZIP file containing a number of PDF files will be uploaded to the system. The system will unpack the ZIP and attempt to match all PDF file names to those whose metadata is currently in the system. Each PDF file name must match exactly one previously uploaded metadata, i.e:</li>
+            <ul>
+                <li>There cannot be more than one PDF file that matches a given metadata record;</li>
+                <li>No PDF file can match more than one metadata record.</li>
+                <li>If no errors or inconsistencies are found, the uploaded PDF files will be stored in the system.</li>
+            </ul>
+            <li>The system will be able to display all information currently stored in the database in a user-friendly format. A report showing all artifact metadata along with links to currently available artifacts.</li>
+        </ol>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md">
+        <p>To view code, visit <a href="https://github.com/DAndreChampagne/CCSU-Assessment">https://github.com/DAndreChampagne/CCSU-Assessment</a>. <i>Please note this is a private repository. You'll need to request access.</i></i></p>
+    </div>
+</div>

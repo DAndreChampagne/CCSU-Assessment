@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "HOfmgOSGVMLlNzy4mXqn17wq4LRPqxo1v17YTFAQ6CAhxs5v5K/EiShv/RcqpBuc8PfFuDtlcL43o848wdQtCw==",
+  "dgSpecHash": "IoVn/6lOKfhLtfFZIJudf8tMTvOSdyNjozD8Q3LmnvlB8ElbUIURolAo/TugUrF0ED6L48I/B+DpWTc8GYvNKw==",
   "success": true,
-  "projectFilePath": "/Users/dan/Google Drive/School/CCSU/CS510/project prototype/Logic/Logic.csproj",
+  "projectFilePath": "/Users/dan/Google Drive/School/CCSU/School - code/cs510/Assessment/CCSU-Assessment/Logic/Logic.csproj",
   "expectedPackageFiles": [
     "/Users/dan/.nuget/packages/microsoft.aspnetcore.cryptography.internal/3.1.4/microsoft.aspnetcore.cryptography.internal.3.1.4.nupkg.sha512",
     "/Users/dan/.nuget/packages/microsoft.aspnetcore.cryptography.keyderivation/3.1.4/microsoft.aspnetcore.cryptography.keyderivation.3.1.4.nupkg.sha512",

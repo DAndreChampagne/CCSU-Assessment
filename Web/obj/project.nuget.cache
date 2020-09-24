@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "K0vyMRkjRDqf9fBJDh5IEsrrtCIq2OGDuPXryHgtvuNdqJ3R5TI8s9v47TFe1nNg6Cwguytg6qT2T7JkzlHxnA==",
+  "dgSpecHash": "qX+yTDvNG69/nu8I0ChyJYtKVMad5ZlkwplHoZ0eK1N1kk81wQKv3Nt4t7La04T8ITK1vhp2mCJQWEc2pEKDYQ==",
   "success": true,
-  "projectFilePath": "/Users/dan/Google Drive/School/CCSU/CS510/project prototype/Web/Web.csproj",
+  "projectFilePath": "/Users/dan/Google Drive/School/CCSU/School - code/cs510/Assessment/CCSU-Assessment/Web/Web.csproj",
   "expectedPackageFiles": [
     "/Users/dan/.nuget/packages/bootstrap/4.3.1/bootstrap.4.3.1.nupkg.sha512",
     "/Users/dan/.nuget/packages/jquery/3.4.1/jquery.3.4.1.nupkg.sha512",

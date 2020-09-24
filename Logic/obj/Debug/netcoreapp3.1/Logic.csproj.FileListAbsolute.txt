@@ -15,3 +15,20 @@
 /Users/dan/Google Drive/School/CCSU/CS510/project prototype/Logic/obj/Debug/netcoreapp3.1/Logic.dll
 /Users/dan/Google Drive/School/CCSU/CS510/project prototype/Logic/obj/Debug/netcoreapp3.1/Logic.pdb
 /Users/dan/Google Drive/School/CCSU/CS510/project prototype/Logic/obj/Debug/netcoreapp3.1/Logic.genruntimeconfig.cache
+/Users/dan/Google Drive/School/CCSU/School - code/cs510/Assessment/CCSU-Assessment/Logic/bin/Debug/netcoreapp3.1/Logic.deps.json
+/Users/dan/Google Drive/School/CCSU/School - code/cs510/Assessment/CCSU-Assessment/Logic/bin/Debug/netcoreapp3.1/Logic.runtimeconfig.json
+/Users/dan/Google Drive/School/CCSU/School - code/cs510/Assessment/CCSU-Assessment/Logic/bin/Debug/netcoreapp3.1/Logic.runtimeconfig.dev.json
+/Users/dan/Google Drive/School/CCSU/School - code/cs510/Assessment/CCSU-Assessment/Logic/bin/Debug/netcoreapp3.1/Logic.dll
+/Users/dan/Google Drive/School/CCSU/School - code/cs510/Assessment/CCSU-Assessment/Logic/bin/Debug/netcoreapp3.1/Logic.pdb
+/Users/dan/Google Drive/School/CCSU/School - code/cs510/Assessment/CCSU-Assessment/Logic/bin/Debug/netcoreapp3.1/Data.dll
+/Users/dan/Google Drive/School/CCSU/School - code/cs510/Assessment/CCSU-Assessment/Logic/bin/Debug/netcoreapp3.1/Models.dll
+/Users/dan/Google Drive/School/CCSU/School - code/cs510/Assessment/CCSU-Assessment/Logic/bin/Debug/netcoreapp3.1/Models.pdb
+/Users/dan/Google Drive/School/CCSU/School - code/cs510/Assessment/CCSU-Assessment/Logic/bin/Debug/netcoreapp3.1/Data.pdb
+/Users/dan/Google Drive/School/CCSU/School - code/cs510/Assessment/CCSU-Assessment/Logic/obj/Debug/netcoreapp3.1/Logic.csprojAssemblyReference.cache
+/Users/dan/Google Drive/School/CCSU/School - code/cs510/Assessment/CCSU-Assessment/Logic/obj/Debug/netcoreapp3.1/Logic.AssemblyInfoInputs.cache
+/Users/dan/Google Drive/School/CCSU/School - code/cs510/Assessment/CCSU-Assessment/Logic/obj/Debug/netcoreapp3.1/Logic.AssemblyInfo.cs
+/Users/dan/Google Drive/School/CCSU/School - code/cs510/Assessment/CCSU-Assessment/Logic/obj/Debug/netcoreapp3.1/Logic.csproj.CoreCompileInputs.cache
+/Users/dan/Google Drive/School/CCSU/School - code/cs510/Assessment/CCSU-Assessment/Logic/obj/Debug/netcoreapp3.1/Logic.csproj.CopyComplete
+/Users/dan/Google Drive/School/CCSU/School - code/cs510/Assessment/CCSU-Assessment/Logic/obj/Debug/netcoreapp3.1/Logic.dll
+/Users/dan/Google Drive/School/CCSU/School - code/cs510/Assessment/CCSU-Assessment/Logic/obj/Debug/netcoreapp3.1/Logic.pdb
+/Users/dan/Google Drive/School/CCSU/School - code/cs510/Assessment/CCSU-Assessment/Logic/obj/Debug/netcoreapp3.1/Logic.genruntimeconfig.cache

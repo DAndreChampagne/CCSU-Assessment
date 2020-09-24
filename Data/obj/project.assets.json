@@ -9127,11 +9127,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/dan/Google Drive/School/CCSU/CS510/project prototype/Data/Data.csproj",
+      "projectUniqueName": "/Users/dan/Google Drive/School/CCSU/School - code/cs510/Assessment/CCSU-Assessment/Data/Data.csproj",
       "projectName": "Data",
-      "projectPath": "/Users/dan/Google Drive/School/CCSU/CS510/project prototype/Data/Data.csproj",
+      "projectPath": "/Users/dan/Google Drive/School/CCSU/School - code/cs510/Assessment/CCSU-Assessment/Data/Data.csproj",
       "packagesPath": "/Users/dan/.nuget/packages/",
-      "outputPath": "/Users/dan/Google Drive/School/CCSU/CS510/project prototype/Data/obj/",
+      "outputPath": "/Users/dan/Google Drive/School/CCSU/School - code/cs510/Assessment/CCSU-Assessment/Data/obj/",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
@@ -9148,8 +9148,8 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "/Users/dan/Google Drive/School/CCSU/CS510/project prototype/Models/Models.csproj": {
-              "projectPath": "/Users/dan/Google Drive/School/CCSU/CS510/project prototype/Models/Models.csproj"
+            "/Users/dan/Google Drive/School/CCSU/School - code/cs510/Assessment/CCSU-Assessment/Models/Models.csproj": {
+              "projectPath": "/Users/dan/Google Drive/School/CCSU/School - code/cs510/Assessment/CCSU-Assessment/Models/Models.csproj"
             }
           }
         }

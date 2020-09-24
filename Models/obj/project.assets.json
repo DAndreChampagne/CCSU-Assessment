@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/dan/Google Drive/School/CCSU/CS510/project prototype/Models/Models.csproj",
+      "projectUniqueName": "/Users/dan/Google Drive/School/CCSU/School - code/cs510/Assessment/CCSU-Assessment/Models/Models.csproj",
       "projectName": "Models",
-      "projectPath": "/Users/dan/Google Drive/School/CCSU/CS510/project prototype/Models/Models.csproj",
+      "projectPath": "/Users/dan/Google Drive/School/CCSU/School - code/cs510/Assessment/CCSU-Assessment/Models/Models.csproj",
       "packagesPath": "/Users/dan/.nuget/packages/",
-      "outputPath": "/Users/dan/Google Drive/School/CCSU/CS510/project prototype/Models/obj/",
+      "outputPath": "/Users/dan/Google Drive/School/CCSU/School - code/cs510/Assessment/CCSU-Assessment/Models/obj/",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"

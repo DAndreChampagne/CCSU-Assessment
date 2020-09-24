@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/dan/Google Drive/School/CCSU/CS510/project prototype/Web/Web.csproj": {}
+    "/Users/dan/Google Drive/School/CCSU/School - code/cs510/Assessment/CCSU-Assessment/Web/Web.csproj": {}
   },
   "projects": {
-    "/Users/dan/Google Drive/School/CCSU/CS510/project prototype/Data/Data.csproj": {
+    "/Users/dan/Google Drive/School/CCSU/School - code/cs510/Assessment/CCSU-Assessment/Data/Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/dan/Google Drive/School/CCSU/CS510/project prototype/Data/Data.csproj",
+        "projectUniqueName": "/Users/dan/Google Drive/School/CCSU/School - code/cs510/Assessment/CCSU-Assessment/Data/Data.csproj",
         "projectName": "Data",
-        "projectPath": "/Users/dan/Google Drive/School/CCSU/CS510/project prototype/Data/Data.csproj",
+        "projectPath": "/Users/dan/Google Drive/School/CCSU/School - code/cs510/Assessment/CCSU-Assessment/Data/Data.csproj",
         "packagesPath": "/Users/dan/.nuget/packages/",
-        "outputPath": "/Users/dan/Google Drive/School/CCSU/CS510/project prototype/Data/obj/",
+        "outputPath": "/Users/dan/Google Drive/School/CCSU/School - code/cs510/Assessment/CCSU-Assessment/Data/obj/",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
@@ -28,8 +28,8 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "/Users/dan/Google Drive/School/CCSU/CS510/project prototype/Models/Models.csproj": {
-                "projectPath": "/Users/dan/Google Drive/School/CCSU/CS510/project prototype/Models/Models.csproj"
+              "/Users/dan/Google Drive/School/CCSU/School - code/cs510/Assessment/CCSU-Assessment/Models/Models.csproj": {
+                "projectPath": "/Users/dan/Google Drive/School/CCSU/School - code/cs510/Assessment/CCSU-Assessment/Models/Models.csproj"
               }
             }
           }
@@ -123,14 +123,14 @@
         }
       }
     },
-    "/Users/dan/Google Drive/School/CCSU/CS510/project prototype/Logic/Logic.csproj": {
+    "/Users/dan/Google Drive/School/CCSU/School - code/cs510/Assessment/CCSU-Assessment/Logic/Logic.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/dan/Google Drive/School/CCSU/CS510/project prototype/Logic/Logic.csproj",
+        "projectUniqueName": "/Users/dan/Google Drive/School/CCSU/School - code/cs510/Assessment/CCSU-Assessment/Logic/Logic.csproj",
         "projectName": "Logic",
-        "projectPath": "/Users/dan/Google Drive/School/CCSU/CS510/project prototype/Logic/Logic.csproj",
+        "projectPath": "/Users/dan/Google Drive/School/CCSU/School - code/cs510/Assessment/CCSU-Assessment/Logic/Logic.csproj",
         "packagesPath": "/Users/dan/.nuget/packages/",
-        "outputPath": "/Users/dan/Google Drive/School/CCSU/CS510/project prototype/Logic/obj/",
+        "outputPath": "/Users/dan/Google Drive/School/CCSU/School - code/cs510/Assessment/CCSU-Assessment/Logic/obj/",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
@@ -147,11 +147,11 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "/Users/dan/Google Drive/School/CCSU/CS510/project prototype/Data/Data.csproj": {
-                "projectPath": "/Users/dan/Google Drive/School/CCSU/CS510/project prototype/Data/Data.csproj"
+              "/Users/dan/Google Drive/School/CCSU/School - code/cs510/Assessment/CCSU-Assessment/Data/Data.csproj": {
+                "projectPath": "/Users/dan/Google Drive/School/CCSU/School - code/cs510/Assessment/CCSU-Assessment/Data/Data.csproj"
               },
-              "/Users/dan/Google Drive/School/CCSU/CS510/project prototype/Models/Models.csproj": {
-                "projectPath": "/Users/dan/Google Drive/School/CCSU/CS510/project prototype/Models/Models.csproj"
+              "/Users/dan/Google Drive/School/CCSU/School - code/cs510/Assessment/CCSU-Assessment/Models/Models.csproj": {
+                "projectPath": "/Users/dan/Google Drive/School/CCSU/School - code/cs510/Assessment/CCSU-Assessment/Models/Models.csproj"
               }
             }
           }
@@ -237,14 +237,14 @@
         }
       }
     },
-    "/Users/dan/Google Drive/School/CCSU/CS510/project prototype/Models/Models.csproj": {
+    "/Users/dan/Google Drive/School/CCSU/School - code/cs510/Assessment/CCSU-Assessment/Models/Models.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/dan/Google Drive/School/CCSU/CS510/project prototype/Models/Models.csproj",
+        "projectUniqueName": "/Users/dan/Google Drive/School/CCSU/School - code/cs510/Assessment/CCSU-Assessment/Models/Models.csproj",
         "projectName": "Models",
-        "projectPath": "/Users/dan/Google Drive/School/CCSU/CS510/project prototype/Models/Models.csproj",
+        "projectPath": "/Users/dan/Google Drive/School/CCSU/School - code/cs510/Assessment/CCSU-Assessment/Models/Models.csproj",
         "packagesPath": "/Users/dan/.nuget/packages/",
-        "outputPath": "/Users/dan/Google Drive/School/CCSU/CS510/project prototype/Models/obj/",
+        "outputPath": "/Users/dan/Google Drive/School/CCSU/School - code/cs510/Assessment/CCSU-Assessment/Models/obj/",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
@@ -290,14 +290,14 @@
         }
       }
     },
-    "/Users/dan/Google Drive/School/CCSU/CS510/project prototype/Web/Web.csproj": {
+    "/Users/dan/Google Drive/School/CCSU/School - code/cs510/Assessment/CCSU-Assessment/Web/Web.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/dan/Google Drive/School/CCSU/CS510/project prototype/Web/Web.csproj",
+        "projectUniqueName": "/Users/dan/Google Drive/School/CCSU/School - code/cs510/Assessment/CCSU-Assessment/Web/Web.csproj",
         "projectName": "Web",
-        "projectPath": "/Users/dan/Google Drive/School/CCSU/CS510/project prototype/Web/Web.csproj",
+        "projectPath": "/Users/dan/Google Drive/School/CCSU/School - code/cs510/Assessment/CCSU-Assessment/Web/Web.csproj",
         "packagesPath": "/Users/dan/.nuget/packages/",
-        "outputPath": "/Users/dan/Google Drive/School/CCSU/CS510/project prototype/Web/obj/",
+        "outputPath": "/Users/dan/Google Drive/School/CCSU/School - code/cs510/Assessment/CCSU-Assessment/Web/obj/",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
@@ -314,14 +314,14 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "/Users/dan/Google Drive/School/CCSU/CS510/project prototype/Data/Data.csproj": {
-                "projectPath": "/Users/dan/Google Drive/School/CCSU/CS510/project prototype/Data/Data.csproj"
+              "/Users/dan/Google Drive/School/CCSU/School - code/cs510/Assessment/CCSU-Assessment/Data/Data.csproj": {
+                "projectPath": "/Users/dan/Google Drive/School/CCSU/School - code/cs510/Assessment/CCSU-Assessment/Data/Data.csproj"
               },
-              "/Users/dan/Google Drive/School/CCSU/CS510/project prototype/Logic/Logic.csproj": {
-                "projectPath": "/Users/dan/Google Drive/School/CCSU/CS510/project prototype/Logic/Logic.csproj"
+              "/Users/dan/Google Drive/School/CCSU/School - code/cs510/Assessment/CCSU-Assessment/Logic/Logic.csproj": {
+                "projectPath": "/Users/dan/Google Drive/School/CCSU/School - code/cs510/Assessment/CCSU-Assessment/Logic/Logic.csproj"
               },
-              "/Users/dan/Google Drive/School/CCSU/CS510/project prototype/Models/Models.csproj": {
-                "projectPath": "/Users/dan/Google Drive/School/CCSU/CS510/project prototype/Models/Models.csproj"
+              "/Users/dan/Google Drive/School/CCSU/School - code/cs510/Assessment/CCSU-Assessment/Models/Models.csproj": {
+                "projectPath": "/Users/dan/Google Drive/School/CCSU/School - code/cs510/Assessment/CCSU-Assessment/Models/Models.csproj"
               }
             }
           }

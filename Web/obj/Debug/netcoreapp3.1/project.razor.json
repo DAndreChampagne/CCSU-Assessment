@@ -1,5 +1,5 @@
 {
-  "FilePath": "/Users/dan/Google Drive/School/CCSU/CS510/project prototype/Web/Web.csproj",
+  "FilePath": "/Users/dan/Google Drive/School/CCSU/School - code/cs510/Assessment/CCSU-Assessment/Web/Web.csproj",
   "Configuration": {
     "ConfigurationName": "MVC-3.0",
     "LanguageVersion": "3.0",
@@ -14392,228 +14392,233 @@
   "RootNamespace": "Web",
   "Documents": [
     {
-      "FilePath": "/Users/dan/Google Drive/School/CCSU/CS510/project prototype/Web/Areas/Admin/Views/Schools/Edit.cshtml",
-      "TargetPath": "Areas\\Admin\\Views\\Schools\\Edit.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/Users/dan/Google Drive/School/CCSU/CS510/project prototype/Web/Areas/Admin/Views/Sessions/Index.cshtml",
-      "TargetPath": "Areas\\Admin\\Views\\Sessions\\Index.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/Users/dan/Google Drive/School/CCSU/CS510/project prototype/Web/Areas/Admin/Views/_ViewImports.cshtml",
-      "TargetPath": "Areas\\Admin\\Views\\_ViewImports.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/Users/dan/Google Drive/School/CCSU/CS510/project prototype/Web/Areas/Admin/Views/Sessions/Edit.cshtml",
-      "TargetPath": "Areas\\Admin\\Views\\Sessions\\Edit.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/Users/dan/Google Drive/School/CCSU/CS510/project prototype/Web/Areas/Admin/Views/Roles/Create.cshtml",
-      "TargetPath": "Areas\\Admin\\Views\\Roles\\Create.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/Users/dan/Google Drive/School/CCSU/CS510/project prototype/Web/Areas/Admin/Views/Users/Details.cshtml",
-      "TargetPath": "Areas\\Admin\\Views\\Users\\Details.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/Users/dan/Google Drive/School/CCSU/CS510/project prototype/Web/Areas/Admin/Views/Rubrics/Details.cshtml",
-      "TargetPath": "Areas\\Admin\\Views\\Rubrics\\Details.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/Users/dan/Google Drive/School/CCSU/CS510/project prototype/Web/Areas/Admin/Views/Artifacts/Details.cshtml",
-      "TargetPath": "Areas\\Admin\\Views\\Artifacts\\Details.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/Users/dan/Google Drive/School/CCSU/CS510/project prototype/Web/Areas/Admin/Views/Roles/Index.cshtml",
-      "TargetPath": "Areas\\Admin\\Views\\Roles\\Index.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/Users/dan/Google Drive/School/CCSU/CS510/project prototype/Web/Areas/Admin/Views/Sessions/Create.cshtml",
-      "TargetPath": "Areas\\Admin\\Views\\Sessions\\Create.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/Users/dan/Google Drive/School/CCSU/CS510/project prototype/Web/Areas/Admin/Views/Schools/Create.cshtml",
-      "TargetPath": "Areas\\Admin\\Views\\Schools\\Create.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/Users/dan/Google Drive/School/CCSU/CS510/project prototype/Web/Areas/Admin/Views/Artifacts/Create.cshtml",
-      "TargetPath": "Areas\\Admin\\Views\\Artifacts\\Create.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/Users/dan/Google Drive/School/CCSU/CS510/project prototype/Web/Areas/Admin/Views/Rubrics/Create.cshtml",
-      "TargetPath": "Areas\\Admin\\Views\\Rubrics\\Create.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/Users/dan/Google Drive/School/CCSU/CS510/project prototype/Web/Areas/Admin/Views/Sections/Index.cshtml",
-      "TargetPath": "Areas\\Admin\\Views\\Sections\\Index.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/Users/dan/Google Drive/School/CCSU/CS510/project prototype/Web/Areas/Admin/Views/Sections/Edit.cshtml",
-      "TargetPath": "Areas\\Admin\\Views\\Sections\\Edit.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/Users/dan/Google Drive/School/CCSU/CS510/project prototype/Web/Areas/Admin/Views/_ViewStart.cshtml",
-      "TargetPath": "Areas\\Admin\\Views\\_ViewStart.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/Users/dan/Google Drive/School/CCSU/CS510/project prototype/Web/Areas/Admin/Views/Sessions/Details.cshtml",
-      "TargetPath": "Areas\\Admin\\Views\\Sessions\\Details.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/Users/dan/Google Drive/School/CCSU/CS510/project prototype/Web/Views/Home/About.cshtml",
-      "TargetPath": "Views\\Home\\About.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/Users/dan/Google Drive/School/CCSU/CS510/project prototype/Web/Areas/Admin/Views/Users/Edit.cshtml",
-      "TargetPath": "Areas\\Admin\\Views\\Users\\Edit.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/Users/dan/Google Drive/School/CCSU/CS510/project prototype/Web/Areas/Admin/Views/Users/Index.cshtml",
-      "TargetPath": "Areas\\Admin\\Views\\Users\\Index.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/Users/dan/Google Drive/School/CCSU/CS510/project prototype/Web/Views/_ViewImports.cshtml",
-      "TargetPath": "Views\\_ViewImports.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/Users/dan/Google Drive/School/CCSU/CS510/project prototype/Web/Areas/Admin/Views/Schools/Delete.cshtml",
-      "TargetPath": "Areas\\Admin\\Views\\Schools\\Delete.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/Users/dan/Google Drive/School/CCSU/CS510/project prototype/Web/Areas/Admin/Views/Sections/Details.cshtml",
-      "TargetPath": "Areas\\Admin\\Views\\Sections\\Details.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/Users/dan/Google Drive/School/CCSU/CS510/project prototype/Web/Areas/Admin/Views/Users/Delete.cshtml",
-      "TargetPath": "Areas\\Admin\\Views\\Users\\Delete.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/Users/dan/Google Drive/School/CCSU/CS510/project prototype/Web/Views/_ViewStart.cshtml",
-      "TargetPath": "Views\\_ViewStart.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/Users/dan/Google Drive/School/CCSU/CS510/project prototype/Web/Areas/Admin/Views/Users/Create.cshtml",
-      "TargetPath": "Areas\\Admin\\Views\\Users\\Create.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/Users/dan/Google Drive/School/CCSU/CS510/project prototype/Web/Areas/Admin/Views/Roles/Details.cshtml",
-      "TargetPath": "Areas\\Admin\\Views\\Roles\\Details.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/Users/dan/Google Drive/School/CCSU/CS510/project prototype/Web/Areas/Admin/Views/Artifacts/Edit.cshtml",
-      "TargetPath": "Areas\\Admin\\Views\\Artifacts\\Edit.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/Users/dan/Google Drive/School/CCSU/CS510/project prototype/Web/Areas/Admin/Views/Sessions/Delete.cshtml",
-      "TargetPath": "Areas\\Admin\\Views\\Sessions\\Delete.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/Users/dan/Google Drive/School/CCSU/CS510/project prototype/Web/Areas/Admin/Views/Rubrics/Index.cshtml",
-      "TargetPath": "Areas\\Admin\\Views\\Rubrics\\Index.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/Users/dan/Google Drive/School/CCSU/CS510/project prototype/Web/Areas/Admin/Views/Rubrics/Delete.cshtml",
-      "TargetPath": "Areas\\Admin\\Views\\Rubrics\\Delete.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/Users/dan/Google Drive/School/CCSU/CS510/project prototype/Web/Areas/Admin/Views/Roles/Edit.cshtml",
-      "TargetPath": "Areas\\Admin\\Views\\Roles\\Edit.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/Users/dan/Google Drive/School/CCSU/CS510/project prototype/Web/Areas/Admin/Views/Schools/Index.cshtml",
-      "TargetPath": "Areas\\Admin\\Views\\Schools\\Index.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/Users/dan/Google Drive/School/CCSU/CS510/project prototype/Web/Areas/Admin/Views/Sections/Delete.cshtml",
-      "TargetPath": "Areas\\Admin\\Views\\Sections\\Delete.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/Users/dan/Google Drive/School/CCSU/CS510/project prototype/Web/Areas/Admin/Views/Artifacts/Delete.cshtml",
-      "TargetPath": "Areas\\Admin\\Views\\Artifacts\\Delete.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/Users/dan/Google Drive/School/CCSU/CS510/project prototype/Web/Views/Home/Privacy.cshtml",
-      "TargetPath": "Views\\Home\\Privacy.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/Users/dan/Google Drive/School/CCSU/CS510/project prototype/Web/Views/Home/Index.cshtml",
-      "TargetPath": "Views\\Home\\Index.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/Users/dan/Google Drive/School/CCSU/CS510/project prototype/Web/Areas/Admin/Views/Artifacts/Index.cshtml",
-      "TargetPath": "Areas\\Admin\\Views\\Artifacts\\Index.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/Users/dan/Google Drive/School/CCSU/CS510/project prototype/Web/Views/Shared/_Layout.cshtml",
-      "TargetPath": "Views\\Shared\\_Layout.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/Users/dan/Google Drive/School/CCSU/CS510/project prototype/Web/Areas/Admin/Views/Roles/Delete.cshtml",
-      "TargetPath": "Areas\\Admin\\Views\\Roles\\Delete.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/Users/dan/Google Drive/School/CCSU/CS510/project prototype/Web/Areas/Admin/Views/Rubrics/Edit.cshtml",
+      "FilePath": "/Users/dan/Google Drive/School/CCSU/School - code/cs510/Assessment/CCSU-Assessment/Web/Areas/Admin/Views/Rubrics/Edit.cshtml",
       "TargetPath": "Areas\\Admin\\Views\\Rubrics\\Edit.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "/Users/dan/Google Drive/School/CCSU/CS510/project prototype/Web/Views/Shared/_ValidationScriptsPartial.cshtml",
-      "TargetPath": "Views\\Shared\\_ValidationScriptsPartial.cshtml",
+      "FilePath": "/Users/dan/Google Drive/School/CCSU/School - code/cs510/Assessment/CCSU-Assessment/Web/Areas/Admin/Views/Artifacts/Edit.cshtml",
+      "TargetPath": "Areas\\Admin\\Views\\Artifacts\\Edit.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "/Users/dan/Google Drive/School/CCSU/CS510/project prototype/Web/Areas/Admin/Views/Schools/Details.cshtml",
-      "TargetPath": "Areas\\Admin\\Views\\Schools\\Details.cshtml",
+      "FilePath": "/Users/dan/Google Drive/School/CCSU/School - code/cs510/Assessment/CCSU-Assessment/Web/Areas/Admin/Views/Schools/Delete.cshtml",
+      "TargetPath": "Areas\\Admin\\Views\\Schools\\Delete.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "/Users/dan/Google Drive/School/CCSU/CS510/project prototype/Web/Areas/Admin/Views/Sections/Create.cshtml",
+      "FilePath": "/Users/dan/Google Drive/School/CCSU/School - code/cs510/Assessment/CCSU-Assessment/Web/Areas/Admin/Views/Sections/Index.cshtml",
+      "TargetPath": "Areas\\Admin\\Views\\Sections\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/Users/dan/Google Drive/School/CCSU/School - code/cs510/Assessment/CCSU-Assessment/Web/Areas/Admin/Views/Schools/Edit.cshtml",
+      "TargetPath": "Areas\\Admin\\Views\\Schools\\Edit.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/Users/dan/Google Drive/School/CCSU/School - code/cs510/Assessment/CCSU-Assessment/Web/Areas/Admin/Views/Users/Create.cshtml",
+      "TargetPath": "Areas\\Admin\\Views\\Users\\Create.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/Users/dan/Google Drive/School/CCSU/School - code/cs510/Assessment/CCSU-Assessment/Web/Areas/Admin/Views/Users/Details.cshtml",
+      "TargetPath": "Areas\\Admin\\Views\\Users\\Details.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/Users/dan/Google Drive/School/CCSU/School - code/cs510/Assessment/CCSU-Assessment/Web/Areas/Admin/Views/Sessions/Details.cshtml",
+      "TargetPath": "Areas\\Admin\\Views\\Sessions\\Details.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/Users/dan/Google Drive/School/CCSU/School - code/cs510/Assessment/CCSU-Assessment/Web/Areas/Admin/Views/Sections/Create.cshtml",
       "TargetPath": "Areas\\Admin\\Views\\Sections\\Create.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "/Users/dan/Google Drive/School/CCSU/CS510/project prototype/Web/Views/Shared/Error.cshtml",
+      "FilePath": "/Users/dan/Google Drive/School/CCSU/School - code/cs510/Assessment/CCSU-Assessment/Web/Areas/Admin/Views/Artifacts/Index.cshtml",
+      "TargetPath": "Areas\\Admin\\Views\\Artifacts\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/Users/dan/Google Drive/School/CCSU/School - code/cs510/Assessment/CCSU-Assessment/Web/Areas/Admin/Views/Schools/Index.cshtml",
+      "TargetPath": "Areas\\Admin\\Views\\Schools\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/Users/dan/Google Drive/School/CCSU/School - code/cs510/Assessment/CCSU-Assessment/Web/Views/Shared/_Layout.cshtml",
+      "TargetPath": "Views\\Shared\\_Layout.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/Users/dan/Google Drive/School/CCSU/School - code/cs510/Assessment/CCSU-Assessment/Web/Areas/Admin/Views/Roles/Edit.cshtml",
+      "TargetPath": "Areas\\Admin\\Views\\Roles\\Edit.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/Users/dan/Google Drive/School/CCSU/School - code/cs510/Assessment/CCSU-Assessment/Web/Views/Home/Index.cshtml",
+      "TargetPath": "Views\\Home\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/Users/dan/Google Drive/School/CCSU/School - code/cs510/Assessment/CCSU-Assessment/Web/Areas/Admin/Views/Artifacts/Delete.cshtml",
+      "TargetPath": "Areas\\Admin\\Views\\Artifacts\\Delete.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/Users/dan/Google Drive/School/CCSU/School - code/cs510/Assessment/CCSU-Assessment/Web/Areas/Admin/Views/Roles/Delete.cshtml",
+      "TargetPath": "Areas\\Admin\\Views\\Roles\\Delete.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/Users/dan/Google Drive/School/CCSU/School - code/cs510/Assessment/CCSU-Assessment/Web/Areas/Admin/Views/Sections/Delete.cshtml",
+      "TargetPath": "Areas\\Admin\\Views\\Sections\\Delete.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/Users/dan/Google Drive/School/CCSU/School - code/cs510/Assessment/CCSU-Assessment/Web/Views/Home/Requirements.cshtml",
+      "TargetPath": "Views\\Home\\Requirements.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/Users/dan/Google Drive/School/CCSU/School - code/cs510/Assessment/CCSU-Assessment/Web/Areas/Admin/Views/Roles/Details.cshtml",
+      "TargetPath": "Areas\\Admin\\Views\\Roles\\Details.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/Users/dan/Google Drive/School/CCSU/School - code/cs510/Assessment/CCSU-Assessment/Web/Areas/Admin/Views/Rubrics/Create.cshtml",
+      "TargetPath": "Areas\\Admin\\Views\\Rubrics\\Create.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/Users/dan/Google Drive/School/CCSU/School - code/cs510/Assessment/CCSU-Assessment/Web/Views/_ViewImports.cshtml",
+      "TargetPath": "Views\\_ViewImports.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/Users/dan/Google Drive/School/CCSU/School - code/cs510/Assessment/CCSU-Assessment/Web/Views/Shared/Error.cshtml",
       "TargetPath": "Views\\Shared\\Error.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/Users/dan/Google Drive/School/CCSU/School - code/cs510/Assessment/CCSU-Assessment/Web/Areas/Admin/Views/Sessions/Index.cshtml",
+      "TargetPath": "Areas\\Admin\\Views\\Sessions\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/Users/dan/Google Drive/School/CCSU/School - code/cs510/Assessment/CCSU-Assessment/Web/Areas/Admin/Views/Schools/Details.cshtml",
+      "TargetPath": "Areas\\Admin\\Views\\Schools\\Details.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/Users/dan/Google Drive/School/CCSU/School - code/cs510/Assessment/CCSU-Assessment/Web/Views/Home/About.cshtml",
+      "TargetPath": "Views\\Home\\About.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/Users/dan/Google Drive/School/CCSU/School - code/cs510/Assessment/CCSU-Assessment/Web/Areas/Admin/Views/Schools/Create.cshtml",
+      "TargetPath": "Areas\\Admin\\Views\\Schools\\Create.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/Users/dan/Google Drive/School/CCSU/School - code/cs510/Assessment/CCSU-Assessment/Web/Areas/Admin/Views/Rubrics/Details.cshtml",
+      "TargetPath": "Areas\\Admin\\Views\\Rubrics\\Details.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/Users/dan/Google Drive/School/CCSU/School - code/cs510/Assessment/CCSU-Assessment/Web/Areas/Admin/Views/Sessions/Create.cshtml",
+      "TargetPath": "Areas\\Admin\\Views\\Sessions\\Create.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/Users/dan/Google Drive/School/CCSU/School - code/cs510/Assessment/CCSU-Assessment/Web/Areas/Admin/Views/Sessions/Delete.cshtml",
+      "TargetPath": "Areas\\Admin\\Views\\Sessions\\Delete.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/Users/dan/Google Drive/School/CCSU/School - code/cs510/Assessment/CCSU-Assessment/Web/Views/_ViewStart.cshtml",
+      "TargetPath": "Views\\_ViewStart.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/Users/dan/Google Drive/School/CCSU/School - code/cs510/Assessment/CCSU-Assessment/Web/Areas/Admin/Views/Roles/Index.cshtml",
+      "TargetPath": "Areas\\Admin\\Views\\Roles\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/Users/dan/Google Drive/School/CCSU/School - code/cs510/Assessment/CCSU-Assessment/Web/Areas/Admin/Views/Roles/Create.cshtml",
+      "TargetPath": "Areas\\Admin\\Views\\Roles\\Create.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/Users/dan/Google Drive/School/CCSU/School - code/cs510/Assessment/CCSU-Assessment/Web/Areas/Admin/Views/Rubrics/Delete.cshtml",
+      "TargetPath": "Areas\\Admin\\Views\\Rubrics\\Delete.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/Users/dan/Google Drive/School/CCSU/School - code/cs510/Assessment/CCSU-Assessment/Web/Views/Shared/_ValidationScriptsPartial.cshtml",
+      "TargetPath": "Views\\Shared\\_ValidationScriptsPartial.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/Users/dan/Google Drive/School/CCSU/School - code/cs510/Assessment/CCSU-Assessment/Web/Areas/Admin/Views/Sections/Edit.cshtml",
+      "TargetPath": "Areas\\Admin\\Views\\Sections\\Edit.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/Users/dan/Google Drive/School/CCSU/School - code/cs510/Assessment/CCSU-Assessment/Web/Areas/Admin/Views/Users/Index.cshtml",
+      "TargetPath": "Areas\\Admin\\Views\\Users\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/Users/dan/Google Drive/School/CCSU/School - code/cs510/Assessment/CCSU-Assessment/Web/Views/Home/Privacy.cshtml",
+      "TargetPath": "Views\\Home\\Privacy.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/Users/dan/Google Drive/School/CCSU/School - code/cs510/Assessment/CCSU-Assessment/Web/Areas/Admin/Views/Rubrics/Index.cshtml",
+      "TargetPath": "Areas\\Admin\\Views\\Rubrics\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/Users/dan/Google Drive/School/CCSU/School - code/cs510/Assessment/CCSU-Assessment/Web/Areas/Admin/Views/Users/Edit.cshtml",
+      "TargetPath": "Areas\\Admin\\Views\\Users\\Edit.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/Users/dan/Google Drive/School/CCSU/School - code/cs510/Assessment/CCSU-Assessment/Web/Areas/Admin/Views/Artifacts/Details.cshtml",
+      "TargetPath": "Areas\\Admin\\Views\\Artifacts\\Details.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/Users/dan/Google Drive/School/CCSU/School - code/cs510/Assessment/CCSU-Assessment/Web/Areas/Admin/Views/Sections/Details.cshtml",
+      "TargetPath": "Areas\\Admin\\Views\\Sections\\Details.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/Users/dan/Google Drive/School/CCSU/School - code/cs510/Assessment/CCSU-Assessment/Web/Areas/Admin/Views/Users/Delete.cshtml",
+      "TargetPath": "Areas\\Admin\\Views\\Users\\Delete.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/Users/dan/Google Drive/School/CCSU/School - code/cs510/Assessment/CCSU-Assessment/Web/Areas/Admin/Views/Sessions/Edit.cshtml",
+      "TargetPath": "Areas\\Admin\\Views\\Sessions\\Edit.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/Users/dan/Google Drive/School/CCSU/School - code/cs510/Assessment/CCSU-Assessment/Web/Areas/Admin/Views/Artifacts/Create.cshtml",
+      "TargetPath": "Areas\\Admin\\Views\\Artifacts\\Create.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/Users/dan/Google Drive/School/CCSU/School - code/cs510/Assessment/CCSU-Assessment/Web/Areas/Admin/Views/_ViewImports.cshtml",
+      "TargetPath": "Areas\\Admin\\Views\\_ViewImports.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/Users/dan/Google Drive/School/CCSU/School - code/cs510/Assessment/CCSU-Assessment/Web/Areas/Admin/Views/_ViewStart.cshtml",
+      "TargetPath": "Areas\\Admin\\Views\\_ViewStart.cshtml",
       "FileKind": "mvc"
     }
   ],
