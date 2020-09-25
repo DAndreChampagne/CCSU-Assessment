@@ -111,6 +111,7 @@ namespace Data.Contexts {
 
         public bool SeedData() {
             try {
+                var seedData = Path.GetFullPath("../../../../Data/Contexts/SeedData/");
 
                 Schools.AddRange(new [] {
                     new School { Id = 1, Name = "Central Connecticut State University" },
@@ -204,11 +205,11 @@ namespace Data.Contexts {
                 SaveChanges();
 
                 Rubrics.AddRange(new [] {
-                    new Rubric { Id = 1, SchoolId = 1, Code = "WC", Name = "Writen Communication", },
-                    new Rubric { Id = 2, SchoolId = 1, Code = "CT", Name = "Critical Thinking", },
-                    new Rubric { Id = 3, SchoolId = 1, Code = "QR", Name = "Quantitative Reasoning", },
-                    new Rubric { Id = 4, SchoolId = 1, Code = "CE", Name = "Civic Engagement", File = System.IO.File.ReadAllBytes("/Users/dan/Downloads/GenEd_Rubrics_5/Rubric_CivicEngagement.pdf") },
-                    new Rubric { Id = 5, SchoolId = 1, Code = "IL", Name = "Information Literacy", },
+                    new Rubric { Id = 1, SchoolId = 1, Code = "WC", Name = "Writen Communication", File = System.IO.File.ReadAllBytes(Path.Combine(seedData, "Rubric_WrittenCommunication.pdf")) },
+                    new Rubric { Id = 2, SchoolId = 1, Code = "CT", Name = "Critical Thinking", File = System.IO.File.ReadAllBytes(Path.Combine(seedData, "Rubric_CriticalThinking.pdf")) },
+                    new Rubric { Id = 3, SchoolId = 1, Code = "QR", Name = "Quantitative Reasoning", File = System.IO.File.ReadAllBytes(Path.Combine(seedData, "Rubric_QuantitativeLiteracy.pdf")) },
+                    new Rubric { Id = 4, SchoolId = 1, Code = "CE", Name = "Civic Engagement", File = System.IO.File.ReadAllBytes(Path.Combine(seedData, "Rubric_CivicEngagement.pdf")) },
+                    new Rubric { Id = 5, SchoolId = 1, Code = "IL", Name = "Information Literacy", File = System.IO.File.ReadAllBytes(Path.Combine(seedData, "Rubric_InformationLiteracy.pdf")) },
                     new Rubric { Id = 6, SchoolId = 1, Code = "SR", Name = "Scientific Reasoning", },
                     new Rubric { Id = 7, SchoolId = 1, Code = "ED", Name = "Ethical Dimensions", },
                     new Rubric { Id = 8, SchoolId = 1, Code = "HU", Name = "Historical Understanding", },

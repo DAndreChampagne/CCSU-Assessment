@@ -23,8 +23,19 @@ namespace Web.Areas.Admin.Controllers
         // GET: Admin/Users
         public async Task<IActionResult> Index()
         {
-            var assessmentContext = _context.Users.Include(u => u.School);
-            return View(await assessmentContext.ToListAsync());
+            var assessmentContext = await _context.Users
+                .Include(u => u.School)
+                .Include(u => u.UserRoles).ThenInclude(ur => ur.Role)
+                .ToListAsync();
+
+            foreach (var item in assessmentContext) {
+                item.RoleNames = String.Empty;
+                foreach (var role in item.UserRoles) {
+                    item.RoleNames += role.Role.Name + ", ";
+                }
+            }
+
+            return View(assessmentContext);
         }
 
         // GET: Admin/Users/Details/5

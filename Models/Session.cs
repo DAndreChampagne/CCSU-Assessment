@@ -28,7 +28,10 @@ namespace Models {
 
         [Range(2000, 2999)]
         public int Year { get; set; }
+
         public Semester Semester { get; set; }
+        
+        [StringLength(50)]
         public string Name { get; set; }
 
         [DataType(DataType.Date)]
