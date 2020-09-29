@@ -5,10 +5,10 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using Data.Contexts;
-using Models;
+using Assessment.Data.Contexts;
+using Assessment.Models;
 
-namespace Web.Areas.Admin.Controllers
+namespace Assessment.Web.Areas.Admin.Controllers
 {
     [Area("Admin")]
     public class UsersController : Controller
@@ -23,19 +23,12 @@ namespace Web.Areas.Admin.Controllers
         // GET: Admin/Users
         public async Task<IActionResult> Index()
         {
-            var assessmentContext = await _context.Users
+            var assessmentContext = _context.Users
                 .Include(u => u.School)
                 .Include(u => u.UserRoles).ThenInclude(ur => ur.Role)
-                .ToListAsync();
+                .OrderBy(x => x.Id);
 
-            foreach (var item in assessmentContext) {
-                item.RoleNames = String.Empty;
-                foreach (var role in item.UserRoles) {
-                    item.RoleNames += role.Role.Name + ", ";
-                }
-            }
-
-            return View(assessmentContext);
+            return View(await assessmentContext.ToListAsync());
         }
 
         // GET: Admin/Users/Details/5

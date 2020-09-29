@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace Models {
+namespace Assessment.Models {
     
     /// <summary>
     /// 
     /// </summary>
     public class Artifact {
+
         public int Id { get; set; }
 
         public virtual School School { get; set; }

@@ -2,10 +2,10 @@ using System;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.EntityFrameworkCore;
-using Models;
-using Data.Contexts;
+using Assessment.Models;
+using Assessment.Data.Contexts;
 
-namespace Tests
+namespace Assessment.Tests
 {
     [TestClass]
     public class UnitTest1

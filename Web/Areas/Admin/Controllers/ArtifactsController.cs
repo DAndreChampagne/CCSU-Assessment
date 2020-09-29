@@ -5,10 +5,10 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using Data.Contexts;
-using Models;
+using Assessment.Data.Contexts;
+using Assessment.Models;
 
-namespace Web.Areas.Admin.Controllers
+namespace Assessment.Web.Areas.Admin.Controllers
 {
     [Area("Admin")]
     public class ArtifactsController : Controller

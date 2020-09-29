@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace Data.Migrations
+namespace Assessment.Data.Migrations
 {
     public partial class DataCleanup : Migration
     {

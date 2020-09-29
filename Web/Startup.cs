@@ -2,8 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Data.Contexts;
+using Assessment.Data.Contexts;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
+using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.EntityFrameworkCore;
@@ -11,8 +13,13 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using HealthChecks.UI.Client;
+using ElmahCore.Mvc;
+using Microsoft.AspNetCore.Http;
+using System.Net.Mime;
+using Newtonsoft.Json;
 
-namespace Web
+namespace Assessment.Web
 {
     public class Startup
     {
@@ -25,14 +32,15 @@ namespace Web
             Environment = env;
         }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
-        public void ConfigureServices(IServiceCollection services)
-        {
+        public void ConfigureServices(IServiceCollection services) {
             var pwd =
                 System.Environment.GetEnvironmentVariable("MySQLPassword") // Get password from AWS
                 ?? Configuration["Aws:MySQLPassword"] // Get password from dotnet secrets file
             ;
             var cn = String.Format(Configuration["ConnectionStrings:AwsConnection"], pwd);
+
+
+            services.AddElmah();
 
             services.AddDbContext<AssessmentContext>(options => {
                 options.UseLoggerFactory(LoggerFactory.Create(l => l.AddConsole()));
@@ -45,11 +53,25 @@ namespace Web
             services
                 .AddRazorPages()
                 .AddRazorRuntimeCompilation();
+
+
+            services
+                .AddHealthChecks()
+                .AddDbContextCheck<AssessmentContext>();
+
+            services.AddHealthChecksUI(opt => {
+                opt.SetEvaluationTimeInSeconds(30);
+                opt.MaximumHistoryEntriesPerEndpoint(60);
+
+                opt.AddHealthCheckEndpoint(name: "app", uri: "~/hc");
+            }).AddInMemoryStorage();
+
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            app.UseElmah();
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -57,7 +79,6 @@ namespace Web
             else
             {
                 app.UseExceptionHandler("/Home/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
             app.UseHttpsRedirection();
@@ -69,6 +90,34 @@ namespace Web
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapHealthChecks("/hc", new HealthCheckOptions
+                {
+                    Predicate = _ => true,
+                    // ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse,
+                    ResponseWriter = async (ctx, rpt) => {
+                        var result = JsonConvert.SerializeObject(new {  
+                            status = rpt.Status.ToString(),  
+                            errors = rpt.Entries.Select(e => new { key = e.Key, value = Enum.GetName(typeof(HealthStatus), e.Value.Status) })  
+                        },
+                        Formatting.Indented,
+                        new JsonSerializerSettings {  
+                            NullValueHandling = NullValueHandling.Ignore  
+                        });  
+                        ctx.Response.ContentType = MediaTypeNames.Application.Json;  
+                        await ctx.Response.WriteAsync(result);
+                    },
+                });
+
+                endpoints.MapHealthChecksUI(opt => {
+                    opt.UseRelativeApiPath = false;
+                    opt.UseRelativeResourcesPath = false;
+                    opt.AsideMenuOpened = false;
+
+                    opt.UIPath = "/health";
+                    opt.ApiPath = "/healthAPI";
+                });
+
+
                 endpoints.MapControllerRoute(
                     name: "AdminArea",
                     pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
@@ -76,6 +125,9 @@ namespace Web
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+                
+                
+
             });
         }
     }

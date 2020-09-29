@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Models {
+namespace Assessment.Models {
     
     /// <summary>
     /// 
@@ -20,7 +20,20 @@ namespace Models {
 
         [NotMapped]
         [Display(Name = "Roles")]
-        public string RoleNames { get; set; }
+        public string RoleNames { 
+            get {
+                var result = String.Empty;
+                foreach (var role in UserRoles) {
+                    result += role.Role.Name + ", ";
+                }
+
+                if (result?.Length > 2) {
+                    result = result.Substring(0, result.Length-2);
+                }
+
+                return result;
+            }
+        }
 
         public virtual ICollection<UserRole> UserRoles { get; set; }
     }

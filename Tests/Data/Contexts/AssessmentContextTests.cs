@@ -1,13 +1,13 @@
 using System;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Models;
-using Data.Contexts;
+using Assessment.Models;
+using Assessment.Data.Contexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using System.IO;
 
-namespace Tests.Data.Contexts
+namespace Assessment.Tests.Data.Contexts
 {
     [TestClass]
     public class AssessmentContextTests

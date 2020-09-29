@@ -1,7 +1,7 @@
 
 using System.ComponentModel.DataAnnotations;
 
-namespace Models {
+namespace Assessment.Models {
     
     /// <summary>
     /// 

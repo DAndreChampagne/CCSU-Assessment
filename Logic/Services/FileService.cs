@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.IO.Compression;
 using System.IO;
 
-namespace Logic.Services
+namespace Assessment.Logic.Services
 {
     public static class FileService
     {

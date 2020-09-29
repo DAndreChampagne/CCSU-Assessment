@@ -1,5 +1,5 @@
 
-namespace Models {
+namespace Assessment.Models {
 
     /// <summary>
     /// 

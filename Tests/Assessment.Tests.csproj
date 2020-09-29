@@ -8,10 +8,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="../Models/Models.csproj" />
-    <ProjectReference Include="../Data/Data.csproj" />
-    <ProjectReference Include="../Logic/Logic.csproj" />
-    <ProjectReference Include="../Web/Web.csproj" />
+    <ProjectReference Include="../Models/Assessment.Models.csproj" />
+    <ProjectReference Include="../Data/Assessment.Data.csproj" />
+    <ProjectReference Include="../Logic/Assessment.Logic.csproj" />
+    <ProjectReference Include="../Web/Assessment.Web.csproj" />
   </ItemGroup>
 
   <ItemGroup>

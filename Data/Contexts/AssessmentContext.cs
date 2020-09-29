@@ -5,13 +5,13 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.SqlServer;
 using Microsoft.Extensions.Configuration;
 using System.Reflection;
-using Models;
+using Assessment.Models;
 using Microsoft.Data.Sqlite;
 using System.Diagnostics;
 using System.Collections.Generic;
 using Pomelo.EntityFrameworkCore.MySql;
 
-namespace Data.Contexts {
+namespace Assessment.Data.Contexts {
     public class AssessmentContext : DbContext {
 
         private static SqliteConnection _Connection;
@@ -112,6 +112,7 @@ namespace Data.Contexts {
         public bool SeedData() {
             try {
                 var seedData = Path.GetFullPath("../../../../Data/Contexts/SeedData/");
+                var id = 0;
 
                 Schools.AddRange(new [] {
                     new School { Id = 1, Name = "Central Connecticut State University" },
@@ -133,8 +134,7 @@ namespace Data.Contexts {
                     new User {
                         Id = 1, 
                         SchoolId = 1, 
-                        Name = "MK",
-                        // Name = "Martie Kaczmarek",
+                        Name = "Martie Kaczmarek",
                         UserRoles = new List<UserRole> {
                             new UserRole { RoleId = 1 },
                             new UserRole { RoleId = 2 },
@@ -143,28 +143,25 @@ namespace Data.Contexts {
                     new User {
                         Id = 2, 
                         SchoolId = 1, 
-                        Name = "SK",
-                        // Name = "Stan Kurkovsky",
+                        Name = "Stan Kurkovsky",
                         UserRoles = new List<UserRole> {
                             new UserRole { RoleId = 1 },
                             new UserRole { RoleId = 2 },
                         }
                     },
                     new User {
-                        Id = 3,
-                        SchoolId = 1,
-                        Name = "DC",
-                        // Name = "Daniel Champagne",
+                        Id = 3, 
+                        SchoolId = 1, 
+                        Name = "Yvonne Kirby",
                         UserRoles = new List<UserRole> {
                             new UserRole { RoleId = 1 },
-                            new UserRole { RoleId = 4 },
+                            new UserRole { RoleId = 2 },
                         }
                     },
                     new User {
                         Id = 4,
                         SchoolId = 1,
-                        Name = "PK",
-                        // Name = "Parvathy Kumar",
+                        Name = "Daniel Champagne",
                         UserRoles = new List<UserRole> {
                             new UserRole { RoleId = 1 },
                             new UserRole { RoleId = 4 },
@@ -173,8 +170,7 @@ namespace Data.Contexts {
                     new User {
                         Id = 5,
                         SchoolId = 1,
-                        Name = "MS",
-                        // Name = "Mansimran Singh",
+                        Name = "Parvathy Kumar",
                         UserRoles = new List<UserRole> {
                             new UserRole { RoleId = 1 },
                             new UserRole { RoleId = 4 },
@@ -183,13 +179,68 @@ namespace Data.Contexts {
                     new User {
                         Id = 6,
                         SchoolId = 1,
-                        Name = "JS",
-                        // Name = "Jason Smith",
+                        Name = "Mansimran Singh",
                         UserRoles = new List<UserRole> {
                             new UserRole { RoleId = 1 },
                             new UserRole { RoleId = 4 },
                         }
                     },
+                    new User {
+                        Id = 7,
+                        SchoolId = 1,
+                        Name = "Jason Smith",
+                        UserRoles = new List<UserRole> {
+                            new UserRole { RoleId = 1 },
+                            new UserRole { RoleId = 4 },
+                        }
+                    },
+
+                    new User {
+                        Id = 8,
+                        SchoolId = 1,
+                        Name = "Yash Dalsania",
+                        UserRoles = new List<UserRole> {
+                            new UserRole { RoleId = 1 },
+                            new UserRole { RoleId = 4 },
+                        }
+                    },
+                    new User {
+                        Id = 9,
+                        SchoolId = 1,
+                        Name = "Luis Gutierrez",
+                        UserRoles = new List<UserRole> {
+                            new UserRole { RoleId = 1 },
+                            new UserRole { RoleId = 4 },
+                        }
+                    },
+                    new User {
+                        Id = 10,
+                        SchoolId = 1,
+                        Name = "Chenyang Lin",
+                        UserRoles = new List<UserRole> {
+                            new UserRole { RoleId = 1 },
+                            new UserRole { RoleId = 4 },
+                        }
+                    },
+                    new User {
+                        Id = 11,
+                        SchoolId = 1,
+                        Name = "Trung Minh Tri Nguyen",
+                        UserRoles = new List<UserRole> {
+                            new UserRole { RoleId = 1 },
+                            new UserRole { RoleId = 4 },
+                        }
+                    },
+                    new User {
+                        Id = 12,
+                        SchoolId = 1,
+                        Name = "Paul Pasquarelli",
+                        UserRoles = new List<UserRole> {
+                            new UserRole { RoleId = 1 },
+                            new UserRole { RoleId = 4 },
+                        }
+                    },
+
                 });
                 SaveChanges();
 

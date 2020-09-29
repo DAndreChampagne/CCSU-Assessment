@@ -7,7 +7,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/Web/Web.csproj"
+                "${workspaceFolder}/Web/Assessment.Web.csproj"
             ],
             "problemMatcher": "$msCompile"
         },
@@ -17,7 +17,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/Tests/Tests.csproj"
+                "${workspaceFolder}/Tests/Assessment.Tests.csproj"
             ],
             "problemMatcher": "$msCompile"
         },
@@ -27,7 +27,7 @@
             "type": "process",
             "args": [
                 "test",
-                "${workspaceFolder}/Tests/Tests.csproj"
+                "${workspaceFolder}/Tests/Assessment.Tests.csproj"
             ]
         }
     ]
