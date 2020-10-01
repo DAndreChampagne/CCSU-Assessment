@@ -36,6 +36,7 @@ namespace Assessment.Models {
         }
 
         public virtual ICollection<UserRole> UserRoles { get; set; }
+        public virtual ICollection<Score> Scores { get; set; }
     }
 
 }

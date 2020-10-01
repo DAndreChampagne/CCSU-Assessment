@@ -1,0 +1,105 @@
+@model Assessment.Models.Score
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Delete</h1>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Score</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.User)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.User.Id)
+        </dd class>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.School)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.School.Id)
+        </dd class>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Rubric)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Rubric.Id)
+        </dd class>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Artifact)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Artifact.Id)
+        </dd class>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Score01)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Score01)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Score02)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Score02)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Score03)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Score03)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Score04)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Score04)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Score05)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Score05)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Score06)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Score06)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Score07)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Score07)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Score08)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Score08)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Score09)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Score09)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Score10)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Score10)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>

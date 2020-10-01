@@ -21,7 +21,6 @@ namespace Assessment.Tests.Models
         {
             var expected = "Administrator, Student";
             var actual = String.Empty;
-
             var user = new Assessment.Models.User {
                 Name = "Arthur Pendragon",
                 UserRoles = new List<Assessment.Models.UserRole> {

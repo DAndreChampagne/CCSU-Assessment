@@ -23,20 +23,8 @@ namespace Assessment.Web.Areas.Admin.Controllers
         // GET: Admin/Rubrics
         public async Task<IActionResult> Index()
         {
-            var assessmentContext = _context.Rubrics.Include(r => r.School);
+            var assessmentContext = _context.Rubrics.Include(r => r.School).Include(r => r.RubricCriteria);
             return View(await assessmentContext.ToListAsync());
-        }
-
-        public async Task<IActionResult> ViewFile(int? id) {
-            if (id == null)
-                return NotFound();
-
-            var file = await _context.Rubrics
-                .Where(x => x.Id == id)
-                .Select(x => x.File)
-                .FirstOrDefaultAsync();
-
-            return File(file, System.Net.Mime.MediaTypeNames.Application.Pdf);
         }
 
         // GET: Admin/Rubrics/Details/5
@@ -70,7 +58,7 @@ namespace Assessment.Web.Areas.Admin.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,SchoolId,Code,Data")] Rubric rubric)
+        public async Task<IActionResult> Create([Bind("Id,SchoolId,Code,Name,Criterion01,Criterion02,Criterion03,Criterion04,Criterion05,Criterion06,Criterion07,Criterion08,Criterion09,Criterion10,Data,File")] Rubric rubric)
         {
             if (ModelState.IsValid)
             {
@@ -104,7 +92,7 @@ namespace Assessment.Web.Areas.Admin.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,SchoolId,Code,Data")] Rubric rubric)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,SchoolId,Code,Name,Criterion01,Criterion02,Criterion03,Criterion04,Criterion05,Criterion06,Criterion07,Criterion08,Criterion09,Criterion10,Data,File")] Rubric rubric)
         {
             if (id != rubric.Id)
             {

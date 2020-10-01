@@ -3,14 +3,16 @@ using System;
 using Assessment.Data.Contexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Assessment.Data.Migrations
 {
     [DbContext(typeof(AssessmentContext))]
-    partial class AssessmentContextModelSnapshot : ModelSnapshot
+    [Migration("20201001204625_rubricdataelements")]
+    partial class rubricdataelements
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -101,6 +103,36 @@ namespace Assessment.Data.Migrations
                     b.Property<string>("Code")
                         .HasColumnType("varchar(2) CHARACTER SET utf8mb4")
                         .HasMaxLength(2);
+
+                    b.Property<string>("Criterion01")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("Criterion02")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("Criterion03")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("Criterion04")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("Criterion05")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("Criterion06")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("Criterion07")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("Criterion08")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("Criterion09")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("Criterion10")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("Data")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -364,7 +396,7 @@ namespace Assessment.Data.Migrations
             modelBuilder.Entity("Assessment.Models.RubricCriteria", b =>
                 {
                     b.HasOne("Assessment.Models.Rubric", "Rubric")
-                        .WithMany("RubricCriteria")
+                        .WithMany("RubricData")
                         .HasForeignKey("RubricId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();

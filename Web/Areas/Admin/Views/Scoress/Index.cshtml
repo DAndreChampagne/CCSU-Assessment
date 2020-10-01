@@ -1,0 +1,113 @@
+@model IEnumerable<Assessment.Models.Score>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.User)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.School)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Rubric)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Artifact)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Score01)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Score02)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Score03)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Score04)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Score05)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Score06)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Score07)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Score08)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Score09)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Score10)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.User.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.School.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Rubric.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Artifact.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Score01)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Score02)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Score03)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Score04)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Score05)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Score06)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Score07)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Score08)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Score09)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Score10)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

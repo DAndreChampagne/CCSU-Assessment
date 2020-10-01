@@ -27,7 +27,8 @@ namespace Assessment.Data.Contexts {
         public DbSet<User> Users { get; set; }
         public DbSet<Role> Roles { get; set; }
         public DbSet<Rubric> Rubrics { get; set; }
-        public DbSet<RubricData> RubricData { get; set; }
+        public DbSet<Score> Scores { get; set; }
+        public DbSet<RubricCriteria> RubricCriteria { get; set; }
         public DbSet<Session> Sessions { get; set; }
         public DbSet<Section> Sections { get; set; }
         public DbSet<Artifact> Artifacts { get; set; }
@@ -251,16 +252,55 @@ namespace Assessment.Data.Contexts {
                 SaveChanges();
 
                 Sections.AddRange(new [] {
-                    new Section { SessionId=1, CRN = 42679, Name = "LSC 150-OL1" }
+                    new Section { SessionId=1, UserId=2, CRN = 12345, Name = "CS 510-OL1" }
                 });
                 SaveChanges();
 
                 Rubrics.AddRange(new [] {
-                    new Rubric { Id = 1, SchoolId = 1, Code = "WC", Name = "Writen Communication", File = System.IO.File.ReadAllBytes(Path.Combine(seedData, "Rubric_WrittenCommunication.pdf")) },
-                    new Rubric { Id = 2, SchoolId = 1, Code = "CT", Name = "Critical Thinking", File = System.IO.File.ReadAllBytes(Path.Combine(seedData, "Rubric_CriticalThinking.pdf")) },
-                    new Rubric { Id = 3, SchoolId = 1, Code = "QR", Name = "Quantitative Reasoning", File = System.IO.File.ReadAllBytes(Path.Combine(seedData, "Rubric_QuantitativeLiteracy.pdf")) },
-                    new Rubric { Id = 4, SchoolId = 1, Code = "CE", Name = "Civic Engagement", File = System.IO.File.ReadAllBytes(Path.Combine(seedData, "Rubric_CivicEngagement.pdf")) },
-                    new Rubric { Id = 5, SchoolId = 1, Code = "IL", Name = "Information Literacy", File = System.IO.File.ReadAllBytes(Path.Combine(seedData, "Rubric_InformationLiteracy.pdf")) },
+                    new Rubric { 
+                        Id = 1, 
+                        SchoolId = 1, 
+                        Code = "WC", 
+                        Name = "Writen Communication", 
+                        File = System.IO.File.ReadAllBytes(Path.Combine(seedData, "Rubric_WrittenCommunication.pdf")) 
+                    },
+                    new Rubric { 
+                        Id = 2, 
+                        SchoolId = 1, 
+                        Code = "CT", 
+                        Name = "Critical Thinking", 
+                        File = System.IO.File.ReadAllBytes(Path.Combine(seedData, "Rubric_CriticalThinking.pdf"))
+                    },
+                    new Rubric { 
+                        Id = 3, 
+                        SchoolId = 1, 
+                        Code = "QR",
+                        Name = "Quantitative Reasoning", 
+                        File = System.IO.File.ReadAllBytes(Path.Combine(seedData, "Rubric_QuantitativeLiteracy.pdf"))
+                    },
+                    new Rubric { 
+                        Id = 4, 
+                        SchoolId = 1, 
+                        Code = "CE", 
+                        Name = "Civic Engagement", 
+                        File = System.IO.File.ReadAllBytes(Path.Combine(seedData, "Rubric_CivicEngagement.pdf")),
+                        RubricCriteria = new List<RubricCriteria> {
+                            new RubricCriteria {
+                                Name = "Diversity of Communities and Cultures",
+                                Desciption1 = "Expresses attitudes and beliefs as an individual, from a one-sided view. Is indifferent or resistant to what can be learned from diversity of communities and cultures.",
+                                Desciption2 = "Has awareness that own attitudes and beliefs are different from those of other cultures and communities. Exhibits little curiosity about what can be learned from diversity of communities and cultures.",
+                                Desciption3 = "Reflects on how own attitudes and beliefs are different from those of other cultures and communities. Exhibits curiosity about what can be learned from diversity of communities and cultures.",
+                                Desciption4 = "Demonstrates evidence of adjustment in own attitudes and beliefs because of working within and learning from diversity of communities and cultures. Promotes others' engagement with diversity.",
+                            }
+                        }
+                    },
+                    new Rubric { 
+                        Id = 5, 
+                        SchoolId = 1, 
+                        Code = "IL", 
+                        Name = "Information Literacy", 
+                        File = System.IO.File.ReadAllBytes(Path.Combine(seedData, "Rubric_InformationLiteracy.pdf"))
+                    },
                     new Rubric { Id = 6, SchoolId = 1, Code = "SR", Name = "Scientific Reasoning", },
                     new Rubric { Id = 7, SchoolId = 1, Code = "ED", Name = "Ethical Dimensions", },
                     new Rubric { Id = 8, SchoolId = 1, Code = "HU", Name = "Historical Understanding", },

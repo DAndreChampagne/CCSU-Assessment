@@ -47,6 +47,19 @@ namespace Assessment.Web
                 options.UseMySql(cn);
             });
 
+            services
+                .AddHealthChecks()
+                .AddDbContextCheck<AssessmentContext>(tags: new [] { "db" })
+                .AddCheck("constant healthy", () => { return HealthCheckResult.Healthy(); }, tags: new [] { "misc" })
+            ;
+
+            services.AddHealthChecksUI(options => {
+                options.SetEvaluationTimeInSeconds(30);
+                options.SetMinimumSecondsBetweenFailureNotifications(60);
+                options.MaximumHistoryEntriesPerEndpoint(60);
+                options.DisableDatabaseMigrations();
+                options.AddHealthCheckEndpoint(name: "OIRA Application", uri: "/hc");
+            }).AddInMemoryStorage();
 
             services.AddControllersWithViews();
 
@@ -55,16 +68,9 @@ namespace Assessment.Web
                 .AddRazorRuntimeCompilation();
 
 
-            services
-                .AddHealthChecks()
-                .AddDbContextCheck<AssessmentContext>();
 
-            services.AddHealthChecksUI(opt => {
-                opt.SetEvaluationTimeInSeconds(30);
-                opt.MaximumHistoryEntriesPerEndpoint(60);
 
-                opt.AddHealthCheckEndpoint(name: "app", uri: "~/hc");
-            }).AddInMemoryStorage();
+
 
         }
 
@@ -92,29 +98,30 @@ namespace Assessment.Web
             {
                 endpoints.MapHealthChecks("/hc", new HealthCheckOptions
                 {
-                    Predicate = _ => true,
-                    // ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse,
-                    ResponseWriter = async (ctx, rpt) => {
-                        var result = JsonConvert.SerializeObject(new {  
-                            status = rpt.Status.ToString(),  
-                            errors = rpt.Entries.Select(e => new { key = e.Key, value = Enum.GetName(typeof(HealthStatus), e.Value.Status) })  
-                        },
-                        Formatting.Indented,
-                        new JsonSerializerSettings {  
-                            NullValueHandling = NullValueHandling.Ignore  
-                        });  
-                        ctx.Response.ContentType = MediaTypeNames.Application.Json;  
-                        await ctx.Response.WriteAsync(result);
-                    },
+                    Predicate = check => true, //check.Tags.Contains(""), // filter by tags
+                    AllowCachingResponses = false,
+                    ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse,
+                    // ResponseWriter = async (ctx, rpt) => {
+                    //     var result = JsonConvert.SerializeObject(new {  
+                    //         status = rpt.Status.ToString(),  
+                    //         errors = rpt.Entries.Select(e => new { key = e.Key, value = Enum.GetName(typeof(HealthStatus), e.Value.Status) })  
+                    //     },
+                    //     Formatting.Indented,
+                    //     new JsonSerializerSettings {  
+                    //         NullValueHandling = NullValueHandling.Ignore  
+                    //     });  
+                    //     ctx.Response.ContentType = MediaTypeNames.Application.Json;  
+                    //     await ctx.Response.WriteAsync(result);
+                    // },
                 });
 
-                endpoints.MapHealthChecksUI(opt => {
-                    opt.UseRelativeApiPath = false;
-                    opt.UseRelativeResourcesPath = false;
-                    opt.AsideMenuOpened = false;
+                endpoints.MapHealthChecksUI(options => {
+                    options.UseRelativeApiPath = false;
+                    options.UseRelativeResourcesPath = false;
+                    options.AsideMenuOpened = false;
 
-                    opt.UIPath = "/health";
-                    opt.ApiPath = "/healthAPI";
+                    options.UIPath = "/health";
+                    // opt.ApiPath = "/healthAPI";
                 });
 
 

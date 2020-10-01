@@ -7,15 +7,18 @@ cd Data
 dotnet ef migrations add initial
 
 cd Web
-dotnet aspnet-codegenerator controller --force --model Models.School --dataContext Data.Contexts.AssessmentContext --relativeFolderPath "Areas/Admin/Controllers/" --controllerName SchoolsController --useAsyncActions --referenceScriptLibraries --useDefaultLayout
-dotnet aspnet-codegenerator controller --force --model Models.Role --dataContext Data.Contexts.AssessmentContext --relativeFolderPath "Areas/Admin/Controllers/" --controllerName RolesController --useAsyncActions --referenceScriptLibraries --useDefaultLayout
-dotnet aspnet-codegenerator controller --force --model Models.User --dataContext Data.Contexts.AssessmentContext --relativeFolderPath "Areas/Admin/Controllers/" --controllerName UsersController --useAsyncActions --referenceScriptLibraries --useDefaultLayout
-dotnet aspnet-codegenerator controller --force --model Models.Session --dataContext Data.Contexts.AssessmentContext --relativeFolderPath "Areas/Admin/Controllers/" --controllerName SessionsController --useAsyncActions --referenceScriptLibraries --useDefaultLayout
-dotnet aspnet-codegenerator controller --force --model Models.Section --dataContext Data.Contexts.AssessmentContext --relativeFolderPath "Areas/Admin/Controllers/" --controllerName SectionsController --useAsyncActions --referenceScriptLibraries --useDefaultLayout
-dotnet aspnet-codegenerator controller --force --model Models.Rubric --dataContext Data.Contexts.AssessmentContext --relativeFolderPath "Areas/Admin/Controllers/" --controllerName RubricsController --useAsyncActions --referenceScriptLibraries --useDefaultLayout
+dotnet aspnet-codegenerator controller --force --model Assessment.Models.School --dataContext Assessment.Data.Contexts.AssessmentContext --relativeFolderPath "Areas/Admin/Controllers/" --controllerName SchoolsController --useAsyncActions --referenceScriptLibraries --useDefaultLayout
+dotnet aspnet-codegenerator controller --force --model Assessment.Models.Role --dataContext Assessment.Data.Contexts.AssessmentContext --relativeFolderPath "Areas/Admin/Controllers/" --controllerName RolesController --useAsyncActions --referenceScriptLibraries --useDefaultLayout
+dotnet aspnet-codegenerator controller --force --model Assessment.Models.User --dataContext Assessment.Data.Contexts.AssessmentContext --relativeFolderPath "Areas/Admin/Controllers/" --controllerName UsersController --useAsyncActions --referenceScriptLibraries --useDefaultLayout
+dotnet aspnet-codegenerator controller --force --model Assessment.Models.Session --dataContext Assessment.Data.Contexts.AssessmentContext --relativeFolderPath "Areas/Admin/Controllers/" --controllerName SessionsController --useAsyncActions --referenceScriptLibraries --useDefaultLayout
+dotnet aspnet-codegenerator controller --force --model Assessment.Models.Section --dataContext Assessment.Data.Contexts.AssessmentContext --relativeFolderPath "Areas/Admin/Controllers/" --controllerName SectionsController --useAsyncActions --referenceScriptLibraries --useDefaultLayout
+dotnet aspnet-codegenerator controller --force --model Assessment.Models.Session --dataContext Assessment.Data.Contexts.AssessmentContext --relativeFolderPath "Areas/Admin/Controllers/" --controllerName SessionsController --useAsyncActions --referenceScriptLibraries --useDefaultLayout
+dotnet aspnet-codegenerator controller --force --model Assessment.Models.Rubric --dataContext Assessment.Data.Contexts.AssessmentContext --relativeFolderPath "Areas/Admin/Controllers/" --controllerName RubricsController --useAsyncActions --referenceScriptLibraries --useDefaultLayout
+dotnet aspnet-codegenerator controller --force --model Assessment.Models.Score --dataContext Assessment.Data.Contexts.AssessmentContext --relativeFolderPath "Areas/Admin/Controllers/" --controllerName ScoressController --useAsyncActions --referenceScriptLibraries --useDefaultLayout
+
 
 # artifacts has been updated manually. don't scaffold it.
-dotnet aspnet-codegenerator controller --force --model Models.Artifact --dataContext Data.Contexts.AssessmentContext --relativeFolderPath "Areas/Admin/Controllers/" --controllerName ArtifactsController --useAsyncActions --referenceScriptLibraries --useDefaultLayout
+dotnet aspnet-codegenerator controller --force --model Assessment.Models.Artifact --dataContext Assessment.Data.Contexts.AssessmentContext --relativeFolderPath "Areas/Admin/Controllers/" --controllerName ArtifactsController --useAsyncActions --referenceScriptLibraries --useDefaultLayout
 
 
 

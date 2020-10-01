@@ -15,14 +15,14 @@ namespace Assessment.Tests.General
 
         }
 
-        [TestMethod]
-        public void CheckEnvironmentVariable()
-        {
-            var pwd = Environment.GetEnvironmentVariable("MySQLPassword");
+        // [TestMethod]
+        // public void CheckEnvironmentVariable()
+        // {
+        //     var pwd = Environment.GetEnvironmentVariable("MySQLPassword"); // only valid when deployed
 
-            Console.WriteLine($"Pwd = {pwd}");
+        //     Console.WriteLine($"Pwd = {pwd}");
 
-            Assert.IsFalse(String.IsNullOrEmpty(pwd));
-        }
+        //     Assert.IsFalse(String.IsNullOrEmpty(pwd));
+        // }
     }
 }

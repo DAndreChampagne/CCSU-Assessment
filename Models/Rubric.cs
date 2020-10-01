@@ -1,6 +1,8 @@
-
+using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Assessment.Models {
 
@@ -19,11 +21,13 @@ namespace Assessment.Models {
         [StringLength(50)]
         public string Name { get; set; }
 
+
         public string Data { get; set; }
 
         public byte[] File { get; set; }
 
-        public virtual List<RubricData> RubricData { get; set; }
+        public virtual ICollection<RubricCriteria> RubricCriteria { get; set; }
+        public virtual ICollection<Score> Scores { get; set; }
     }
 
 }

@@ -3,14 +3,16 @@ using System;
 using Assessment.Data.Contexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Assessment.Data.Migrations
 {
     [DbContext(typeof(AssessmentContext))]
-    partial class AssessmentContextModelSnapshot : ModelSnapshot
+    [Migration("20201001010032_datamodel1")]
+    partial class datamodel1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -102,6 +104,36 @@ namespace Assessment.Data.Migrations
                         .HasColumnType("varchar(2) CHARACTER SET utf8mb4")
                         .HasMaxLength(2);
 
+                    b.Property<string>("Criterion01")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("Criterion02")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("Criterion03")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("Criterion04")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("Criterion05")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("Criterion06")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("Criterion07")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("Criterion08")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("Criterion09")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("Criterion10")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
                     b.Property<string>("Data")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
@@ -124,26 +156,11 @@ namespace Assessment.Data.Migrations
                     b.ToTable("Rubrics");
                 });
 
-            modelBuilder.Entity("Assessment.Models.RubricCriteria", b =>
+            modelBuilder.Entity("Assessment.Models.RubricData", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
-
-                    b.Property<string>("Desciption1")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<string>("Desciption2")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<string>("Desciption3")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<string>("Desciption4")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<int>("RubricId")
                         .HasColumnType("int");
@@ -152,7 +169,7 @@ namespace Assessment.Data.Migrations
 
                     b.HasIndex("RubricId");
 
-                    b.ToTable("RubricCriteria");
+                    b.ToTable("RubricData");
                 });
 
             modelBuilder.Entity("Assessment.Models.School", b =>
@@ -361,10 +378,10 @@ namespace Assessment.Data.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Assessment.Models.RubricCriteria", b =>
+            modelBuilder.Entity("Assessment.Models.RubricData", b =>
                 {
                     b.HasOne("Assessment.Models.Rubric", "Rubric")
-                        .WithMany("RubricCriteria")
+                        .WithMany("RubricData")
                         .HasForeignKey("RubricId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();

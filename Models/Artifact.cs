@@ -48,7 +48,7 @@ namespace Assessment.Models {
 
 
         public virtual ICollection<Rubric> Rubrics { get; set; }
-        
+        public virtual ICollection<Score> Scores { get; set; }
     }
 
 }
