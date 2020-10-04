@@ -22,13 +22,6 @@ using Assessment.Logic.Services;
 
 namespace Assessment.Web
 {
-
-    public class IDontKNowWhatToCallThis {
-        public void SetupSomeStuff() {
-
-        }   
-    }
-
     public class Startup
     {
         public IConfiguration Configuration { get; }
@@ -74,11 +67,6 @@ namespace Assessment.Web
                 .AddRazorPages()
                 .AddRazorRuntimeCompilation();
 
-
-
-
-
-
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -107,19 +95,19 @@ namespace Assessment.Web
                 {
                     Predicate = check => true, //check.Tags.Contains(""), // filter by tags
                     AllowCachingResponses = false,
-                    ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse,
-                    // ResponseWriter = async (ctx, rpt) => {
-                    //     var result = JsonConvert.SerializeObject(new {  
-                    //         status = rpt.Status.ToString(),  
-                    //         errors = rpt.Entries.Select(e => new { key = e.Key, value = Enum.GetName(typeof(HealthStatus), e.Value.Status) })  
-                    //     },
-                    //     Formatting.Indented,
-                    //     new JsonSerializerSettings {  
-                    //         NullValueHandling = NullValueHandling.Ignore  
-                    //     });  
-                    //     ctx.Response.ContentType = MediaTypeNames.Application.Json;  
-                    //     await ctx.Response.WriteAsync(result);
-                    // },
+                    // ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse,
+                    ResponseWriter = async (ctx, rpt) => {
+                        var result = JsonConvert.SerializeObject(new {  
+                            status = rpt.Status.ToString(),  
+                            errors = rpt.Entries.Select(e => new { key = e.Key, value = Enum.GetName(typeof(HealthStatus), e.Value.Status) })  
+                        },
+                        Formatting.Indented,
+                        new JsonSerializerSettings {  
+                            NullValueHandling = NullValueHandling.Ignore  
+                        });  
+                        ctx.Response.ContentType = MediaTypeNames.Application.Json;  
+                        await ctx.Response.WriteAsync(result);
+                    },
                 });
 
                 endpoints.MapHealthChecksUI(options => {
@@ -140,8 +128,6 @@ namespace Assessment.Web
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
                 
-                
-
             });
         }
     }
