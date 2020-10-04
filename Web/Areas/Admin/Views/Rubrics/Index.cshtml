@@ -21,36 +21,6 @@
             <th>
                 @Html.DisplayNameFor(model => model.Name)
             </th>
-            @* <th>
-                @Html.DisplayNameFor(model => model.Criterion01)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Criterion02)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Criterion03)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Criterion04)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Criterion05)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Criterion06)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Criterion07)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Criterion08)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Criterion09)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Criterion10)
-            </th> *@
             <th>
                 @Html.DisplayNameFor(model => model.Data)
             </th>
@@ -64,7 +34,7 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.School.Id)
+                @Html.DisplayFor(modelItem => item.School.Name)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Code)
@@ -72,36 +42,6 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
-            @* <td>
-                @Html.DisplayFor(modelItem => item.Criterion01)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Criterion02)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Criterion03)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Criterion04)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Criterion05)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Criterion06)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Criterion07)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Criterion08)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Criterion09)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Criterion10)
-            </td> *@
             <td>
                 @Html.DisplayFor(modelItem => item.Data)
             </td>
@@ -124,7 +64,8 @@
         </tr>
 
         @if (item.RubricCriteria?.Any() ?? false) {
-            <tr>
+            <tr style="font-size: .75em;">
+                <td></td>
                 <td colspan="100">
                     <table class="table-condensed">
                         <thead>

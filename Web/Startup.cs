@@ -18,9 +18,17 @@ using ElmahCore.Mvc;
 using Microsoft.AspNetCore.Http;
 using System.Net.Mime;
 using Newtonsoft.Json;
+using Assessment.Logic.Services;
 
 namespace Assessment.Web
 {
+
+    public class IDontKNowWhatToCallThis {
+        public void SetupSomeStuff() {
+
+        }   
+    }
+
     public class Startup
     {
         public IConfiguration Configuration { get; }
@@ -38,7 +46,6 @@ namespace Assessment.Web
                 ?? Configuration["Aws:MySQLPassword"] // Get password from dotnet secrets file
             ;
             var cn = String.Format(Configuration["ConnectionStrings:AwsConnection"], pwd);
-
 
             services.AddElmah();
 

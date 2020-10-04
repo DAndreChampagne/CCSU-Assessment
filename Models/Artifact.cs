@@ -1,9 +1,10 @@
-
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace Assessment.Models {
     
+    // TODO: finish XML comments
     /// <summary>
     /// 
     /// </summary>
@@ -45,6 +46,7 @@ namespace Assessment.Models {
         [StringLength(256)]
         public string FilePath { get; set; }
         public byte[] File { get; set; }
+
 
 
         public virtual ICollection<Rubric> Rubrics { get; set; }

@@ -1,8 +1,11 @@
 
+using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Assessment.Models {
     
+    // TODO: finish XML comments
     /// <summary>
     /// 
     /// </summary>
@@ -11,5 +14,6 @@ namespace Assessment.Models {
 
         [StringLength(100)]
         public string Name { get; set; }
+
     }
 }

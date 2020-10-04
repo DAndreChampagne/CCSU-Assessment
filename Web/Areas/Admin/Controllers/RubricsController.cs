@@ -23,6 +23,7 @@ namespace Assessment.Web.Areas.Admin.Controllers
         // GET: Admin/Rubrics
         public async Task<IActionResult> Index()
         {
+
             var assessmentContext = _context.Rubrics.Include(r => r.School).Include(r => r.RubricCriteria);
             return View(await assessmentContext.ToListAsync());
         }

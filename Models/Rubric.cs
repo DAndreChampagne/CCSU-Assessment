@@ -6,6 +6,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Assessment.Models {
 
+    // TODO: finish XML comments
     /// <summary>
     /// 
     /// </summary>    
@@ -25,6 +26,7 @@ namespace Assessment.Models {
         public string Data { get; set; }
 
         public byte[] File { get; set; }
+
 
         public virtual ICollection<RubricCriteria> RubricCriteria { get; set; }
         public virtual ICollection<Score> Scores { get; set; }

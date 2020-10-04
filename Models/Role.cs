@@ -1,9 +1,11 @@
 
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace Assessment.Models {
     
+    // TODO: finish XML comments
     /// <summary>
     /// 
     /// </summary>
@@ -12,7 +14,8 @@ namespace Assessment.Models {
 
         [StringLength(50)]
         public string Name { get; set; }
-        
+
+
         public virtual ICollection<UserRole> UserRoles { get; set; }
     }
 

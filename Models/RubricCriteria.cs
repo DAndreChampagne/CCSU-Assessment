@@ -1,6 +1,9 @@
 
+using System;
+
 namespace Assessment.Models {
 
+    // TODO: finish XML comments
     /// <summary>
     /// 
     /// </summary>    

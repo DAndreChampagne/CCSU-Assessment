@@ -6,7 +6,7 @@ using System.IO;
 
 namespace Assessment.Logic.Services
 {
-    public static class FileService
+    public class FileService
     {
         /// <summary>
         /// Get the names of all files inside a zip file.
@@ -43,7 +43,7 @@ namespace Assessment.Logic.Services
             var existingFiles = Directory.GetFiles(outputDirectory, "*.*")
                 .Select(x => Path.GetFileName(x))
                 .ToList();
-            var filesInZip = FileService.GetFileNames(sourceFile);
+            var filesInZip = GetFileNames(sourceFile);
             var results = existingFiles
                 .Where(x => filesInZip.Contains(x))
                 .ToList();
@@ -65,7 +65,7 @@ namespace Assessment.Logic.Services
                 throw new FileNotFoundException();
 
             try {
-                results = FileService.GetFileNames(sourceFile)
+                results = GetFileNames(sourceFile)
                     .Select(x => Path.Combine(outputDirectory, x))
                     .ToList();
 

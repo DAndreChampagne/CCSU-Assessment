@@ -1,8 +1,10 @@
 
+using System;
 using System.Collections.Generic;
 
 namespace Assessment.Models {
     
+    // TODO: finish XML comments
     /// <summary>
     /// 
     /// </summary>
@@ -15,6 +17,7 @@ namespace Assessment.Models {
 
         public int RoleId { get; set; }
         public virtual Role Role { get; set; }
+
     }
 
 }

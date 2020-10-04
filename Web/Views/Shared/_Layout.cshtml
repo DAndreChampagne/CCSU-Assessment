@@ -36,9 +36,6 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
-                        @* <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Requirements">Requirements</a>
-                        </li> *@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="About">About</a>
                         </li>
@@ -54,12 +51,12 @@
                                 <a class="dropdown-item" asp-area="Admin" asp-controller="Artifacts" asp-action="Index">Artifacts</a>
                             </div>
                         </li>
-                        <li class="nav-item">
+                        @* <li class="nav-item">
                             <a class="nav-link text-dark" href="~/hc">HC-API</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" href="~/health">HC-UI</a>
-                        </li>
+                        </li> *@
                     </ul>
                 </div>
             </div>
@@ -73,7 +70,7 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2020 - CCSU - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            <small>&copy; 2020 - CCSU - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a></small>
         </div>
     </footer>
 

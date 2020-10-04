@@ -12,7 +12,7 @@ namespace Assessment.Models {
         Spring = 40,
     }
 
-
+    // TODO: finish XML comments
     /// <summary>
     /// 
     /// </summary>
@@ -40,6 +40,7 @@ namespace Assessment.Models {
         [DataType(DataType.Date)]
         public DateTime EndDate { get; set; }
         
+
     }
 
 }

@@ -1,9 +1,11 @@
 
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace Assessment.Models {
     
+    // TODO: finish XML comments
     /// <summary>
     /// 
     /// </summary>
@@ -34,6 +36,7 @@ namespace Assessment.Models {
         public int? Score08 { get; set; }
         public int? Score09 { get; set; }
         public int? Score10 { get; set; }
+
     }
 
 }

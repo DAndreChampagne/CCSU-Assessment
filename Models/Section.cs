@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Assessment.Models {
     
+    // TODO: finish XML comments
     /// <summary>
     /// 
     /// </summary>
@@ -21,6 +22,7 @@ namespace Assessment.Models {
 
         [StringLength(50)]
         public string Name { get; set; }
+
 
     }
 
