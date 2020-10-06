@@ -11,16 +11,6 @@
 <div class="row">
     <div class="col col-sm">
         <div class="card">
-            <img class="card-img-top" src="" alt="Yvonne Kirby">
-            <div class="card-body">
-                <h5 class="card-title">Yvonne Kirby</h5>
-                <h6>Project Sponsor</h6>
-                <p class="card-text"></p>
-            </div>
-        </div>
-    </div>
-    <div class="col col-sm">
-        <div class="card">
             <img class="card-img-top" src="~/images/martie.jpg" alt="Martie Kaczmarek">
             <div class="card-body">
                 <h5 class="card-title">Martie Kaczmarek</h5>
@@ -29,7 +19,16 @@
             </div>
         </div>
     </div>
-
+    <div class="col col-sm">
+        <div class="card">
+            <img class="card-img-top" src="" alt="Yvonne Kirby">
+            <div class="card-body">
+                <h5 class="card-title">Yvonne Kirby</h5>
+                <h6>Project Sponsor</h6>
+                <p class="card-text"></p>
+            </div>
+        </div>
+    </div>
     <div class="col col-sm">
         <div class="card">
             <img class="card-img-top" src="~/images/stan.jpg" alt="Stan Kurkovsky ">
@@ -44,115 +43,124 @@
 
 <div class="row text-center">
     <div class="col col-sm">
-        <h1>Students</h1>
+        <h1>Students <span style="font-size: 0.5em;">(in random order)</span></h1>
     </div>
 </div>
 
 
-<div class="row">
-    <div class="col col-sm">
-        <div class="card">
-            <img class="card-img-top" src="~/images/parvathy.png" alt="Parvathy Kumar">
-            <div class="card-body">
-                <h5 class="card-title">Parvathy Kumar</h5>
-                <p class="lead">Team Grad</p>
-                <p class="card-text">My name is Parvathy Kumar, I have a background in computer science and am currently doing my Master of science in CCSU in New Britain. I received my Bachelor’s in b.tech information technology. My area of interest is in data-warehousing, and I am eager to learn more database tools like SQL server, Netezza, Oracle etc. Currently I am learning SQL concepts and also trying to involve the ETL process in the data-warehouse concept. I am always willing to learn new technical tools and like to implement my knowledge in a competitive environment that challenges my skills to its limits, but I am also always willing to learn new technologies.</p>
-                <a href="​https://github.com/parvathy1336" class="btn btn-primary">GitHub</a>
-            </div>
-        </div>
-    </div>
-    
-    <div class="col col-sm">
-        <div class="card">
-            <img class="card-img-top" src="~/images/mansimran.png" alt="Mansimran Singh">
-            <div class="card-body">
-                <h5 class="card-title">Mansimran Singh</h5>
-                <p class="lead">Team Grad</p>
-                <p class="card-text">I acquired my bachelor’s degree in Computer Science from CCSU, and am currently enrolled in CCSU’s masters program. I work at Pfizer as a Test Automation Engineer and am strong in design and integration problem-solving skills. Expert in Java, node.js, SQL with database analysis and design. Skilled in developing business plans, requirements specifications, user documentation, and architectural systems research. Strong written and verbal communication.</p>
-                <a href="​https://github.com/Mansimran-Singh" class="btn btn-primary">GitHub</a>
-            </div>
-        </div>
-    </div>
+<div id="Students" class="row">
 
-    <div class="col col-sm">
-        <div class="card">
-            <img class="card-img-top" src="~/images/jason.png" alt="Jason Smith">
-            <div class="card-body">
-                <h5 class="card-title">Jason Smith</h5>
-                <p class="lead">Team Grad</p>
-                <p class="card-text">I went into the military after high school in KY and I am considered a wartime veteran. Afterwards, I went and got my B.A. in English from the University of Kentucky and I have a minor in Agriculture Economics. Then afterwards I went into sales in Dallas, TX in car sales. Then moved to Cincinnat,i OH and got into banking. Then moved to Connecticut to get my masters degree to have a better chance to work at a hedge fund by proximity to wall street. I want to work in A.I. to do low level trades on Wall Street.</p>
-                <a href="​https://github.com/JRSMITB" class="btn btn-primary">GitHub</a>
-            </div>
-        </div>
-    </div>
-
-    <div class="col col-sm">
-        <div class="card">
-            <img class="card-img-top" src="~/images/dan.jpg" alt="Dan Champagne">
-            <div class="card-body">
-                <h5 class="card-title">Dan Champagne</h5>
-                <p class="lead">Team Grad</p>
-                <p class="card-text">I received my bachelor’s in computer science from ECSU, and enrolled in CCSU’s masters program in 2020. I have worked at Cigna Healthcare since 2007 as a software engineer, systems analyst, DBA, and now lead developer on my team. I work predominantly with .NET, C#, and Javascript/jQuery, as well as DBA & IT infrastructure work. My first language was C/C++ and still do occasional work there, but more recently I have worked with Python and (rarely) Java.</p>
-                <a href="https://github.com/DAndreChampagne" class="btn btn-primary">GitHub</a>
-            </div>
-        </div>
-    </div>
 </div>
 
-<div class="row">
-    <div class="col col-sm">
+<script id="StudentTemplate" type="text/template">
+    <div class="col col-sm-3">
         <div class="card">
-            <img class="card-img-top" src="~/images/" alt="">
+            <img class="card-img-top" src="##image##" alt="##name##">
             <div class="card-body">
-                <h5 class="card-title"></h5>
-                <p class="lead">Team Six</p>
-                <p class="card-text">Yash Dalsania</p>
-                <a href="https://github.com/" class="btn btn-primary">GitHub</a>
+                <h5 class="card-title">##name##</h5>
+                <p class="lead">##team##</p>
+                <p class="card-text">##bio##</p>
+                <a href="##github##" class="btn btn-primary">GitHub</a>
             </div>
         </div>
     </div>
-    <div class="col col-sm">
-        <div class="card">
-            <img class="card-img-top" src="~/images/" alt="">
-            <div class="card-body">
-                <h5 class="card-title"></h5>
-                <p class="lead">Team Six</p>
-                <p class="card-text">Luis Gutierrez</p>
-                <a href="https://github.com/" class="btn btn-primary">GitHub</a>
-            </div>
-        </div>
-    </div>
-    <div class="col col-sm">
-        <div class="card">
-            <img class="card-img-top" src="~/images/" alt="">
-            <div class="card-body">
-                <h5 class="card-title"></h5>
-                <p class="lead">Team Six</p>
-                <p class="card-text">Chenyang Lin</p>
-                <a href="https://github.com/" class="btn btn-primary">GitHub</a>
-            </div>
-        </div>
-    </div>
-    <div class="col col-sm">
-        <div class="card">
-            <img class="card-img-top" src="~/images/" alt="">
-            <div class="card-body">
-                <h5 class="card-title"></h5>
-                <p class="lead">Team Six</p>
-                <p class="card-text">Trung Minh Tri Nguyen</p>
-                <a href="https://github.com/" class="btn btn-primary">GitHub</a>
-            </div>
-        </div>
-    </div>
-    <div class="col col-sm">
-        <div class="card">
-            <img class="card-img-top" src="~/images/" alt="">
-            <div class="card-body">
-                <h5 class="card-title"></h5>
-                <p class="lead">Team Six</p>
-                <p class="card-text">Paul Pasquarelli</p>
-                <a href="https://github.com/" class="btn btn-primary">GitHub</a>
-            </div>
-        </div>
-    </div>
-</div>
+</script>
+
+
+@section Scripts {
+    <script type="text/javascript">
+        function randomize(a) {
+            for (let i = a.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [a[i], a[j]] = [a[j], a[i]];
+            }
+            return a;
+        }
+
+        $(function () {
+            var template = $('#StudentTemplate').html();
+            var grid = $('#Students');
+
+            randomize(students).forEach(x => {
+                var t = template
+                    .replace(/##image##/g, x.image)
+                    .replace(/##name##/g, x.name)
+                    .replace(/##team##/g, x.team)
+                    .replace(/##bio##/g, x.bio)
+                    .replace(/##github##/g, x.github);
+                    
+
+                grid.append(t);
+            })
+        });
+    </script>
+
+    <script type="text/javascript">
+        var students = [
+            {
+                name: 'Parvathy Kumar',
+                image: '/images/parvathy.png',
+                team: 'Team Grad',
+                github: 'https://github.com/parvathy1336',
+                bio: 'My name is Parvathy Kumar, I have a background in computer science and am currently doing my Master of science in CCSU in New Britain. I received my Bachelor’s in b.tech information technology. My area of interest is in data-warehousing, and I am eager to learn more database tools like SQL server, Netezza, Oracle etc. Currently I am learning SQL concepts and also trying to involve the ETL process in the data-warehouse concept. I am always willing to learn new technical tools and like to implement my knowledge in a competitive environment that challenges my skills to its limits, but I am also always willing to learn new technologies.'
+            },
+            {
+                name: 'Mansimran Singh',
+                image: '/images/mansimran.png',
+                team: 'Team Grad',
+                github: 'https://github.com/Mansimran-Singh',
+                bio: 'I acquired my bachelor’s degree in Computer Science from CCSU, and am currently enrolled in CCSU’s masters program. I work at Pfizer as a Test Automation Engineer and am strong in design and integration problem-solving skills. Expert in Java, node.js, SQL with database analysis and design. Skilled in developing business plans, requirements specifications, user documentation, and architectural systems research. Strong written and verbal communication.'
+            },
+            {
+                name: 'Jason Smith',
+                image: '/images/jason.png',
+                team: 'Team Grad',
+                github: 'https://github.com/JRSMITB',
+                bio: 'I went into the military after high school in KY and I am considered a wartime veteran. Afterwards, I went and got my B.A. in English from the University of Kentucky and I have a minor in Agriculture Economics. Then afterwards I went into sales in Dallas, TX in car sales. Then moved to Cincinnat,i OH and got into banking. Then moved to Connecticut to get my masters degree to have a better chance to work at a hedge fund by proximity to wall street. I want to work in A.I. to do low level trades on Wall Street.'
+            },
+            {
+                name: 'Dan Champagne',
+                image: '/images/dan.jpg',
+                team: 'Team Grad',
+                github: 'https://github.com/DAndreChampagne',
+                bio: 'I received my bachelor’s in computer science from ECSU, and enrolled in CCSU’s masters program in 2020. I have worked at Cigna Healthcare since 2007 as a software engineer, systems analyst, DBA, and now lead developer on my team. I work predominantly with .NET, C#, and Javascript/jQuery, as well as DBA & IT infrastructure work. My first language was C/C++ and still do occasional work there, but more recently I have worked with Python and (rarely) Java.'
+            },
+            {
+                name: 'Yash Dalsania',
+                image: '/images/yash.png',
+                team: 'Team Six',
+                github: 'https://github.com/yashd2037',
+                bio: 'A senior at CCSU majoring in Computer Science. Fluent in Java, Python, HTML, and CSS with experience in C, C++, and JavaScript. Scripting experience with Python. My other interests in the field include computer security specifically malware, viruses, and trojans. As well as machine learning and AI. Other experiences include being a mentor for my high school FIRST robotics teams and a peer mentor at success central.'
+            },
+            {
+                name: 'Luis Gutierrez',
+                image: '/images/luiz.jpg',
+                team: 'Team Six',
+                github: 'https://www.github.com/lgut',
+                bio: 'A front-end web developer with real-world work experience. As well as a personal interest in webassembly, Rust, and other systems programming applications. Proficient in Javascript, CSS, Python, & Java. Have worked with both the Angular 2+ and React front-end frameworks. My guiding principle when building anything is that the experience of using it exists only in the users mind, which means empathy for the end user must be a top priority.'
+            },
+            {
+                name: 'ChenYang Lin',
+                image: '/images/chenyang.png',
+                team: 'Team Six',
+                github: 'https://github.com/ChenYang-Lin',
+                bio: 'A student at CCSU majoring in Computer Science. Enjoys programming, web design, and video games. Fluent in Java, HTML, CSS, JavaScript. Interested in web development. One thing I really like about web applications is user friendly across different platforms. I Have some experience in creating small web applications with front-end and back-end. I am also interested in game developments. I learned a HTML game engine in 10th-grade called Construct2 and found I like to create applications and solve problems in the development process.'
+            },
+            {
+                name: 'Trung Minh Tri Nguyen',
+                image: '/images/tri.jpg',
+                team: 'Team Six',
+                github: 'https://github.com/tri97nguyen',
+                bio: 'MERN stack developer. Proficient in HTML, CSS, JavaScript, Java, Python. Goal: Software engineer with concentration on backend. Most recent project: Restaurant App. Front-end: Single-page application. Implemented with React, React Router, Redux and Bootstrap. Fetching JSON data from API server. Back-end: Implemented with Expressjs and MongoDB to serve restaurant data API. Other features: user authentication with Passportjs (Cookies and Session, Local, JWT and OAuth strategies), Uploading file and secure HTTPS connection. Other activities: math tutor for 2 years at CCSU and MCC'
+            },
+            {
+                name: 'Paul Pasquarelli',
+                image: '/images/paul.jpg',
+                team: 'Team Six',
+                github: 'https://github.com/paulpasq',
+                bio: 'A senior at CCSU proficient in object-oriented programming and the ability to work with others in an organized team environment while working efficiently. Fluent in Java, HTML, CSS as well as some experience in C, JavaScript, and MIPS and IDEs such as Eclipse, NetBeans, and BlueJay. My abilities extend beyond programming however, being able to identify design flaws, user experience flaws, and efficiency bottlenecks. I am a big advocate for efficient work and want to get things done in an organized, yet fully completed manner. I have personal interests in Python, other scripting languages, the future of AI, and application/software development.'
+            },
+        ];
+
+    </script>
+}

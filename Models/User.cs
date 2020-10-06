@@ -1,5 +1,4 @@
 using System;
-//using Microsoft.AspNetCore.Identity;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -10,7 +9,7 @@ namespace Assessment.Models {
     /// <summary>
     /// 
     /// </summary>
-    public class User /*: IdentityUser*/ {
+    public class User {
         public int Id { get; set; }
 
         public virtual School School { get; set; }
