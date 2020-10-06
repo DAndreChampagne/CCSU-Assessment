@@ -19,6 +19,7 @@ using Microsoft.AspNetCore.Http;
 using System.Net.Mime;
 using Newtonsoft.Json;
 using Assessment.Logic.Services;
+using ElmahCore;
 
 namespace Assessment.Web
 {
@@ -48,8 +49,11 @@ namespace Assessment.Web
 
         public void ConfigureServices(IServiceCollection services) {
 
-
-            services.AddElmah();
+            services.AddElmah<XmlFileErrorLog>(options => {
+                options.ApplicationName = "OIRA";
+                options.LogPath = "~/errorlogs";
+                
+            });
 
             services.AddDbContext<AssessmentContext>(options => {
                 options.UseLoggerFactory(LoggerFactory.Create(l => l.AddConsole()));
@@ -70,7 +74,9 @@ namespace Assessment.Web
             //     options.AddHealthCheckEndpoint(name: "OIRA Application", uri: "/hc");
             // }).AddInMemoryStorage();
 
-            services.AddControllersWithViews();
+            services
+                .AddControllersWithViews()
+                .AddRazorRuntimeCompilation();
 
             services
                 .AddRazorPages()
@@ -96,7 +102,7 @@ namespace Assessment.Web
 
             app.UseRouting();
 
-            // app.UseAuthentication();
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
@@ -137,6 +143,7 @@ namespace Assessment.Web
                     name: "defaultRoute",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
                 
+                endpoints.MapRazorPages(); // required for Identity area
             });
         }
     }

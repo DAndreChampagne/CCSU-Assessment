@@ -16,10 +16,6 @@ namespace Assessment.Web.Areas.Identity
         {
             builder.ConfigureServices((context, services) => {
 
-                services.AddAuthentication(options => {
-
-                });
-
                 services
                     .AddDbContext<ApplicationDbContext>(options =>
                         //options.UseSqlServer(context.Configuration.GetConnectionString("ApplicationDbContextConnection"))
