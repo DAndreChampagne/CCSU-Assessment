@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-namespace MyApplication.Data
+namespace Assessment.Web.Areas.Identity.Data
 {
     public class ApplicationDbContext : IdentityDbContext<IdentityUser>
     {

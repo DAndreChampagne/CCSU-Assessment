@@ -11,11 +11,11 @@ using Assessment.Models;
 namespace Assessment.Web.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    public class ScoressController : Controller
+    public class ScoresController : Controller
     {
         private readonly AssessmentContext _context;
 
-        public ScoressController(AssessmentContext context)
+        public ScoresController(AssessmentContext context)
         {
             _context = context;
         }
