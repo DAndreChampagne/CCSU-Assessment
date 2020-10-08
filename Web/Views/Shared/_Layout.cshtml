@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - OIRA</title>
 
+    
+
     <environment include="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     </environment>
@@ -57,7 +59,7 @@
 
                                 <div class="dropdown-divider"></div>
                                 <h6 class="dropdown-header">Developer</h6>
-                                <a class="dropdown-item" href="~/elmah">ELMAH Logs</a>
+                                <a class="dropdown-item" href="~/elmah">Error Logs</a>
                             </div>
                         </li>
                         @* <li class="nav-item">
@@ -77,9 +79,46 @@
         </main>
     </div>
 
+    <style>
+        footer {
+            background-color: #1a5799;
+        }
+        footer div.container {
+            color: #ffffff;
+        }
+
+        footer a:link {
+            color: #aaaaaa;
+        }
+
+        footer a:visited {
+            color: #aaaaaa;
+        }
+
+        footer a:hover {
+            color: #ffffff;
+        }
+
+        footer a:active {
+            color: #aaaaaa;
+        }
+
+
+    </style>
+
     <footer class="border-top footer text-muted">
         <div class="container">
-            <small>&copy; 2020 - CCSU - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a></small>
+            <div class="row">
+                <div class="col-sm">
+                    <small>&copy; 2020 - CCSU - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a></small>
+                </div>
+                <div class="col-sm">
+                    <img class="" style="height: 50px;" src="~/images/logo.svg" />
+                </div>
+                <div class="col-sm">
+                    
+                </div>
+            </div>
         </div>
     </footer>
 
