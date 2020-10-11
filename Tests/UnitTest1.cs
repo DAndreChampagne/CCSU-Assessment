@@ -15,7 +15,8 @@ namespace Assessment.Tests
         [ClassInitialize]
         public static void Initialize(TestContext context) {
             db = new AssessmentContext();
-            db.MigrateAndSeed();
+            db.Migrate();
+            db.SeedData();
         }
 
         [TestMethod]

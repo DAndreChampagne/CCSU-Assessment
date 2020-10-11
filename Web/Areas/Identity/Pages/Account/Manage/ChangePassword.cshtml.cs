@@ -11,13 +11,13 @@ namespace Assessment.Web.Areas.Identity.Pages.Account.Manage
 {
     public class ChangePasswordModel : PageModel
     {
-        private readonly UserManager<IdentityUser> _userManager;
-        private readonly SignInManager<IdentityUser> _signInManager;
+        private readonly UserManager<Assessment.Models.User> _userManager;
+        private readonly SignInManager<Assessment.Models.User> _signInManager;
         private readonly ILogger<ChangePasswordModel> _logger;
 
         public ChangePasswordModel(
-            UserManager<IdentityUser> userManager,
-            SignInManager<IdentityUser> signInManager,
+            UserManager<Assessment.Models.User> userManager,
+            SignInManager<Assessment.Models.User> signInManager,
             ILogger<ChangePasswordModel> logger)
         {
             _userManager = userManager;

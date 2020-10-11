@@ -19,7 +19,8 @@ namespace Assessment.Tests.Logic.Services
         [ClassInitialize]
         public static void Initialize(TestContext context) {
             db = new AssessmentContext();
-            db.MigrateAndSeed();
+            db.Migrate();
+            db.SeedData();
 
             _filePath = Path.GetFullPath("../../../Logic/Services/SampleData/Rubric 1.zip");
         }

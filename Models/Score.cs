@@ -13,9 +13,6 @@ namespace Assessment.Models {
 
         public int Id { get; set; }
 
-        public virtual User User { get; set; }
-        public virtual int UserId { get; set; }
-
         public virtual School School { get; set; }
         public virtual int SchoolId { get; set; }
 

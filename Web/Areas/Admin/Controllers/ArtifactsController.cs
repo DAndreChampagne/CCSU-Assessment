@@ -23,7 +23,7 @@ namespace Assessment.Web.Areas.Admin.Controllers
         // GET: Admin/Artifacts
         public async Task<IActionResult> Index()
         {
-            var assessmentContext = _context.Artifacts.Include(a => a.Rubric).Include(a => a.School).Include(a => a.User);
+            var assessmentContext = _context.Artifacts.Include(a => a.Rubric).Include(a => a.School);
             return View(await assessmentContext.ToListAsync());
         }
 
@@ -50,7 +50,6 @@ namespace Assessment.Web.Areas.Admin.Controllers
             var artifact = await _context.Artifacts
                 .Include(a => a.Rubric)
                 .Include(a => a.School)
-                .Include(a => a.User)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (artifact == null)
             {
@@ -65,7 +64,6 @@ namespace Assessment.Web.Areas.Admin.Controllers
         {
             ViewData["RubricId"] = new SelectList(_context.Rubrics, "Id", "Id");
             ViewData["SchoolId"] = new SelectList(_context.Schools, "Id", "Id");
-            ViewData["UserId"] = new SelectList(_context.Users, "Id", "Id");
             return View();
         }
 
@@ -84,7 +82,6 @@ namespace Assessment.Web.Areas.Admin.Controllers
             }
             ViewData["RubricId"] = new SelectList(_context.Rubrics, "Id", "Id", artifact.RubricId);
             ViewData["SchoolId"] = new SelectList(_context.Schools, "Id", "Id", artifact.SchoolId);
-            ViewData["UserId"] = new SelectList(_context.Users, "Id", "Id", artifact.UserId);
             return View(artifact);
         }
 
@@ -103,7 +100,6 @@ namespace Assessment.Web.Areas.Admin.Controllers
             }
             ViewData["RubricId"] = new SelectList(_context.Rubrics, "Id", "Id", artifact.RubricId);
             ViewData["SchoolId"] = new SelectList(_context.Schools, "Id", "Id", artifact.SchoolId);
-            ViewData["UserId"] = new SelectList(_context.Users, "Id", "Id", artifact.UserId);
             return View(artifact);
         }
 
@@ -141,7 +137,6 @@ namespace Assessment.Web.Areas.Admin.Controllers
             }
             ViewData["RubricId"] = new SelectList(_context.Rubrics, "Id", "Id", artifact.RubricId);
             ViewData["SchoolId"] = new SelectList(_context.Schools, "Id", "Id", artifact.SchoolId);
-            ViewData["UserId"] = new SelectList(_context.Users, "Id", "Id", artifact.UserId);
             return View(artifact);
         }
 
@@ -156,7 +151,6 @@ namespace Assessment.Web.Areas.Admin.Controllers
             var artifact = await _context.Artifacts
                 .Include(a => a.Rubric)
                 .Include(a => a.School)
-                .Include(a => a.User)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (artifact == null)
             {

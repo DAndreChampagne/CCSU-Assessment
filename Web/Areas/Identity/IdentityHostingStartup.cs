@@ -15,20 +15,15 @@ namespace Assessment.Web.Areas.Identity
         public void Configure(IWebHostBuilder builder)
         {
             builder.ConfigureServices((context, services) => {
+                services.AddDbContext<ApplicationDbContext>(options =>
+                    // options.UseSqlServer(context.Configuration.GetConnectionString("ApplicationDbContextConnection"))
+                    options.UseMySql(Startup.GetDatabaseConnectionString(context.Configuration))
+                );
 
                 services
-                    .AddDbContext<ApplicationDbContext>(options =>
-                        //options.UseSqlServer(context.Configuration.GetConnectionString("ApplicationDbContextConnection"))
-                        options.UseMySql(Startup.GetDatabaseConnectionString(context.Configuration))
-                    );
-
-                services
-                    .AddDefaultIdentity<IdentityUser>(options => {
-                        options.SignIn.RequireConfirmedAccount = true;
-                    })
-                    .AddEntityFrameworkStores<ApplicationDbContext>()
-                    .AddDefaultTokenProviders()
-                ;
+                    .AddDefaultIdentity<Assessment.Models.User>(options => options.SignIn.RequireConfirmedAccount = true)
+                    .AddRoles<IdentityRole>()
+                    .AddEntityFrameworkStores<ApplicationDbContext>();
             });
         }
     }

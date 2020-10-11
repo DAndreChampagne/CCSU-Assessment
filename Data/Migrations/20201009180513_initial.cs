@@ -9,25 +9,12 @@ namespace Assessment.Data.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Roles",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    Name = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Roles", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Schools",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    Name = table.Column<string>(nullable: true)
+                    Name = table.Column<string>(maxLength: 100, nullable: true)
                 },
                 constraints: table =>
                 {
@@ -43,7 +30,7 @@ namespace Assessment.Data.Migrations
                     SchoolId = table.Column<int>(nullable: false),
                     Year = table.Column<int>(nullable: false),
                     Semester = table.Column<int>(nullable: false),
-                    Name = table.Column<string>(nullable: true),
+                    Name = table.Column<string>(maxLength: 50, nullable: true),
                     StartDate = table.Column<DateTime>(nullable: false),
                     EndDate = table.Column<DateTime>(nullable: false)
                 },
@@ -59,34 +46,14 @@ namespace Assessment.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Users",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    SchoolId = table.Column<int>(nullable: false),
-                    Name = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Users", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Users_Schools_SchoolId",
-                        column: x => x.SchoolId,
-                        principalTable: "Schools",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Sections",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    CRN = table.Column<int>(maxLength: 10, nullable: false),
                     SessionId = table.Column<int>(nullable: false),
-                    Name = table.Column<string>(nullable: true),
-                    CRN = table.Column<int>(nullable: false)
+                    Name = table.Column<string>(maxLength: 50, nullable: true)
                 },
                 constraints: table =>
                 {
@@ -100,38 +67,14 @@ namespace Assessment.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "UserRole",
-                columns: table => new
-                {
-                    UserId = table.Column<int>(nullable: false),
-                    RoleId = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_UserRole", x => new { x.UserId, x.RoleId });
-                    table.ForeignKey(
-                        name: "FK_UserRole_Roles_RoleId",
-                        column: x => x.RoleId,
-                        principalTable: "Roles",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_UserRole_Users_UserId",
-                        column: x => x.UserId,
-                        principalTable: "Users",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Rubrics",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     SchoolId = table.Column<int>(nullable: false),
-                    Code = table.Column<string>(nullable: true),
-                    Name = table.Column<string>(nullable: true),
+                    Code = table.Column<string>(maxLength: 2, nullable: true),
+                    Name = table.Column<string>(maxLength: 50, nullable: true),
                     Data = table.Column<string>(nullable: true),
                     File = table.Column<byte[]>(nullable: true),
                     ArtifactId = table.Column<int>(nullable: true)
@@ -155,14 +98,13 @@ namespace Assessment.Data.Migrations
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     SchoolId = table.Column<int>(nullable: false),
                     RubricId = table.Column<int>(nullable: false),
-                    Name = table.Column<string>(nullable: true),
-                    Term = table.Column<string>(nullable: true),
-                    StudentId = table.Column<string>(nullable: true),
-                    UserId = table.Column<int>(nullable: false),
-                    LearningObjective = table.Column<string>(nullable: true),
-                    Level = table.Column<string>(nullable: true),
-                    CRN = table.Column<string>(nullable: true),
-                    FilePath = table.Column<string>(nullable: true),
+                    Name = table.Column<string>(maxLength: 50, nullable: true),
+                    Term = table.Column<string>(maxLength: 10, nullable: true),
+                    StudentId = table.Column<string>(maxLength: 10, nullable: true),
+                    LearningObjective = table.Column<string>(maxLength: 100, nullable: true),
+                    Level = table.Column<string>(maxLength: 2, nullable: true),
+                    CRN = table.Column<string>(maxLength: 10, nullable: true),
+                    FilePath = table.Column<string>(maxLength: 256, nullable: true),
                     File = table.Column<byte[]>(nullable: true)
                 },
                 constraints: table =>
@@ -180,29 +122,71 @@ namespace Assessment.Data.Migrations
                         principalTable: "Schools",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "RubricCriteria",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    RubricId = table.Column<int>(nullable: false),
+                    Name = table.Column<string>(nullable: true),
+                    Desciption4 = table.Column<string>(nullable: true),
+                    Desciption3 = table.Column<string>(nullable: true),
+                    Desciption2 = table.Column<string>(nullable: true),
+                    Desciption1 = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_RubricCriteria", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Artifacts_Users_UserId",
-                        column: x => x.UserId,
-                        principalTable: "Users",
+                        name: "FK_RubricCriteria_Rubrics_RubricId",
+                        column: x => x.RubricId,
+                        principalTable: "Rubrics",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "RubricData",
+                name: "Scores",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    RubricId = table.Column<int>(nullable: false)
+                    SchoolId = table.Column<int>(nullable: false),
+                    RubricId = table.Column<int>(nullable: false),
+                    ArtifactId = table.Column<int>(nullable: false),
+                    Score01 = table.Column<int>(nullable: true),
+                    Score02 = table.Column<int>(nullable: true),
+                    Score03 = table.Column<int>(nullable: true),
+                    Score04 = table.Column<int>(nullable: true),
+                    Score05 = table.Column<int>(nullable: true),
+                    Score06 = table.Column<int>(nullable: true),
+                    Score07 = table.Column<int>(nullable: true),
+                    Score08 = table.Column<int>(nullable: true),
+                    Score09 = table.Column<int>(nullable: true),
+                    Score10 = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_RubricData", x => x.Id);
+                    table.PrimaryKey("PK_Scores", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_RubricData_Rubrics_RubricId",
+                        name: "FK_Scores_Artifacts_ArtifactId",
+                        column: x => x.ArtifactId,
+                        principalTable: "Artifacts",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Scores_Rubrics_RubricId",
                         column: x => x.RubricId,
                         principalTable: "Rubrics",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Scores_Schools_SchoolId",
+                        column: x => x.SchoolId,
+                        principalTable: "Schools",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -218,13 +202,8 @@ namespace Assessment.Data.Migrations
                 column: "SchoolId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Artifacts_UserId",
-                table: "Artifacts",
-                column: "UserId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_RubricData_RubricId",
-                table: "RubricData",
+                name: "IX_RubricCriteria_RubricId",
+                table: "RubricCriteria",
                 column: "RubricId");
 
             migrationBuilder.CreateIndex(
@@ -238,6 +217,21 @@ namespace Assessment.Data.Migrations
                 column: "SchoolId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Scores_ArtifactId",
+                table: "Scores",
+                column: "ArtifactId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Scores_RubricId",
+                table: "Scores",
+                column: "RubricId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Scores_SchoolId",
+                table: "Scores",
+                column: "SchoolId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Sections_SessionId",
                 table: "Sections",
                 column: "SessionId");
@@ -245,16 +239,6 @@ namespace Assessment.Data.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_Sessions_SchoolId",
                 table: "Sessions",
-                column: "SchoolId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_UserRole_RoleId",
-                table: "UserRole",
-                column: "RoleId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Users_SchoolId",
-                table: "Users",
                 column: "SchoolId");
 
             migrationBuilder.AddForeignKey(
@@ -273,28 +257,22 @@ namespace Assessment.Data.Migrations
                 table: "Artifacts");
 
             migrationBuilder.DropTable(
-                name: "RubricData");
+                name: "RubricCriteria");
+
+            migrationBuilder.DropTable(
+                name: "Scores");
 
             migrationBuilder.DropTable(
                 name: "Sections");
 
             migrationBuilder.DropTable(
-                name: "UserRole");
-
-            migrationBuilder.DropTable(
                 name: "Sessions");
-
-            migrationBuilder.DropTable(
-                name: "Roles");
 
             migrationBuilder.DropTable(
                 name: "Rubrics");
 
             migrationBuilder.DropTable(
                 name: "Artifacts");
-
-            migrationBuilder.DropTable(
-                name: "Users");
 
             migrationBuilder.DropTable(
                 name: "Schools");

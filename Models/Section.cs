@@ -14,8 +14,6 @@ namespace Assessment.Models {
         [StringLength(10)]
         public int CRN { get; set; }
 
-        public virtual User User { get; set; }
-        public virtual int UserId { get; set; }
 
         public virtual Session Session { get; set; }
         public virtual int SessionId { get; set; }

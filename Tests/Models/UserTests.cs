@@ -16,30 +16,30 @@ namespace Assessment.Tests.Models
 
         }
 
-        [TestMethod]
-        public void TestMethod1()
-        {
-            var expected = "Administrator, Student";
-            var actual = String.Empty;
-            var user = new Assessment.Models.User {
-                Name = "Arthur Pendragon",
-                UserRoles = new List<Assessment.Models.UserRole> {
-                    new UserRole {
-                        Role = new Role {
-                            Name = "Administrator"
-                        }
-                    },
-                    new UserRole {
-                        Role = new Role {
-                            Name = "Student"
-                        }
-                    },                    
-                }
-            };
+        // [TestMethod]
+        // public void TestMethod1()
+        // {
+        //     var expected = "Administrator, Student";
+        //     var actual = String.Empty;
+        //     var user = new Assessment.Models.User {
+        //         Name = "Arthur Pendragon",
+        //         UserRoles = new List<Assessment.Models.UserRole> {
+        //             new UserRole {
+        //                 Role = new Role {
+        //                     Name = "Administrator"
+        //                 }
+        //             },
+        //             new UserRole {
+        //                 Role = new Role {
+        //                     Name = "Student"
+        //                 }
+        //             },                    
+        //         }
+        //     };
 
-            actual = user.RoleNames;
+        //     actual = user.RoleNames;
 
-            Assert.AreEqual(expected, actual);
-        }
+        //     Assert.AreEqual(expected, actual);
+        // }
     }
 }

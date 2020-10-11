@@ -11,12 +11,12 @@ namespace Assessment.Web.Areas.Identity.Pages.Account.Manage
 {
     public class SetPasswordModel : PageModel
     {
-        private readonly UserManager<IdentityUser> _userManager;
-        private readonly SignInManager<IdentityUser> _signInManager;
+        private readonly UserManager<Assessment.Models.User> _userManager;
+        private readonly SignInManager<Assessment.Models.User> _signInManager;
 
         public SetPasswordModel(
-            UserManager<IdentityUser> userManager,
-            SignInManager<IdentityUser> signInManager)
+            UserManager<Assessment.Models.User> userManager,
+            SignInManager<Assessment.Models.User> signInManager)
         {
             _userManager = userManager;
             _signInManager = signInManager;

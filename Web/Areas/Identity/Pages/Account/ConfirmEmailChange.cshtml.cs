@@ -14,10 +14,10 @@ namespace Assessment.Web.Areas.Identity.Pages.Account
     [AllowAnonymous]
     public class ConfirmEmailChangeModel : PageModel
     {
-        private readonly UserManager<IdentityUser> _userManager;
-        private readonly SignInManager<IdentityUser> _signInManager;
+        private readonly UserManager<Assessment.Models.User> _userManager;
+        private readonly SignInManager<Assessment.Models.User> _signInManager;
 
-        public ConfirmEmailChangeModel(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager)
+        public ConfirmEmailChangeModel(UserManager<Assessment.Models.User> userManager, SignInManager<Assessment.Models.User> signInManager)
         {
             _userManager = userManager;
             _signInManager = signInManager;

@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Assessment.Data.Migrations
 {
     [DbContext(typeof(AssessmentContext))]
-    [Migration("20200925003941_DataCleanup")]
-    partial class DataCleanup
+    [Migration("20201009180513_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -19,7 +19,7 @@ namespace Assessment.Data.Migrations
                 .HasAnnotation("ProductVersion", "3.1.4")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
-            modelBuilder.Entity("Models.Artifact", b =>
+            modelBuilder.Entity("Assessment.Models.Artifact", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -62,36 +62,16 @@ namespace Assessment.Data.Migrations
                         .HasColumnType("varchar(10) CHARACTER SET utf8mb4")
                         .HasMaxLength(10);
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
                     b.HasIndex("RubricId");
 
                     b.HasIndex("SchoolId");
 
-                    b.HasIndex("UserId");
-
                     b.ToTable("Artifacts");
                 });
 
-            modelBuilder.Entity("Models.Role", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("varchar(50) CHARACTER SET utf8mb4")
-                        .HasMaxLength(50);
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Roles");
-                });
-
-            modelBuilder.Entity("Models.Rubric", b =>
+            modelBuilder.Entity("Assessment.Models.Rubric", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -126,11 +106,26 @@ namespace Assessment.Data.Migrations
                     b.ToTable("Rubrics");
                 });
 
-            modelBuilder.Entity("Models.RubricData", b =>
+            modelBuilder.Entity("Assessment.Models.RubricCriteria", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+
+                    b.Property<string>("Desciption1")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("Desciption2")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("Desciption3")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("Desciption4")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<int>("RubricId")
                         .HasColumnType("int");
@@ -139,10 +134,10 @@ namespace Assessment.Data.Migrations
 
                     b.HasIndex("RubricId");
 
-                    b.ToTable("RubricData");
+                    b.ToTable("RubricCriteria");
                 });
 
-            modelBuilder.Entity("Models.School", b =>
+            modelBuilder.Entity("Assessment.Models.School", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -157,7 +152,63 @@ namespace Assessment.Data.Migrations
                     b.ToTable("Schools");
                 });
 
-            modelBuilder.Entity("Models.Section", b =>
+            modelBuilder.Entity("Assessment.Models.Score", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<int>("ArtifactId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("RubricId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SchoolId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("Score01")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("Score02")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("Score03")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("Score04")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("Score05")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("Score06")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("Score07")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("Score08")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("Score09")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("Score10")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ArtifactId");
+
+                    b.HasIndex("RubricId");
+
+                    b.HasIndex("SchoolId");
+
+                    b.ToTable("Scores");
+                });
+
+            modelBuilder.Entity("Assessment.Models.Section", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -181,7 +232,7 @@ namespace Assessment.Data.Migrations
                     b.ToTable("Sections");
                 });
 
-            modelBuilder.Entity("Models.Session", b =>
+            modelBuilder.Entity("Assessment.Models.Session", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -213,122 +264,78 @@ namespace Assessment.Data.Migrations
                     b.ToTable("Sessions");
                 });
 
-            modelBuilder.Entity("Models.User", b =>
+            modelBuilder.Entity("Assessment.Models.Artifact", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("varchar(100) CHARACTER SET utf8mb4")
-                        .HasMaxLength(100);
-
-                    b.Property<int>("SchoolId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("SchoolId");
-
-                    b.ToTable("Users");
-                });
-
-            modelBuilder.Entity("Models.UserRole", b =>
-                {
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("RoleId")
-                        .HasColumnType("int");
-
-                    b.HasKey("UserId", "RoleId");
-
-                    b.HasIndex("RoleId");
-
-                    b.ToTable("UserRole");
-                });
-
-            modelBuilder.Entity("Models.Artifact", b =>
-                {
-                    b.HasOne("Models.Rubric", "Rubric")
+                    b.HasOne("Assessment.Models.Rubric", "Rubric")
                         .WithMany()
                         .HasForeignKey("RubricId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Models.School", "School")
+                    b.HasOne("Assessment.Models.School", "School")
                         .WithMany()
                         .HasForeignKey("SchoolId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.HasOne("Models.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
                 });
 
-            modelBuilder.Entity("Models.Rubric", b =>
+            modelBuilder.Entity("Assessment.Models.Rubric", b =>
                 {
-                    b.HasOne("Models.Artifact", null)
+                    b.HasOne("Assessment.Models.Artifact", null)
                         .WithMany("Rubrics")
                         .HasForeignKey("ArtifactId");
 
-                    b.HasOne("Models.School", "School")
+                    b.HasOne("Assessment.Models.School", "School")
                         .WithMany()
                         .HasForeignKey("SchoolId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Models.RubricData", b =>
+            modelBuilder.Entity("Assessment.Models.RubricCriteria", b =>
                 {
-                    b.HasOne("Models.Rubric", "Rubric")
-                        .WithMany("RubricData")
+                    b.HasOne("Assessment.Models.Rubric", "Rubric")
+                        .WithMany("RubricCriteria")
                         .HasForeignKey("RubricId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Models.Section", b =>
+            modelBuilder.Entity("Assessment.Models.Score", b =>
                 {
-                    b.HasOne("Models.Session", "Session")
+                    b.HasOne("Assessment.Models.Artifact", "Artifact")
+                        .WithMany("Scores")
+                        .HasForeignKey("ArtifactId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Assessment.Models.Rubric", "Rubric")
+                        .WithMany("Scores")
+                        .HasForeignKey("RubricId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Assessment.Models.School", "School")
+                        .WithMany()
+                        .HasForeignKey("SchoolId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Assessment.Models.Section", b =>
+                {
+                    b.HasOne("Assessment.Models.Session", "Session")
                         .WithMany()
                         .HasForeignKey("SessionId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Models.Session", b =>
+            modelBuilder.Entity("Assessment.Models.Session", b =>
                 {
-                    b.HasOne("Models.School", "School")
+                    b.HasOne("Assessment.Models.School", "School")
                         .WithMany()
                         .HasForeignKey("SchoolId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("Models.User", b =>
-                {
-                    b.HasOne("Models.School", "School")
-                        .WithMany()
-                        .HasForeignKey("SchoolId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("Models.UserRole", b =>
-                {
-                    b.HasOne("Models.Role", "Role")
-                        .WithMany("UserRoles")
-                        .HasForeignKey("RoleId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Models.User", "User")
-                        .WithMany("UserRoles")
-                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

@@ -46,7 +46,8 @@ namespace Assessment.Tests.Data.Contexts
 
             optionsBuilder.UseMySql(cn);
             db = new AssessmentContext(optionsBuilder.Options);
-            db.MigrateAndSeed();
+            db.Migrate();
+            db.SeedData();
         }
 
         [ClassCleanup]

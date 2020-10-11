@@ -7,15 +7,16 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Assessment.Data.Contexts;
 using Assessment.Models;
+using Assessment.Web.Areas.Identity.Data;
 
 namespace Assessment.Web.Areas.Admin.Controllers
 {
     [Area("Admin")]
     public class UsersController : Controller
     {
-        private readonly AssessmentContext _context;
+        private readonly ApplicationDbContext _context;
 
-        public UsersController(AssessmentContext context)
+        public UsersController(ApplicationDbContext context)
         {
             _context = context;
         }
@@ -23,16 +24,11 @@ namespace Assessment.Web.Areas.Admin.Controllers
         // GET: Admin/Users
         public async Task<IActionResult> Index()
         {
-            var assessmentContext = _context.Users
-                .Include(u => u.School)
-                .Include(u => u.UserRoles).ThenInclude(ur => ur.Role)
-                .OrderBy(x => x.Id);
-
-            return View(await assessmentContext.ToListAsync());
+            return View(await _context.Users.ToListAsync());
         }
 
         // GET: Admin/Users/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Details(string id)
         {
             if (id == null)
             {
@@ -40,7 +36,6 @@ namespace Assessment.Web.Areas.Admin.Controllers
             }
 
             var user = await _context.Users
-                .Include(u => u.School)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (user == null)
             {
@@ -51,84 +46,80 @@ namespace Assessment.Web.Areas.Admin.Controllers
         }
 
         // GET: Admin/Users/Create
-        public IActionResult Create()
-        {
-            ViewData["SchoolId"] = new SelectList(_context.Schools, "Id", "Id");
-            return View();
-        }
+        // public IActionResult Create()
+        // {
+        //     return View();
+        // }
 
         // POST: Admin/Users/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,SchoolId,Name")] User user)
-        {
-            if (ModelState.IsValid)
-            {
-                _context.Add(user);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            ViewData["SchoolId"] = new SelectList(_context.Schools, "Id", "Id", user.SchoolId);
-            return View(user);
-        }
+        // [HttpPost]
+        // [ValidateAntiForgeryToken]
+        // public async Task<IActionResult> Create(User user)
+        // {
+        //     if (ModelState.IsValid)
+        //     {
+        //         _context.Add(user);
+        //         await _context.SaveChangesAsync();
+        //         return RedirectToAction(nameof(Index));
+        //     }
+        //     return View(user);
+        // }
 
         // GET: Admin/Users/Edit/5
-        public async Task<IActionResult> Edit(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
+        // public async Task<IActionResult> Edit(string id)
+        // {
+        //     if (id == null)
+        //     {
+        //         return NotFound();
+        //     }
 
-            var user = await _context.Users.FindAsync(id);
-            if (user == null)
-            {
-                return NotFound();
-            }
-            ViewData["SchoolId"] = new SelectList(_context.Schools, "Id", "Id", user.SchoolId);
-            return View(user);
-        }
+        //     var user = await _context.Users.FindAsync(id);
+        //     if (user == null)
+        //     {
+        //         return NotFound();
+        //     }
+        //     return View(user);
+        // }
 
         // POST: Admin/Users/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,SchoolId,Name")] User user)
-        {
-            if (id != user.Id)
-            {
-                return NotFound();
-            }
+        // [HttpPost]
+        // [ValidateAntiForgeryToken]
+        // public async Task<IActionResult> Edit(string id, User user)
+        // {
+        //     if (id != user.Id)
+        //     {
+        //         return NotFound();
+        //     }
 
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    _context.Update(user);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!UserExists(user.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
-            }
-            ViewData["SchoolId"] = new SelectList(_context.Schools, "Id", "Id", user.SchoolId);
-            return View(user);
-        }
+        //     if (ModelState.IsValid)
+        //     {
+        //         try
+        //         {
+        //             _context.Update(user);
+        //             await _context.SaveChangesAsync();
+        //         }
+        //         catch (DbUpdateConcurrencyException)
+        //         {
+        //             if (!UserExists(user.Id))
+        //             {
+        //                 return NotFound();
+        //             }
+        //             else
+        //             {
+        //                 throw;
+        //             }
+        //         }
+        //         return RedirectToAction(nameof(Index));
+        //     }
+        //     return View(user);
+        // }
 
         // GET: Admin/Users/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public async Task<IActionResult> Delete(string id)
         {
             if (id == null)
             {
@@ -136,7 +127,6 @@ namespace Assessment.Web.Areas.Admin.Controllers
             }
 
             var user = await _context.Users
-                .Include(u => u.School)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (user == null)
             {
@@ -149,7 +139,7 @@ namespace Assessment.Web.Areas.Admin.Controllers
         // POST: Admin/Users/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> DeleteConfirmed(string id)
         {
             var user = await _context.Users.FindAsync(id);
             _context.Users.Remove(user);
@@ -157,7 +147,7 @@ namespace Assessment.Web.Areas.Admin.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        private bool UserExists(int id)
+        private bool UserExists(string id)
         {
             return _context.Users.Any(e => e.Id == id);
         }
