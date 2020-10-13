@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Assessment.Data.Contexts;
 using Assessment.Models;
 using Assessment.Web.Areas.Identity.Data;
+using Microsoft.AspNetCore.Identity;
 
 namespace Assessment.Web.Areas.Admin.Controllers
 {
@@ -15,16 +16,29 @@ namespace Assessment.Web.Areas.Admin.Controllers
     public class UsersController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly UserManager<Assessment.Models.User> _userManager;
+        private readonly RoleManager<IdentityRole> _roleManager;
 
-        public UsersController(ApplicationDbContext context)
+        public UsersController(ApplicationDbContext context, UserManager<User> userManager, RoleManager<IdentityRole> roleManager)
         {
             _context = context;
+            _userManager = userManager;
+            _roleManager = roleManager;
         }
 
         // GET: Admin/Users
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Users.ToListAsync());
+            var users = await _context.Users
+                .Include(x => x.School)
+                .ToListAsync();
+
+            foreach (var user in users) {
+                var roles = await _userManager.GetRolesAsync(user);
+                user.Roles = String.Join(',', roles);
+            }
+
+            return View(users);
         }
 
         // GET: Admin/Users/Details/5
@@ -127,6 +141,7 @@ namespace Assessment.Web.Areas.Admin.Controllers
             }
 
             var user = await _context.Users
+                .Include(x => x.School)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (user == null)
             {

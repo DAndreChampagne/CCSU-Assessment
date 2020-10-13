@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
+using Assessment.Data.Contexts;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Assessment.Web.Areas.Identity.Pages.Account.Manage
 {
@@ -13,13 +15,16 @@ namespace Assessment.Web.Areas.Identity.Pages.Account.Manage
     {
         private readonly UserManager<Assessment.Models.User> _userManager;
         private readonly SignInManager<Assessment.Models.User> _signInManager;
+        private readonly AssessmentContext _assessmentContext;
 
         public IndexModel(
             UserManager<Assessment.Models.User> userManager,
-            SignInManager<Assessment.Models.User> signInManager)
+            SignInManager<Assessment.Models.User> signInManager,
+            AssessmentContext assessmentContext)
         {
             _userManager = userManager;
             _signInManager = signInManager;
+            _assessmentContext = assessmentContext;
         }
 
         public string Username { get; set; }
@@ -35,6 +40,10 @@ namespace Assessment.Web.Areas.Identity.Pages.Account.Manage
             [Phone]
             [Display(Name = "Phone number")]
             public string PhoneNumber { get; set; }
+
+            [Required]
+            [Display(Name = "School")]
+            public int SchoolId { get; set; }
         }
 
         private async Task LoadAsync(Assessment.Models.User user)
@@ -46,7 +55,8 @@ namespace Assessment.Web.Areas.Identity.Pages.Account.Manage
 
             Input = new InputModel
             {
-                PhoneNumber = phoneNumber
+                PhoneNumber = phoneNumber,
+                SchoolId = user.SchoolId,
             };
         }
 
@@ -57,6 +67,8 @@ namespace Assessment.Web.Areas.Identity.Pages.Account.Manage
             {
                 return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
             }
+
+            ViewData["SchoolId"] = new SelectList(_assessmentContext.Schools, "Id", "Name");
 
             await LoadAsync(user);
             return Page();

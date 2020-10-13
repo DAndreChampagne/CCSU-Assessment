@@ -19,6 +19,8 @@ namespace Assessment.Models {
         [StringLength(100)]
         public string Name { get; set; }
 
+        [NotMapped]
+        public string Roles { get; set; }
 
     }
 
