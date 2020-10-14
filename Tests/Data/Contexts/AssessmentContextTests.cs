@@ -28,26 +28,25 @@ namespace Assessment.Tests.Data.Contexts
             var cn = String.Format(config["ConnectionStrings:AwsConnection"], config["Aws:MySQLPassword"]);
 
 #region Test code, to drop and create database each time
-            var assemblies = AppDomain.CurrentDomain.GetAssemblies().Where(x => x.FullName.ToLowerInvariant().Contains("mstest") );
-            if (assemblies.Any()) {
-                var cn_base = String.Format(config["ConnectionStrings:AwsConnectionBase"], config["Aws:MySQLPassword"]);
+            // var assemblies = AppDomain.CurrentDomain.GetAssemblies().Where(x => x.FullName.ToLowerInvariant().Contains("mstest") );
+            // if (assemblies.Any()) {
+            //     var cn_base = String.Format(config["ConnectionStrings:AwsConnectionBase"], config["Aws:MySQLPassword"]);
 
-                var db1 = new MySql.Data.MySqlClient.MySqlConnection(cn_base);
-                var cmd = db1.CreateCommand();
+            //     var db1 = new MySql.Data.MySqlClient.MySqlConnection(cn_base);
+            //     var cmd = db1.CreateCommand();
 
-                db1.Open();
-                cmd.CommandText = "drop database if exists `ccsu`";
-                cmd.ExecuteNonQuery();
-                cmd.CommandText = "create database `ccsu`";
-                cmd.ExecuteNonQuery();
-                db1.Close();
-            }
+            //     db1.Open();
+            //     cmd.CommandText = "drop database if exists `ccsu`";
+            //     cmd.ExecuteNonQuery();
+            //     cmd.CommandText = "create database `ccsu`";
+            //     cmd.ExecuteNonQuery();
+            //     db1.Close();
+            // }
 #endregion
 
             optionsBuilder.UseMySql(cn);
             db = new AssessmentContext(optionsBuilder.Options);
             db.Migrate();
-            db.SeedData();
         }
 
         [ClassCleanup]

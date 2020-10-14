@@ -32,6 +32,7 @@ namespace Assessment.Web.Areas.Admin.Controllers
             var roles = await _context.Roles
                 .ToListAsync();
 
+            // return View(nameof(Index), roles);
             return View(roles);
         }
 
@@ -50,13 +51,13 @@ namespace Assessment.Web.Areas.Admin.Controllers
                 return NotFound();
             }
 
-            return View(role);
+            return View(nameof(Details), role);
         }
 
         // GET: Admin/Users/Create
         public IActionResult Create()
         {
-            return View();
+            return View(nameof(Create));
         }
 
         // POST: Admin/Users/Create
@@ -68,11 +69,13 @@ namespace Assessment.Web.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                throw new NotImplementedException();
+                var result = await _roleManager.CreateAsync(role);
                 
-                return RedirectToAction(nameof(Index));
+                if (result.Succeeded) {
+                    return RedirectToAction(nameof(Index));
+                }
             }
-            return View(role);
+            return View(nameof(Create), role);
         }
 
         // GET: Admin/Users/Edit/5
@@ -88,7 +91,7 @@ namespace Assessment.Web.Areas.Admin.Controllers
             {
                 return NotFound();
             }
-            return View(role);
+            return View(nameof(Edit), role);
         }
 
         // POST: Admin/Users/Edit/5
@@ -107,8 +110,12 @@ namespace Assessment.Web.Areas.Admin.Controllers
             {
                 try
                 {
-                    throw new NotImplementedException();
-                    await _context.SaveChangesAsync();
+                    var result = await _roleManager.UpdateAsync(role);
+
+                    if (result.Succeeded) {
+                        return RedirectToAction(nameof(Index));
+                    }
+                    
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -121,9 +128,8 @@ namespace Assessment.Web.Areas.Admin.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
             }
-            return View(role);
+            return View(nameof(Edit), role);
         }
 
         // GET: Admin/Users/Delete/5
@@ -141,7 +147,7 @@ namespace Assessment.Web.Areas.Admin.Controllers
                 return NotFound();
             }
 
-            return View(role);
+            return View(nameof(Delete), role);
         }
 
         // POST: Admin/Users/Delete/5
@@ -149,9 +155,14 @@ namespace Assessment.Web.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(string id)
         {
-            throw new NotImplementedException();
+            var role = await _roleManager.FindByIdAsync(id);
+            var result = await _roleManager.DeleteAsync(role);
 
-            return RedirectToAction(nameof(Index));
+            if (result.Succeeded) {
+                return RedirectToAction(nameof(Index));
+            }
+
+            return View(nameof(Delete), role);
         }
 
         private bool RoleExists(string id)
