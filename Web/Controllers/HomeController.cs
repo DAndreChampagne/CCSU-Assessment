@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Assessment.Web.Models;
 using Assessment.Logic.Services;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Assessment.Web.Controllers
 {
@@ -31,16 +32,19 @@ namespace Assessment.Web.Controllers
             return View();
         }
 
+        [Authorize]
         public IActionResult About()
         {
             return View();
         }
 
+        [Authorize]
         public IActionResult Requirements()
         {
             return View();
         }
 
+        [AllowAnonymous]
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

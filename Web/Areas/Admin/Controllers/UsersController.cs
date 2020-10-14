@@ -9,10 +9,12 @@ using Assessment.Data.Contexts;
 using Assessment.Models;
 using Assessment.Web.Areas.Identity.Data;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Assessment.Web.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = "System Administrator,School Administrator")]
     public class UsersController : Controller
     {
         private readonly ApplicationDbContext _context;

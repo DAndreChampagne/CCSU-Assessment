@@ -7,10 +7,12 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Assessment.Data.Contexts;
 using Assessment.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Assessment.Web.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = "System Administrator,School Administrator")]
     public class SessionsController : Controller
     {
         private readonly AssessmentContext _context;

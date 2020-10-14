@@ -1,11 +1,12 @@
-﻿<!DOCTYPE html>
+﻿@{
+    var isAdmin = User.IsInRole("System Administrator") || User.IsInRole("School Adminisrator");
+}
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - OIRA</title>
-
-    
 
     <environment include="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
@@ -44,30 +45,32 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="About">About</a>
                         </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link text-dark dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Admin</a>
-                            <div class="dropdown-menu">
-                                <h6 class="dropdown-header">Admin</h6>
-                                <a class="dropdown-item" asp-area="Admin" asp-controller="Schools" asp-action="Index">Schools</a>
-                                <a class="dropdown-item" asp-area="Admin" asp-controller="Roles" asp-action="Index">Roles</a>
-                                <a class="dropdown-item" asp-area="Admin" asp-controller="Users" asp-action="Index">Users</a>
-                                <a class="dropdown-item" asp-area="Admin" asp-controller="Sessions" asp-action="Index">Sessions</a>
-                                <a class="dropdown-item" asp-area="Admin" asp-controller="Sections" asp-action="Index">Section</a>
-                                <a class="dropdown-item" asp-area="Admin" asp-controller="Rubrics" asp-action="Index">Rubrics</a>
-                                <a class="dropdown-item" asp-area="Admin" asp-controller="Artifacts" asp-action="Index">Artifacts</a>
-                                <a class="dropdown-item" asp-area="Admin" asp-controller="Scores" asp-action="Index">Scores</a>
+                        @if (isAdmin) {
+                            <li class="nav-item dropdown">
+                                <a class="nav-link text-dark dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Admin</a>
+                                <div class="dropdown-menu">
+                                    <h6 class="dropdown-header">Admin</h6>
+                                    <a class="dropdown-item" asp-area="Admin" asp-controller="Schools" asp-action="Index">Schools</a>
+                                    <a class="dropdown-item" asp-area="Admin" asp-controller="Roles" asp-action="Index">Roles</a>
+                                    <a class="dropdown-item" asp-area="Admin" asp-controller="Users" asp-action="Index">Users</a>
+                                    <a class="dropdown-item" asp-area="Admin" asp-controller="Sessions" asp-action="Index">Sessions</a>
+                                    <a class="dropdown-item" asp-area="Admin" asp-controller="Sections" asp-action="Index">Section</a>
+                                    <a class="dropdown-item" asp-area="Admin" asp-controller="Rubrics" asp-action="Index">Rubrics</a>
+                                    <a class="dropdown-item" asp-area="Admin" asp-controller="Artifacts" asp-action="Index">Artifacts</a>
+                                    <a class="dropdown-item" asp-area="Admin" asp-controller="Scores" asp-action="Index">Scores</a>
 
-                                <div class="dropdown-divider"></div>
-                                <h6 class="dropdown-header">Developer</h6>
-                                <a class="dropdown-item" href="~/elmah">Error Logs</a>
-                            </div>
-                        </li>
-                        @* <li class="nav-item">
-                            <a class="nav-link text-dark" href="~/hc">HC-API</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" href="~/health">HC-UI</a>
-                        </li> *@
+                                    <div class="dropdown-divider"></div>
+                                    <h6 class="dropdown-header">Developer</h6>
+                                    <a class="dropdown-item" href="~/elmah">Error Logs</a>
+                                </div>
+                            </li>
+                            @* <li class="nav-item">
+                                <a class="nav-link text-dark" href="~/hc">HC-API</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" href="~/health">HC-UI</a>
+                            </li> *@
+                        }
                     </ul>
                 </div>
             </div>
