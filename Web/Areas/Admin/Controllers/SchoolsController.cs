@@ -25,7 +25,7 @@ namespace Assessment.Web.Areas.Admin.Controllers
         // GET: Admin/Schools
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Schools.ToListAsync());
+            return View(await _context.Schools.OrderBy(x => x.Name).ToListAsync());
         }
 
         // GET: Admin/Schools/Details/5
