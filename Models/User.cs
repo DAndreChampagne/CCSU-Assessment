@@ -20,7 +20,11 @@ namespace Assessment.Models {
         public string Name { get; set; }
 
         [NotMapped]
-        public string Roles { get; set; }
+        public List<string> Roles { get; set; } = new List<string>();
+
+        [NotMapped]
+        [Display(Name = "Roles")]
+        public string RoleName { get; set; }
 
     }
 
