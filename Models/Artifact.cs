@@ -42,7 +42,9 @@ namespace Assessment.Models {
         // TODO: decide if we're storing the file in the DB, or if we're using a file system
         // I'm thinking that storing the file in the DB is a better idea, since it offers additional security
         [StringLength(256)]
+        [Display(Name = "File Path")]
         public string FilePath { get; set; }
+        
         public byte[] File { get; set; }
 
 

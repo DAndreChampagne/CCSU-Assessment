@@ -1,5 +1,6 @@
 
 using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace Assessment.Models {
 
@@ -15,9 +16,17 @@ namespace Assessment.Models {
 
 
         public string Name { get; set; }
+
+        [Display(Name = "Score of 4")]
         public string Desciption4 { get; set; }
+
+        [Display(Name = "Score of 3")]
         public string Desciption3 { get; set; }
+
+        [Display(Name = "Score of 2")]
         public string Desciption2 { get; set; }
+
+        [Display(Name = "Score of 1")]
         public string Desciption1 { get; set; }
 
     }

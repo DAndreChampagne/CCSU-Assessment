@@ -35,9 +35,11 @@ namespace Assessment.Models {
         public string Name { get; set; }
 
         [DataType(DataType.Date)]
+        [Display(Name = "Start Date")]
         public DateTime StartDate { get; set; }
 
         [DataType(DataType.Date)]
+        [Display(Name = "End Date")]
         public DateTime EndDate { get; set; }
         
 
