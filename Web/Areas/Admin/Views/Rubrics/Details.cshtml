@@ -14,7 +14,7 @@
             @Html.DisplayNameFor(model => model.School)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.School.Id)
+            @Html.DisplayFor(model => model.School.Name)
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Code)
@@ -28,18 +28,43 @@
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Name)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Data)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Data)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.File)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.File)
-        </dd>
+
+        @if (Model.RubricCriteria?.Any() ?? false) {
+            <dt class="col-sm-2">
+                Details
+            </dt>
+            <dd class="col-sm-10">
+                <table class="table table-condensed">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Capstone</th>
+                            <th colspan="2">Milestone</th>
+                            <th>Benchmark</th>
+                        </tr>
+                        <tr>
+                            <th></th>
+                            <th>4</th>
+                            <th>3</th>
+                            <th>2</th>
+                            <th>1</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var criteria in Model.RubricCriteria) {
+                            <tr>
+                                <td>@Html.Raw(criteria.Name)</td>
+                                <td>@Html.Raw(criteria.Desciption4)</td>
+                                <td>@Html.Raw(criteria.Desciption3)</td>
+                                <td>@Html.Raw(criteria.Desciption2)</td>
+                                <td>@Html.Raw(criteria.Desciption1)</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </dd>
+        }
+
     </dl>
 </div>
 <div>

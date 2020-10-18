@@ -40,6 +40,7 @@ namespace Assessment.Web.Areas.Admin.Controllers
 
             var rubric = await _context.Rubrics
                 .Include(r => r.School)
+                .Include(r => r.RubricCriteria)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (rubric == null)
             {
