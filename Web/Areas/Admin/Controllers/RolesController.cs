@@ -112,7 +112,15 @@ namespace Assessment.Web.Areas.Admin.Controllers
             {
                 try
                 {
-                    var result = await _roleManager.UpdateAsync(role);
+                    var r = await _roleManager.FindByIdAsync(id);
+
+                    if (r == null)
+                        return NotFound();
+
+                    r.Name = role.Name;
+                    r.NormalizedName = role.Name.ToUpperInvariant();
+
+                    var result = await _roleManager.UpdateAsync(r);
 
                     if (result.Succeeded) {
                         return RedirectToAction(nameof(Index));
