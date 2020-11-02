@@ -6,16 +6,16 @@ dotnet publish -r linux-x64 --self-contained false
 cd Data
 dotnet ef migrations add initial
 
-
 cd Web
 dotnet ef migrations add CreateIdentitySchema --context Assessment.Web.Areas.Identity.Data.ApplicationDbContext
+
+
 
 dotnet aspnet-codegenerator identity -dc Assessment.Web.Areas.Identity.Data.ApplicationDbContext
 
 
 
 cd Web
-dotnet aspnet-codegenerator controller --force --model Assessment.Models.School --dataContext Assessment.Data.Contexts.AssessmentContext --relativeFolderPath "Areas/Admin/Controllers/" --controllerName SchoolsController --useAsyncActions --referenceScriptLibraries --useDefaultLayout
 dotnet aspnet-codegenerator controller --force --model Assessment.Models.Session --dataContext Assessment.Data.Contexts.AssessmentContext --relativeFolderPath "Areas/Admin/Controllers/" --controllerName SessionsController --useAsyncActions --referenceScriptLibraries --useDefaultLayout
 dotnet aspnet-codegenerator controller --force --model Assessment.Models.Section --dataContext Assessment.Data.Contexts.AssessmentContext --relativeFolderPath "Areas/Admin/Controllers/" --controllerName SectionsController --useAsyncActions --referenceScriptLibraries --useDefaultLayout
 dotnet aspnet-codegenerator controller --force --model Assessment.Models.Session --dataContext Assessment.Data.Contexts.AssessmentContext --relativeFolderPath "Areas/Admin/Controllers/" --controllerName SessionsController --useAsyncActions --referenceScriptLibraries --useDefaultLayout

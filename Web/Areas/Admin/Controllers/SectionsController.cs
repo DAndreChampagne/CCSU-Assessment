@@ -12,7 +12,7 @@ using Microsoft.AspNetCore.Authorization;
 namespace Assessment.Web.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [Authorize(Roles = "System Administrator,School Administrator")]
+    [Authorize(Roles = "System Administrator")]
     public class SectionsController : Controller
     {
         private readonly AssessmentContext _context;

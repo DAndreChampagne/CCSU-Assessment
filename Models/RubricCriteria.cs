@@ -29,6 +29,9 @@ namespace Assessment.Models {
         [Display(Name = "Score of 1")]
         public string Desciption1 { get; set; }
 
+        [Display(Name = "Score of 0")]
+        public string Desciption0 { get; set; }
+
     }
 
 }

@@ -14,7 +14,7 @@ using Microsoft.AspNetCore.Authorization;
 namespace Assessment.Web.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [Authorize(Roles = "System Administrator,School Administrator")]
+    [Authorize(Roles = "System Administrator")]
     public class UsersController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -34,9 +34,7 @@ namespace Assessment.Web.Areas.Admin.Controllers
         public async Task<IActionResult> Index()
         {
             var users = await _context.Users
-                .Include(x => x.School)
-                .OrderBy(x => x.School.Name)
-                .ThenBy(x => x.Name)
+                .OrderBy(x => x.Name)
                 .ToListAsync();
 
             foreach (var user in users) {
@@ -65,26 +63,10 @@ namespace Assessment.Web.Areas.Admin.Controllers
             return View(user);
         }
 
-        internal async Task PopulateViewDataAsync() {
-            IQueryable<School> items = null;
-
-            if (User.IsInRole("System Administrator"))
-                items = _db.Schools.AsQueryable();
-            else if (User.IsInRole("School Administrator")) {
-                var u = await _userManager.FindByEmailAsync(User.Identity.Name);
-                items = _db.Schools
-                    .AsQueryable()
-                    .Where(x => x.Id == u.SchoolId);
-            }
-
-            ViewData["SchoolId"] = new SelectList(items, "Id", "Name");
-            ViewData["Roles"] = new SelectList(_context.Roles, "Id", "Name");
-        }
-
         // GET: Admin/Users/Create
         public async Task<IActionResult> Create()
         {
-            await PopulateViewDataAsync();
+            ViewData["Roles"] = new SelectList(_context.Roles, "Id", "Name");
 
             return View();
         }
@@ -113,7 +95,7 @@ namespace Assessment.Web.Areas.Admin.Controllers
                 return RedirectToAction(nameof(Index));
             }
 
-            await PopulateViewDataAsync();
+            ViewData["Roles"] = new SelectList(_context.Roles, "Id", "Name");
 
             return View(user);
         }
@@ -138,7 +120,7 @@ namespace Assessment.Web.Areas.Admin.Controllers
                 }
             }
 
-            await PopulateViewDataAsync();
+            ViewData["Roles"] = new SelectList(_context.Roles, "Id", "Name");
             return View(user);
         }
 
@@ -208,7 +190,7 @@ namespace Assessment.Web.Areas.Admin.Controllers
                 }
             }
 
-            await PopulateViewDataAsync();
+            ViewData["Roles"] = new SelectList(_context.Roles, "Id", "Name");
             return View(user);
         }
 
@@ -221,7 +203,6 @@ namespace Assessment.Web.Areas.Admin.Controllers
             }
 
             var user = await _context.Users
-                .Include(x => x.School)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (user == null)
             {

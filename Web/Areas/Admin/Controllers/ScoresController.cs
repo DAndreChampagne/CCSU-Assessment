@@ -12,7 +12,7 @@ using Microsoft.AspNetCore.Authorization;
 namespace Assessment.Web.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [Authorize(Roles = "System Administrator,School Administrator")]
+    [Authorize(Roles = "System Administrator")]
     public class ScoresController : Controller
     {
         private readonly AssessmentContext _context;
@@ -25,7 +25,7 @@ namespace Assessment.Web.Areas.Admin.Controllers
         // GET: Admin/Scoress
         public async Task<IActionResult> Index()
         {
-            var assessmentContext = _context.Scores.Include(s => s.Artifact).Include(s => s.Rubric).Include(s => s.School);
+            var assessmentContext = _context.Scores.Include(s => s.Artifact).Include(s => s.Rubric);
             return View(await assessmentContext.ToListAsync());
         }
 
@@ -40,7 +40,6 @@ namespace Assessment.Web.Areas.Admin.Controllers
             var score = await _context.Scores
                 .Include(s => s.Artifact)
                 .Include(s => s.Rubric)
-                .Include(s => s.School)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (score == null)
             {
@@ -55,7 +54,6 @@ namespace Assessment.Web.Areas.Admin.Controllers
         {
             ViewData["ArtifactId"] = new SelectList(_context.Artifacts, "Id", "Id");
             ViewData["RubricId"] = new SelectList(_context.Rubrics, "Id", "Id");
-            ViewData["SchoolId"] = new SelectList(_context.Schools, "Id", "Id");
             return View();
         }
 
@@ -64,7 +62,7 @@ namespace Assessment.Web.Areas.Admin.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,UserId,SchoolId,RubricId,ArtifactId,Score01,Score02,Score03,Score04,Score05,Score06,Score07,Score08,Score09,Score10")] Score score)
+        public async Task<IActionResult> Create([Bind("Id,UserId,RubricId,ArtifactId,Score01,Score02,Score03,Score04,Score05,Score06,Score07,Score08,Score09,Score10")] Score score)
         {
             if (ModelState.IsValid)
             {
@@ -74,7 +72,6 @@ namespace Assessment.Web.Areas.Admin.Controllers
             }
             ViewData["ArtifactId"] = new SelectList(_context.Artifacts, "Id", "Id", score.ArtifactId);
             ViewData["RubricId"] = new SelectList(_context.Rubrics, "Id", "Id", score.RubricId);
-            ViewData["SchoolId"] = new SelectList(_context.Schools, "Id", "Id", score.SchoolId);
             return View(score);
         }
 
@@ -93,7 +90,6 @@ namespace Assessment.Web.Areas.Admin.Controllers
             }
             ViewData["ArtifactId"] = new SelectList(_context.Artifacts, "Id", "Id", score.ArtifactId);
             ViewData["RubricId"] = new SelectList(_context.Rubrics, "Id", "Id", score.RubricId);
-            ViewData["SchoolId"] = new SelectList(_context.Schools, "Id", "Id", score.SchoolId);
             return View(score);
         }
 
@@ -102,7 +98,7 @@ namespace Assessment.Web.Areas.Admin.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,UserId,SchoolId,RubricId,ArtifactId,Score01,Score02,Score03,Score04,Score05,Score06,Score07,Score08,Score09,Score10")] Score score)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,UserId,RubricId,ArtifactId,Score01,Score02,Score03,Score04,Score05,Score06,Score07,Score08,Score09,Score10")] Score score)
         {
             if (id != score.Id)
             {
@@ -131,7 +127,6 @@ namespace Assessment.Web.Areas.Admin.Controllers
             }
             ViewData["ArtifactId"] = new SelectList(_context.Artifacts, "Id", "Id", score.ArtifactId);
             ViewData["RubricId"] = new SelectList(_context.Rubrics, "Id", "Id", score.RubricId);
-            ViewData["SchoolId"] = new SelectList(_context.Schools, "Id", "Id", score.SchoolId);
             return View(score);
         }
 
@@ -146,7 +141,6 @@ namespace Assessment.Web.Areas.Admin.Controllers
             var score = await _context.Scores
                 .Include(s => s.Artifact)
                 .Include(s => s.Rubric)
-                .Include(s => s.School)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (score == null)
             {

@@ -25,18 +25,5 @@ namespace Assessment.Tests.General
 
         //     Assert.IsFalse(String.IsNullOrEmpty(pwd));
         // }
-
-        [TestMethod]
-        public void SetDifference() {
-            var originalList = new List<string> { "a", "b" };
-            var newList = new List<string> { "b", "c" };
-
-            var itemsToRemove = originalList.Except(newList).ToList();
-            var itemsToKeep = originalList.Intersect(newList).ToList();
-            var itemToAdd = newList.Except(originalList).ToList();
-
-            Assert.Fail();
-
-        }
     }
 }

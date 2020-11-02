@@ -12,7 +12,7 @@ using Microsoft.AspNetCore.Authorization;
 namespace Assessment.Web.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [Authorize(Roles = "System Administrator,School Administrator")]
+    [Authorize(Roles = "System Administrator")]
     public class ArtifactsController : Controller
     {
         private readonly AssessmentContext _context;
@@ -25,7 +25,7 @@ namespace Assessment.Web.Areas.Admin.Controllers
         // GET: Admin/Artifacts
         public async Task<IActionResult> Index()
         {
-            var assessmentContext = _context.Artifacts.Include(a => a.Rubric).Include(a => a.School);
+            var assessmentContext = _context.Artifacts.Include(a => a.Rubric);
             return View(await assessmentContext.ToListAsync());
         }
 
@@ -51,7 +51,6 @@ namespace Assessment.Web.Areas.Admin.Controllers
 
             var artifact = await _context.Artifacts
                 .Include(a => a.Rubric)
-                .Include(a => a.School)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (artifact == null)
             {
@@ -65,7 +64,6 @@ namespace Assessment.Web.Areas.Admin.Controllers
         public IActionResult Create()
         {
             ViewData["RubricId"] = new SelectList(_context.Rubrics, "Id", "Id");
-            ViewData["SchoolId"] = new SelectList(_context.Schools, "Id", "Id");
             return View();
         }
 
@@ -74,7 +72,7 @@ namespace Assessment.Web.Areas.Admin.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,SchoolId,RubricId,Name,Term,StudentId,UserId,LearningObjective,Level,CRN,FilePath,File")] Artifact artifact)
+        public async Task<IActionResult> Create([Bind("Id,RubricId,Name,Term,StudentId,UserId,LearningObjective,Level,CRN,FilePath,File")] Artifact artifact)
         {
             if (ModelState.IsValid)
             {
@@ -83,7 +81,6 @@ namespace Assessment.Web.Areas.Admin.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["RubricId"] = new SelectList(_context.Rubrics, "Id", "Id", artifact.RubricId);
-            ViewData["SchoolId"] = new SelectList(_context.Schools, "Id", "Id", artifact.SchoolId);
             return View(artifact);
         }
 
@@ -101,7 +98,6 @@ namespace Assessment.Web.Areas.Admin.Controllers
                 return NotFound();
             }
             ViewData["RubricId"] = new SelectList(_context.Rubrics, "Id", "Id", artifact.RubricId);
-            ViewData["SchoolId"] = new SelectList(_context.Schools, "Id", "Id", artifact.SchoolId);
             return View(artifact);
         }
 
@@ -110,7 +106,7 @@ namespace Assessment.Web.Areas.Admin.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,SchoolId,RubricId,Name,Term,StudentId,UserId,LearningObjective,Level,CRN,FilePath,File")] Artifact artifact)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,RubricId,Name,Term,StudentId,UserId,LearningObjective,Level,CRN,FilePath,File")] Artifact artifact)
         {
             if (id != artifact.Id)
             {
@@ -138,7 +134,6 @@ namespace Assessment.Web.Areas.Admin.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["RubricId"] = new SelectList(_context.Rubrics, "Id", "Id", artifact.RubricId);
-            ViewData["SchoolId"] = new SelectList(_context.Schools, "Id", "Id", artifact.SchoolId);
             return View(artifact);
         }
 
@@ -152,7 +147,6 @@ namespace Assessment.Web.Areas.Admin.Controllers
 
             var artifact = await _context.Artifacts
                 .Include(a => a.Rubric)
-                .Include(a => a.School)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (artifact == null)
             {

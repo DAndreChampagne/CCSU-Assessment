@@ -23,8 +23,6 @@ namespace Assessment.Models {
         [NotMapped]
         public string Code { get { return String.Concat(Year, (int)Semester); } }
 
-        public virtual School School { get; set; }
-        public virtual int SchoolId { get; set; }
 
         [Range(2000, 2999)]
         public int Year { get; set; }

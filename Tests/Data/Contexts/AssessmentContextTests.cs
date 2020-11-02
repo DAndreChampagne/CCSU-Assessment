@@ -67,12 +67,5 @@ namespace Assessment.Tests.Data.Contexts
             Assert.AreEqual(expected, actual);
         }
 
-        [TestMethod]
-        public void EnsureDatabaseSeeded()
-        {
-            var item = db.Schools.FirstOrDefault();
-
-            Assert.AreEqual(1, item.Id);
-        }
     }
 }

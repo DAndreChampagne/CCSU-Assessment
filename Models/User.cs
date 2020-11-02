@@ -13,8 +13,6 @@ namespace Assessment.Models {
     public class User : IdentityUser {
         // public int Id { get; set; }
 
-        public virtual School School { get; set; }
-        public virtual int SchoolId { get; set; }
 
         [StringLength(100)]
         public string Name { get; set; }

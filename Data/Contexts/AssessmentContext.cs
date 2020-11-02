@@ -23,9 +23,6 @@ namespace Assessment.Data.Contexts {
             Console.WriteLine("AssessmentContext(options)");
         }
 
-        public DbSet<School> Schools { get; set; }
-        // public DbSet<User> Users { get; set; }
-        // public DbSet<Role> Roles { get; set; }
         public DbSet<Rubric> Rubrics { get; set; }
         public DbSet<Score> Scores { get; set; }
         public DbSet<RubricCriteria> RubricCriteria { get; set; }

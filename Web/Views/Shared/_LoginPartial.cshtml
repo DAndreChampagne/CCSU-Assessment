@@ -4,9 +4,12 @@
 @inject UserManager<Assessment.Models.User> UserManager
 
 @{
+    var name = String.Empty;
     var userName = UserManager.GetUserName(User);
-    var user = await UserManager.FindByNameAsync(userName);
-    var name = user.Name.Split(" ").FirstOrDefault();
+    if (userName != null) {
+        var user = await UserManager.FindByNameAsync(userName);
+        name = user.Name.Split(" ").FirstOrDefault();
+    }
 }
 
 <ul class="navbar-nav">
