@@ -66,16 +66,12 @@ namespace Assessment.Web.Areas.Identity.Pages.Account
             [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
             public string ConfirmPassword { get; set; }
 
-            [Required]
-            [Display(Name = "Select school")]
-            public int SchoolId { get; set; }
         }
 
         public async Task OnGetAsync(string returnUrl = null)
         {
             ReturnUrl = returnUrl;
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
-            ViewData["SchoolId"] = new SelectList(_assessmentContext.Schools, "Id", "Name");
         }
 
         public async Task<IActionResult> OnPostAsync(string returnUrl = null)
@@ -84,7 +80,7 @@ namespace Assessment.Web.Areas.Identity.Pages.Account
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             if (ModelState.IsValid)
             {
-                var user = new Assessment.Models.User { UserName = Input.Email, Email = Input.Email, SchoolId = Input.SchoolId };
+                var user = new Assessment.Models.User { UserName = Input.Email, Email = Input.Email, };
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
                 {

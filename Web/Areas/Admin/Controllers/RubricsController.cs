@@ -26,7 +26,7 @@ namespace Assessment.Web.Areas.Admin.Controllers
         public async Task<IActionResult> Index()
         {
 
-            var assessmentContext = _context.Rubrics.Include(r => r.School).Include(r => r.RubricCriteria);
+            var assessmentContext = _context.Rubrics.Include(r => r.RubricCriteria);
             return View(await assessmentContext.ToListAsync());
         }
 
@@ -39,7 +39,6 @@ namespace Assessment.Web.Areas.Admin.Controllers
             }
 
             var rubric = await _context.Rubrics
-                .Include(r => r.School)
                 .Include(r => r.RubricCriteria)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (rubric == null)
@@ -53,7 +52,6 @@ namespace Assessment.Web.Areas.Admin.Controllers
         // GET: Admin/Rubrics/Create
         public IActionResult Create()
         {
-            ViewData["SchoolId"] = new SelectList(_context.Schools, "Id", "Id");
             return View();
         }
 
@@ -62,7 +60,7 @@ namespace Assessment.Web.Areas.Admin.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,SchoolId,Code,Name,Criterion01,Criterion02,Criterion03,Criterion04,Criterion05,Criterion06,Criterion07,Criterion08,Criterion09,Criterion10,Data,File")] Rubric rubric)
+        public async Task<IActionResult> Create([Bind("Id,Code,Name,Criterion01,Criterion02,Criterion03,Criterion04,Criterion05,Criterion06,Criterion07,Criterion08,Criterion09,Criterion10,Data,File")] Rubric rubric)
         {
             if (ModelState.IsValid)
             {
@@ -70,7 +68,6 @@ namespace Assessment.Web.Areas.Admin.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["SchoolId"] = new SelectList(_context.Schools, "Id", "Id", rubric.SchoolId);
             return View(rubric);
         }
 
@@ -87,7 +84,6 @@ namespace Assessment.Web.Areas.Admin.Controllers
             {
                 return NotFound();
             }
-            ViewData["SchoolId"] = new SelectList(_context.Schools, "Id", "Id", rubric.SchoolId);
             return View(rubric);
         }
 
@@ -96,7 +92,7 @@ namespace Assessment.Web.Areas.Admin.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,SchoolId,Code,Name,Criterion01,Criterion02,Criterion03,Criterion04,Criterion05,Criterion06,Criterion07,Criterion08,Criterion09,Criterion10,Data,File")] Rubric rubric)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Code,Name,Criterion01,Criterion02,Criterion03,Criterion04,Criterion05,Criterion06,Criterion07,Criterion08,Criterion09,Criterion10,Data,File")] Rubric rubric)
         {
             if (id != rubric.Id)
             {
@@ -123,7 +119,6 @@ namespace Assessment.Web.Areas.Admin.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["SchoolId"] = new SelectList(_context.Schools, "Id", "Id", rubric.SchoolId);
             return View(rubric);
         }
 
@@ -136,7 +131,6 @@ namespace Assessment.Web.Areas.Admin.Controllers
             }
 
             var rubric = await _context.Rubrics
-                .Include(r => r.School)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (rubric == null)
             {

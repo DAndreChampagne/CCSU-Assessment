@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Assessment.Data.Migrations
 {
     [DbContext(typeof(AssessmentContext))]
-    [Migration("20201009180513_initial")]
+    [Migration("20201102231601_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -51,9 +51,6 @@ namespace Assessment.Data.Migrations
                     b.Property<int>("RubricId")
                         .HasColumnType("int");
 
-                    b.Property<int>("SchoolId")
-                        .HasColumnType("int");
-
                     b.Property<string>("StudentId")
                         .HasColumnType("varchar(10) CHARACTER SET utf8mb4")
                         .HasMaxLength(10);
@@ -65,8 +62,6 @@ namespace Assessment.Data.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("RubricId");
-
-                    b.HasIndex("SchoolId");
 
                     b.ToTable("Artifacts");
                 });
@@ -84,9 +79,6 @@ namespace Assessment.Data.Migrations
                         .HasColumnType("varchar(2) CHARACTER SET utf8mb4")
                         .HasMaxLength(2);
 
-                    b.Property<string>("Data")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
                     b.Property<byte[]>("File")
                         .HasColumnType("longblob");
 
@@ -94,14 +86,9 @@ namespace Assessment.Data.Migrations
                         .HasColumnType("varchar(50) CHARACTER SET utf8mb4")
                         .HasMaxLength(50);
 
-                    b.Property<int>("SchoolId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
                     b.HasIndex("ArtifactId");
-
-                    b.HasIndex("SchoolId");
 
                     b.ToTable("Rubrics");
                 });
@@ -111,6 +98,9 @@ namespace Assessment.Data.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+
+                    b.Property<string>("Desciption0")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("Desciption1")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -137,21 +127,6 @@ namespace Assessment.Data.Migrations
                     b.ToTable("RubricCriteria");
                 });
 
-            modelBuilder.Entity("Assessment.Models.School", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("varchar(100) CHARACTER SET utf8mb4")
-                        .HasMaxLength(100);
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Schools");
-                });
-
             modelBuilder.Entity("Assessment.Models.Score", b =>
                 {
                     b.Property<int>("Id")
@@ -162,9 +137,6 @@ namespace Assessment.Data.Migrations
                         .HasColumnType("int");
 
                     b.Property<int>("RubricId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("SchoolId")
                         .HasColumnType("int");
 
                     b.Property<int?>("Score01")
@@ -202,8 +174,6 @@ namespace Assessment.Data.Migrations
                     b.HasIndex("ArtifactId");
 
                     b.HasIndex("RubricId");
-
-                    b.HasIndex("SchoolId");
 
                     b.ToTable("Scores");
                 });
@@ -245,9 +215,6 @@ namespace Assessment.Data.Migrations
                         .HasColumnType("varchar(50) CHARACTER SET utf8mb4")
                         .HasMaxLength(50);
 
-                    b.Property<int>("SchoolId")
-                        .HasColumnType("int");
-
                     b.Property<int>("Semester")
                         .HasColumnType("int");
 
@@ -259,8 +226,6 @@ namespace Assessment.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("SchoolId");
-
                     b.ToTable("Sessions");
                 });
 
@@ -271,12 +236,6 @@ namespace Assessment.Data.Migrations
                         .HasForeignKey("RubricId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.HasOne("Assessment.Models.School", "School")
-                        .WithMany()
-                        .HasForeignKey("SchoolId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
                 });
 
             modelBuilder.Entity("Assessment.Models.Rubric", b =>
@@ -284,12 +243,6 @@ namespace Assessment.Data.Migrations
                     b.HasOne("Assessment.Models.Artifact", null)
                         .WithMany("Rubrics")
                         .HasForeignKey("ArtifactId");
-
-                    b.HasOne("Assessment.Models.School", "School")
-                        .WithMany()
-                        .HasForeignKey("SchoolId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
                 });
 
             modelBuilder.Entity("Assessment.Models.RubricCriteria", b =>
@@ -310,14 +263,8 @@ namespace Assessment.Data.Migrations
                         .IsRequired();
 
                     b.HasOne("Assessment.Models.Rubric", "Rubric")
-                        .WithMany("Scores")
-                        .HasForeignKey("RubricId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Assessment.Models.School", "School")
                         .WithMany()
-                        .HasForeignKey("SchoolId")
+                        .HasForeignKey("RubricId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
@@ -327,15 +274,6 @@ namespace Assessment.Data.Migrations
                     b.HasOne("Assessment.Models.Session", "Session")
                         .WithMany()
                         .HasForeignKey("SessionId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("Assessment.Models.Session", b =>
-                {
-                    b.HasOne("Assessment.Models.School", "School")
-                        .WithMany()
-                        .HasForeignKey("SchoolId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

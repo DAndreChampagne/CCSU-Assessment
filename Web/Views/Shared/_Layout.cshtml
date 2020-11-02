@@ -1,5 +1,5 @@
 ﻿@{
-    var isAdmin = User.IsInRole("System Administrator") || User.IsInRole("School Adminisrator");
+    var isAdmin = User.IsInRole("System Administrator");
 }
 <!DOCTYPE html>
 <html lang="en">
@@ -50,7 +50,6 @@
                                 <a class="nav-link text-dark dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Admin</a>
                                 <div class="dropdown-menu">
                                     <h6 class="dropdown-header">Admin</h6>
-                                    <a class="dropdown-item" asp-area="Admin" asp-controller="Schools" asp-action="Index">Schools</a>
                                     <a class="dropdown-item" asp-area="Admin" asp-controller="Roles" asp-action="Index">Roles</a>
                                     <a class="dropdown-item" asp-area="Admin" asp-controller="Users" asp-action="Index">Users</a>
                                     <a class="dropdown-item" asp-area="Admin" asp-controller="Sessions" asp-action="Index">Sessions</a>

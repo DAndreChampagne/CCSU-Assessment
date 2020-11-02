@@ -12,7 +12,7 @@ using Microsoft.AspNetCore.Authorization;
 namespace Assessment.Web.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [Authorize(Roles = "System Administrator,School Administrator")]
+    [Authorize(Roles = "System Administrator")]
     public class SessionsController : Controller
     {
         private readonly AssessmentContext _context;
@@ -25,7 +25,7 @@ namespace Assessment.Web.Areas.Admin.Controllers
         // GET: Admin/Sessions
         public async Task<IActionResult> Index()
         {
-            var assessmentContext = _context.Sessions.Include(s => s.School);
+            var assessmentContext = _context.Sessions;
             return View(await assessmentContext.ToListAsync());
         }
 
@@ -38,7 +38,6 @@ namespace Assessment.Web.Areas.Admin.Controllers
             }
 
             var session = await _context.Sessions
-                .Include(s => s.School)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (session == null)
             {
@@ -51,7 +50,6 @@ namespace Assessment.Web.Areas.Admin.Controllers
         // GET: Admin/Sessions/Create
         public IActionResult Create()
         {
-            ViewData["SchoolId"] = new SelectList(_context.Schools, "Id", "Id");
             return View();
         }
 
@@ -60,7 +58,7 @@ namespace Assessment.Web.Areas.Admin.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,SchoolId,Year,Semester,Name,StartDate,EndDate")] Session session)
+        public async Task<IActionResult> Create([Bind("Id,Year,Semester,Name,StartDate,EndDate")] Session session)
         {
             if (ModelState.IsValid)
             {
@@ -68,7 +66,6 @@ namespace Assessment.Web.Areas.Admin.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["SchoolId"] = new SelectList(_context.Schools, "Id", "Id", session.SchoolId);
             return View(session);
         }
 
@@ -85,7 +82,6 @@ namespace Assessment.Web.Areas.Admin.Controllers
             {
                 return NotFound();
             }
-            ViewData["SchoolId"] = new SelectList(_context.Schools, "Id", "Id", session.SchoolId);
             return View(session);
         }
 
@@ -94,7 +90,7 @@ namespace Assessment.Web.Areas.Admin.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,SchoolId,Year,Semester,Name,StartDate,EndDate")] Session session)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Year,Semester,Name,StartDate,EndDate")] Session session)
         {
             if (id != session.Id)
             {
@@ -121,7 +117,6 @@ namespace Assessment.Web.Areas.Admin.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["SchoolId"] = new SelectList(_context.Schools, "Id", "Id", session.SchoolId);
             return View(session);
         }
 
@@ -134,7 +129,6 @@ namespace Assessment.Web.Areas.Admin.Controllers
             }
 
             var session = await _context.Sessions
-                .Include(s => s.School)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (session == null)
             {

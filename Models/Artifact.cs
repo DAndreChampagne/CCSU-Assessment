@@ -12,9 +12,6 @@ namespace Assessment.Models {
 
         public int Id { get; set; }
 
-        public virtual School School { get; set; }
-        public virtual int SchoolId { get; set; }
-
         public virtual Rubric Rubric { get; set; }
         public virtual int RubricId { get; set; }
 

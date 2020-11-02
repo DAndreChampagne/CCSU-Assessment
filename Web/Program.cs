@@ -55,7 +55,7 @@ namespace Assessment.Web
 
 #region User Roles
 
-                    var roles = new [] { "System Administrator", "School Administrator", "Scorer", };
+                    var roles = new [] { "System Administrator", "Scorer", };
                     foreach (var role in roles) {
                         if (!applicationDbContext.Roles.Any(x => x.Name == role)) {
                             Task.Run(async () => {
@@ -66,26 +66,11 @@ namespace Assessment.Web
 
 #endregion
 
-#region Schools
-
-                    if (!assessmentContext.Schools.Any()) {
-                        if (!assessmentContext.Schools.Any()) {
-                            assessmentContext.Schools.AddRange(new [] {
-                                new School { Id = 1, Name = "Central Connecticut State University" },
-                                new School { Id = 2, Name = "Tunxis Community College" },
-                            });
-                            assessmentContext.SaveChanges();
-                        }
-                    }
-                    
-#endregion
-
 #region Users
                     
                     if (!applicationDbContext.Users.Any()) {
                         var users = new [] {
                             new User {
-                                SchoolId = 1,
                                 Name = "Daniel Champagne",
                                 Email = "Daniel.Champagne@my.ccsu.edu",
                                 NormalizedEmail = "DANIEL.CHAMPAGNE@MY.CCSU.EDU",
@@ -95,7 +80,6 @@ namespace Assessment.Web
                                 PasswordHash = hasher.HashPassword(null, "Abcdefg!1"),
                             },
                             new User {
-                                SchoolId = 1, 
                                 Name = "Martie Kaczmarek",
                                 Email = "mkaczmarek@ccsu.edu",
                                 NormalizedEmail = "MKACZMAREK@CCSU.EDU",
@@ -105,7 +89,6 @@ namespace Assessment.Web
                                 PasswordHash = hasher.HashPassword(null, "Abcdefg!1"),
                             },
                             new User {
-                                SchoolId = 1, 
                                 Name = "Stan Kurkovsky",
                                 Email = "kurkovsky@ccsu.edu",
                                 NormalizedEmail = "KURKOVSKY@CCSU.EDU",
@@ -115,7 +98,6 @@ namespace Assessment.Web
                                 PasswordHash = hasher.HashPassword(null, "Abcdefg!1"),
                             },
                             new User {
-                                SchoolId = 1, 
                                 Name = "Yvonne Kirby",
                                 Email = "ykirby@ccsu.edu",
                                 NormalizedEmail = "YKIRBY@CCSU.EDU",
@@ -125,7 +107,6 @@ namespace Assessment.Web
                                 PasswordHash = hasher.HashPassword(null, "Abcdefg!1"),
                             },
                             new User {
-                                SchoolId = 1,
                                 Name = "Parvathy Kumar",
                                 Email = "parvathy.kumar@my.ccsu.edu",
                                 NormalizedEmail = "PARVATHY.KUMAR@MY.CCSU.EDU",
@@ -135,7 +116,6 @@ namespace Assessment.Web
                                 PasswordHash = hasher.HashPassword(null, "Abcdefg!1"),
                             },
                             new User {
-                                SchoolId = 1,
                                 Name = "Mansimran Singh",
                                 Email = "mansimransingh@my.ccsu.edu",
                                 NormalizedEmail = "MANSIMRANSINGH@MY.CCSU.EDU",
@@ -145,7 +125,6 @@ namespace Assessment.Web
                                 PasswordHash = hasher.HashPassword(null, "Abcdefg!1"),
                             },
                             new User {
-                                SchoolId = 1,
                                 Name = "Jason Smith",
                                 Email = "jason.r.smith@my.ccsu.edu",
                                 NormalizedEmail = "JASON.R.SMITH@MY.CCSU.EDU",
@@ -155,7 +134,6 @@ namespace Assessment.Web
                                 PasswordHash = hasher.HashPassword(null, "Abcdefg!1"),
                             },
                             new User {
-                                SchoolId = 1,
                                 Name = "Yash Dalsania",
                                 Email = "yash.dalsania@my.ccsu.edu",
                                 NormalizedEmail = "YASH.DALSANIA@MY.CCSU.EDU",
@@ -165,7 +143,6 @@ namespace Assessment.Web
                                 PasswordHash = hasher.HashPassword(null, "Abcdefg!1"),
                             },
                             new User {
-                                SchoolId = 1,
                                 Name = "Luis Gutierrez",
                                 Email = "luis.gutierrez@my.ccsu.edu",
                                 NormalizedEmail = "LUIS.GUTIERREZ@MY.CCSU.EDU",
@@ -175,7 +152,6 @@ namespace Assessment.Web
                                 PasswordHash = hasher.HashPassword(null, "Abcdefg!1"),
                             },
                             new User {
-                                SchoolId = 1,
                                 Name = "Chenyang Lin",
                                 Email = "chenyanglin@my.ccsu.edu",
                                 NormalizedEmail = "CHENYANGLIN@MY.CCSU.EDU",
@@ -185,7 +161,6 @@ namespace Assessment.Web
                                 PasswordHash = hasher.HashPassword(null, "Abcdefg!1"),
                             },
                             new User {
-                                SchoolId = 1,
                                 Name = "Trung Minh Tri Nguyen",
                                 Email = "trungminhtri.nguyen@my.ccsu.edu",
                                 NormalizedEmail = "TRUNGMINHTRI.NGUYEN@MY.CCSU.EDU",
@@ -195,7 +170,6 @@ namespace Assessment.Web
                                 PasswordHash = hasher.HashPassword(null, "Abcdefg!1"),
                             },
                             new User {
-                                SchoolId = 1,
                                 Name = "Paul Pasquarelli",
                                 Email = "pasquarellip@my.ccsu.edu",
                                 NormalizedEmail = "PASQUARELLIP@MY.CCSU.EDU",
@@ -228,8 +202,8 @@ namespace Assessment.Web
 
                     if (!assessmentContext.Sessions.Any()) {
                         assessmentContext.Sessions.AddRange(new [] {
-                            new Session { Id=1, SchoolId=1, Year = 2021, Semester = Semester.Fall, Name = "Fall 2020", StartDate = new DateTime(2020, 08, 24), EndDate = new DateTime(2020, 12, 23), },
-                            new Session { Id=2, SchoolId=1, Year = 2021, Semester = Semester.Spring, Name = "Spring 2021", StartDate = new DateTime(2021, 01, 19), EndDate = new DateTime(2021, 5, 31), },
+                            new Session { Id=1, Year = 2021, Semester = Semester.Fall, Name = "Fall 2020", StartDate = new DateTime(2020, 08, 24), EndDate = new DateTime(2020, 12, 23), },
+                            new Session { Id=2, Year = 2021, Semester = Semester.Spring, Name = "Spring 2021", StartDate = new DateTime(2021, 01, 19), EndDate = new DateTime(2021, 5, 31), },
                         });
                         
                         assessmentContext.SaveChanges();
@@ -256,7 +230,6 @@ namespace Assessment.Web
                         assessmentContext.Rubrics.AddRange(new [] {
                             new Rubric { 
                                 Id = 1, 
-                                SchoolId = 1, 
                                 Code = "WC", 
                                 Name = "Writen Communication", 
                                 File = System.IO.File.ReadAllBytes(Path.Combine(seedDataPath, "Rubric_WrittenCommunication.pdf")),
@@ -300,7 +273,6 @@ namespace Assessment.Web
                             },
                             new Rubric { 
                                 Id = 2, 
-                                SchoolId = 1, 
                                 Code = "CT", 
                                 Name = "Critical Thinking", 
                                 File = System.IO.File.ReadAllBytes(Path.Combine(seedDataPath, "Rubric_CriticalThinking.pdf")),
@@ -344,7 +316,6 @@ namespace Assessment.Web
                             },
                             new Rubric { 
                                 Id = 3, 
-                                SchoolId = 1, 
                                 Code = "QR",
                                 Name = "Quantitative Reasoning", 
                                 File = System.IO.File.ReadAllBytes(Path.Combine(seedDataPath, "Rubric_QuantitativeLiteracy.pdf")),
@@ -395,7 +366,6 @@ namespace Assessment.Web
                             },
                             new Rubric { 
                                 Id = 4, 
-                                SchoolId = 1, 
                                 Code = "CE", 
                                 Name = "Civic Engagement", 
                                 File = System.IO.File.ReadAllBytes(Path.Combine(seedDataPath, "Rubric_CivicEngagement.pdf")),
@@ -446,7 +416,6 @@ namespace Assessment.Web
                             },
                             new Rubric { 
                                 Id = 5, 
-                                SchoolId = 1, 
                                 Code = "IL", 
                                 Name = "Information Literacy", 
                                 File = System.IO.File.ReadAllBytes(Path.Combine(seedDataPath, "Rubric_InformationLiteracy.pdf")),
@@ -490,31 +459,26 @@ namespace Assessment.Web
                             },
                             new Rubric { 
                                 Id = 6, 
-                                SchoolId = 1, 
                                 Code = "SR", 
                                 Name = "Scientific Reasoning",
                             },
                             new Rubric { 
                                 Id = 7, 
-                                SchoolId = 1, 
                                 Code = "ED", 
                                 Name = "Ethical Dimensions",
                             },
                             new Rubric { 
                                 Id = 8, 
-                                SchoolId = 1, 
                                 Code = "HU", 
                                 Name = "Historical Understanding",
                             },
                             new Rubric { 
                                 Id = 9, 
-                                SchoolId = 1, 
                                 Code = "OC", 
                                 Name = "Oral Communication",
                             },
                             new Rubric { 
                                 Id = 10, 
-                                SchoolId = 1, 
                                 Code = "AK",
                                 Name = "Aesthetic Knowledge",
                             },

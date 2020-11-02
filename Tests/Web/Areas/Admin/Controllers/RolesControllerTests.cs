@@ -55,10 +55,6 @@ namespace Assessment.Tests.Web.Areas.Admin.Controllers
             if (db.Database.GetPendingMigrations().Any()) {
                 db.Database.Migrate();
             }
-            if (!db.Schools.Any()) {
-                db.Schools.Add(new School { Id = 1, Name = "CCSU" });
-                db.SaveChanges();
-            }
 
 
             if (applicationDbContext.Database.GetPendingMigrations().Any()) {
@@ -73,7 +69,6 @@ namespace Assessment.Tests.Web.Areas.Admin.Controllers
             if (!applicationDbContext.Users.Any()) {
                 applicationDbContext.Users.Add(new User {
                     Id = Guid.NewGuid().ToString(),
-                    SchoolId = 1,
                     Name = "Dan Champagne",
                 });
                 applicationDbContext.SaveChanges();
