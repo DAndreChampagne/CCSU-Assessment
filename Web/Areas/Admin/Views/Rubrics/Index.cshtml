@@ -13,6 +13,9 @@
     <thead>
         <tr>
             <th>
+                @Html.DisplayNameFor(model => model.Abbreviation)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.Code)
             </th>
             <th>
@@ -24,6 +27,9 @@
     <tbody>
         @foreach (var item in Model) {
             <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Abbreviation)
+                </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Code)
                 </td>

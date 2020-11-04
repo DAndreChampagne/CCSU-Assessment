@@ -8,6 +8,11 @@ using Microsoft.EntityFrameworkCore;
 using Assessment.Data.Contexts;
 using Assessment.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
+using Assessment.Logic.Services;
+using System.IO.Compression;
+using System.IO;
+using Newtonsoft.Json;
 
 namespace Assessment.Web.Areas.Admin.Controllers
 {
@@ -26,6 +31,12 @@ namespace Assessment.Web.Areas.Admin.Controllers
         public async Task<IActionResult> Index()
         {
             var assessmentContext = _context.Artifacts.Include(a => a.Rubric);
+
+            var uploadResult = TempData["UploadResult"] as string;
+            if (uploadResult != null) {
+                ViewData["UploadResult"] = JsonConvert.DeserializeObject<ProcessArtifactResult>(uploadResult);
+            }
+
             return View(await assessmentContext.ToListAsync());
         }
 
@@ -59,6 +70,23 @@ namespace Assessment.Web.Areas.Admin.Controllers
 
             return View(artifact);
         }
+
+        public async Task<IActionResult> UploadArtifacts(IFormFile file) {
+            var path = await FileService.SaveTempFile(file);
+            var result = await FileService.ProcessZipFileIntoArtifacts(path, _context);
+
+            await _context.Artifacts.AddRangeAsync(result.Artifacts);
+            var resultCount = await _context.SaveChangesAsync();
+
+            await FileService.DeleteTempFile(path);
+
+            foreach (var item in result.Artifacts) {
+                item.File = null; // null this because the view doesn't need the files themselves
+            }
+
+            TempData["UploadResult"] = JsonConvert.SerializeObject(result);
+            return RedirectToAction(nameof(Index));
+        }        
 
         // GET: Admin/Artifacts/Create
         public IActionResult Create()

@@ -3,14 +3,16 @@ using System;
 using Assessment.Data.Contexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Assessment.Data.Migrations
 {
     [DbContext(typeof(AssessmentContext))]
-    partial class AssessmentContextModelSnapshot : ModelSnapshot
+    [Migration("20201104200146_renamerubriccode")]
+    partial class renamerubriccode
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -80,10 +82,6 @@ namespace Assessment.Data.Migrations
 
                     b.Property<int?>("ArtifactId")
                         .HasColumnType("int");
-
-                    b.Property<string>("Code")
-                        .HasColumnType("varchar(50) CHARACTER SET utf8mb4")
-                        .HasMaxLength(50);
 
                     b.Property<byte[]>("File")
                         .HasColumnType("longblob");

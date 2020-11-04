@@ -60,7 +60,7 @@ namespace Assessment.Web.Areas.Admin.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Code,Name,Criterion01,Criterion02,Criterion03,Criterion04,Criterion05,Criterion06,Criterion07,Criterion08,Criterion09,Criterion10,Data,File")] Rubric rubric)
+        public async Task<IActionResult> Create([Bind("Id,Code,Abbreviation,Name,Criterion01,Criterion02,Criterion03,Criterion04,Criterion05,Criterion06,Criterion07,Criterion08,Criterion09,Criterion10,Data,File")] Rubric rubric)
         {
             if (ModelState.IsValid)
             {
@@ -92,7 +92,7 @@ namespace Assessment.Web.Areas.Admin.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Code,Name,Criterion01,Criterion02,Criterion03,Criterion04,Criterion05,Criterion06,Criterion07,Criterion08,Criterion09,Criterion10,Data,File")] Rubric rubric)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Code,Abbreviation,Name,Criterion01,Criterion02,Criterion03,Criterion04,Criterion05,Criterion06,Criterion07,Criterion08,Criterion09,Criterion10,Data,File")] Rubric rubric)
         {
             if (id != rubric.Id)
             {

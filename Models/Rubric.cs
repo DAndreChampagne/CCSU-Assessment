@@ -13,9 +13,11 @@ namespace Assessment.Models {
     public class Rubric {
         public int Id { get; set; }
 
+        [StringLength(50)]
+        public string Code { get; set; }
 
         [StringLength(2)]
-        public string Code { get; set; }
+        public string Abbreviation { get; set; }
 
         [StringLength(50)]
         public string Name { get; set; }

@@ -24,6 +24,9 @@ namespace Assessment.Models {
         [StringLength(10)]
         public string StudentId { get; set; }
 
+        [StringLength(10)]
+        public string FacultyId { get; set; }
+
 
         [StringLength(100)]
         [Display(Name = "Learning Objective")]
