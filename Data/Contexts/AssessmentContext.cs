@@ -23,11 +23,12 @@ namespace Assessment.Data.Contexts {
             Console.WriteLine("AssessmentContext(options)");
         }
 
+        // public DbSet<School> Schools { get; set; }
         public DbSet<Rubric> Rubrics { get; set; }
         public DbSet<Score> Scores { get; set; }
         public DbSet<RubricCriteria> RubricCriteria { get; set; }
-        public DbSet<Session> Sessions { get; set; }
-        public DbSet<Section> Sections { get; set; }
+        // public DbSet<Session> Sessions { get; set; }
+        // public DbSet<Section> Sections { get; set; }
         public DbSet<Artifact> Artifacts { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

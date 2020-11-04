@@ -2,13 +2,50 @@
 
 @{
     ViewData["Title"] = "Index";
+
+    var uploadResult = ViewData["UploadResult"] as Assessment.Logic.Services.ProcessArtifactResult;
 }
 
 <h1>Index</h1>
 
-<p>
+@* <p>
     <a asp-action="Create">Create New</a>
-</p>
+</p> *@
+
+<div class="row border">
+    <form asp-area="admin" asp-controller="Artifacts" asp-action="UploadArtifacts" enctype="multipart/form-data" method="post">
+        <div class="col-sm border">
+            <label for="file">Upload artifacts</label>
+            <input type="file" name="file" accept=".zip, .zipx" class="" />
+        </div>
+        <div class="col-sm border">
+            <input class="btn btn-sm btn-secondary" type="submit" value="Upload" />
+        </div>
+    </form>
+</div>
+
+@if (uploadResult != null) {
+    <div class="row">
+        <div class="col-md">
+            @if (uploadResult.Success) {
+                <p>Processed all @uploadResult.ProcessedFiles files successfully!</p>
+            } else {
+                <p>Processed @uploadResult.ProcessedFiles of @uploadResult.TotalFiles files successfully!</p>
+                <table class="table">
+                    <thead>
+
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Error result coming soon</td>
+                        </tr>
+                    </tbody>
+                </table>
+            }
+        </div>
+    </div>
+}
+
 <table class="table">
     <thead>
         <tr>

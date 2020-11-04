@@ -16,31 +16,31 @@ namespace Assessment.Models {
     /// <summary>
     /// 
     /// </summary>
-    public class Session {
-        public int Id { get; set; }
+    // public class Session {
+    //     public int Id { get; set; }
 
-        [ScaffoldColumn(true)]
-        [NotMapped]
-        public string Code { get { return String.Concat(Year, (int)Semester); } }
+    //     [ScaffoldColumn(true)]
+    //     [NotMapped]
+    //     public string Code { get { return String.Concat(Year, (int)Semester); } }
 
 
-        [Range(2000, 2999)]
-        public int Year { get; set; }
+    //     [Range(2000, 2999)]
+    //     public int Year { get; set; }
 
-        public Semester Semester { get; set; }
+    //     public Semester Semester { get; set; }
         
-        [StringLength(50)]
-        public string Name { get; set; }
+    //     [StringLength(50)]
+    //     public string Name { get; set; }
 
-        [DataType(DataType.Date)]
-        [Display(Name = "Start Date")]
-        public DateTime StartDate { get; set; }
+    //     [DataType(DataType.Date)]
+    //     [Display(Name = "Start Date")]
+    //     public DateTime StartDate { get; set; }
 
-        [DataType(DataType.Date)]
-        [Display(Name = "End Date")]
-        public DateTime EndDate { get; set; }
+    //     [DataType(DataType.Date)]
+    //     [Display(Name = "End Date")]
+    //     public DateTime EndDate { get; set; }
         
 
-    }
+    // }
 
 }

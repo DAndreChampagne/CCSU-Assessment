@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -8,20 +9,13 @@ namespace Assessment.Models {
     /// <summary>
     /// 
     /// </summary>
-    // public class Section {
+    // [Table("Schools")]
+    // public class School {
     //     public int Id { get; set; }
 
-    //     [StringLength(10)]
-    //     public int CRN { get; set; }
-
-
-    //     public virtual Session Session { get; set; }
-    //     public virtual int SessionId { get; set; }
-
-    //     [StringLength(50)]
+    //     [StringLength(100)]
     //     public string Name { get; set; }
 
-
+    //     public virtual ICollection<User> Users { get; set; }
     // }
-
 }

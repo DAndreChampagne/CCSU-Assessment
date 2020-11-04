@@ -200,26 +200,26 @@ namespace Assessment.Web
 
 #region Sessions
 
-                    if (!assessmentContext.Sessions.Any()) {
-                        assessmentContext.Sessions.AddRange(new [] {
-                            new Session { Id=1, Year = 2021, Semester = Semester.Fall, Name = "Fall 2020", StartDate = new DateTime(2020, 08, 24), EndDate = new DateTime(2020, 12, 23), },
-                            new Session { Id=2, Year = 2021, Semester = Semester.Spring, Name = "Spring 2021", StartDate = new DateTime(2021, 01, 19), EndDate = new DateTime(2021, 5, 31), },
-                        });
+                    // if (!assessmentContext.Sessions.Any()) {
+                    //     assessmentContext.Sessions.AddRange(new [] {
+                    //         new Session { Id=1, Year = 2021, Semester = Semester.Fall, Name = "Fall 2020", StartDate = new DateTime(2020, 08, 24), EndDate = new DateTime(2020, 12, 23), },
+                    //         new Session { Id=2, Year = 2021, Semester = Semester.Spring, Name = "Spring 2021", StartDate = new DateTime(2021, 01, 19), EndDate = new DateTime(2021, 5, 31), },
+                    //     });
                         
-                        assessmentContext.SaveChanges();
-                    }
+                    //     assessmentContext.SaveChanges();
+                    // }
 
 #endregion
 
 #region Sections
 
-                    if (!assessmentContext.Sections.Any()) {
-                        assessmentContext.Sections.AddRange(new [] {
-                            new Section { SessionId=1, CRN = 12345, Name = "CS 510-OL1" }
-                        });
+                    // if (!assessmentContext.Sections.Any()) {
+                    //     assessmentContext.Sections.AddRange(new [] {
+                    //         new Section { SessionId=1, CRN = 12345, Name = "CS 510-OL1" }
+                    //     });
                         
-                        assessmentContext.SaveChanges();
-                    }
+                    //     assessmentContext.SaveChanges();
+                    // }
                     
 #endregion
 

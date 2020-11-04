@@ -28,9 +28,14 @@ namespace Assessment.Web
         public IWebHostEnvironment Environment { get; set; }
 
         public static string GetDatabasePassword(IConfiguration config) {
-            return 
+            var pwd = 
                 System.Environment.GetEnvironmentVariable("MySQLPassword") // Get password from AWS
-                ?? config["Aws:MySQLPassword"]; // Get password from dotnet secrets file
+                ?? config["Aws:MySQLPassword"] // Get password from dotnet secrets file
+            ;
+
+            if (!String.IsNullOrEmpty(pwd))
+                return pwd;
+            throw new InvalidProgramException("Cannot determine application password");
         }
 
         public static string GetDatabaseConnectionString(IConfiguration config) {

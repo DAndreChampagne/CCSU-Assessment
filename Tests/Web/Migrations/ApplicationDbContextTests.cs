@@ -38,9 +38,6 @@ namespace Assessment.Tests
             // db.Database.EnsureDeleted();
         }
 
-        [TestMethod]
-        public void TestMethod1()
-        {
-        }
+
     }
 }

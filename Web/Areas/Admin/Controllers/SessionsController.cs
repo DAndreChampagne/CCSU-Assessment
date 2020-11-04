@@ -11,147 +11,147 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace Assessment.Web.Areas.Admin.Controllers
 {
-    [Area("Admin")]
-    [Authorize(Roles = "System Administrator")]
-    public class SessionsController : Controller
-    {
-        private readonly AssessmentContext _context;
+    // [Area("Admin")]
+    // [Authorize(Roles = "System Administrator")]
+    // public class SessionsController : Controller
+    // {
+    //     private readonly AssessmentContext _context;
 
-        public SessionsController(AssessmentContext context)
-        {
-            _context = context;
-        }
+    //     public SessionsController(AssessmentContext context)
+    //     {
+    //         _context = context;
+    //     }
 
-        // GET: Admin/Sessions
-        public async Task<IActionResult> Index()
-        {
-            var assessmentContext = _context.Sessions;
-            return View(await assessmentContext.ToListAsync());
-        }
+    //     // GET: Admin/Sessions
+    //     public async Task<IActionResult> Index()
+    //     {
+    //         var assessmentContext = _context.Sessions;
+    //         return View(await assessmentContext.ToListAsync());
+    //     }
 
-        // GET: Admin/Sessions/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
+    //     // GET: Admin/Sessions/Details/5
+    //     public async Task<IActionResult> Details(int? id)
+    //     {
+    //         if (id == null)
+    //         {
+    //             return NotFound();
+    //         }
 
-            var session = await _context.Sessions
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (session == null)
-            {
-                return NotFound();
-            }
+    //         var session = await _context.Sessions
+    //             .FirstOrDefaultAsync(m => m.Id == id);
+    //         if (session == null)
+    //         {
+    //             return NotFound();
+    //         }
 
-            return View(session);
-        }
+    //         return View(session);
+    //     }
 
-        // GET: Admin/Sessions/Create
-        public IActionResult Create()
-        {
-            return View();
-        }
+    //     // GET: Admin/Sessions/Create
+    //     public IActionResult Create()
+    //     {
+    //         return View();
+    //     }
 
-        // POST: Admin/Sessions/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Year,Semester,Name,StartDate,EndDate")] Session session)
-        {
-            if (ModelState.IsValid)
-            {
-                _context.Add(session);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            return View(session);
-        }
+    //     // POST: Admin/Sessions/Create
+    //     // To protect from overposting attacks, enable the specific properties you want to bind to, for 
+    //     // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+    //     [HttpPost]
+    //     [ValidateAntiForgeryToken]
+    //     public async Task<IActionResult> Create([Bind("Id,Year,Semester,Name,StartDate,EndDate")] Session session)
+    //     {
+    //         if (ModelState.IsValid)
+    //         {
+    //             _context.Add(session);
+    //             await _context.SaveChangesAsync();
+    //             return RedirectToAction(nameof(Index));
+    //         }
+    //         return View(session);
+    //     }
 
-        // GET: Admin/Sessions/Edit/5
-        public async Task<IActionResult> Edit(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
+    //     // GET: Admin/Sessions/Edit/5
+    //     public async Task<IActionResult> Edit(int? id)
+    //     {
+    //         if (id == null)
+    //         {
+    //             return NotFound();
+    //         }
 
-            var session = await _context.Sessions.FindAsync(id);
-            if (session == null)
-            {
-                return NotFound();
-            }
-            return View(session);
-        }
+    //         var session = await _context.Sessions.FindAsync(id);
+    //         if (session == null)
+    //         {
+    //             return NotFound();
+    //         }
+    //         return View(session);
+    //     }
 
-        // POST: Admin/Sessions/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Year,Semester,Name,StartDate,EndDate")] Session session)
-        {
-            if (id != session.Id)
-            {
-                return NotFound();
-            }
+    //     // POST: Admin/Sessions/Edit/5
+    //     // To protect from overposting attacks, enable the specific properties you want to bind to, for 
+    //     // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+    //     [HttpPost]
+    //     [ValidateAntiForgeryToken]
+    //     public async Task<IActionResult> Edit(int id, [Bind("Id,Year,Semester,Name,StartDate,EndDate")] Session session)
+    //     {
+    //         if (id != session.Id)
+    //         {
+    //             return NotFound();
+    //         }
 
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    _context.Update(session);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!SessionExists(session.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
-            }
-            return View(session);
-        }
+    //         if (ModelState.IsValid)
+    //         {
+    //             try
+    //             {
+    //                 _context.Update(session);
+    //                 await _context.SaveChangesAsync();
+    //             }
+    //             catch (DbUpdateConcurrencyException)
+    //             {
+    //                 if (!SessionExists(session.Id))
+    //                 {
+    //                     return NotFound();
+    //                 }
+    //                 else
+    //                 {
+    //                     throw;
+    //                 }
+    //             }
+    //             return RedirectToAction(nameof(Index));
+    //         }
+    //         return View(session);
+    //     }
 
-        // GET: Admin/Sessions/Delete/5
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
+    //     // GET: Admin/Sessions/Delete/5
+    //     public async Task<IActionResult> Delete(int? id)
+    //     {
+    //         if (id == null)
+    //         {
+    //             return NotFound();
+    //         }
 
-            var session = await _context.Sessions
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (session == null)
-            {
-                return NotFound();
-            }
+    //         var session = await _context.Sessions
+    //             .FirstOrDefaultAsync(m => m.Id == id);
+    //         if (session == null)
+    //         {
+    //             return NotFound();
+    //         }
 
-            return View(session);
-        }
+    //         return View(session);
+    //     }
 
-        // POST: Admin/Sessions/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            var session = await _context.Sessions.FindAsync(id);
-            _context.Sessions.Remove(session);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-        }
+    //     // POST: Admin/Sessions/Delete/5
+    //     [HttpPost, ActionName("Delete")]
+    //     [ValidateAntiForgeryToken]
+    //     public async Task<IActionResult> DeleteConfirmed(int id)
+    //     {
+    //         var session = await _context.Sessions.FindAsync(id);
+    //         _context.Sessions.Remove(session);
+    //         await _context.SaveChangesAsync();
+    //         return RedirectToAction(nameof(Index));
+    //     }
 
-        private bool SessionExists(int id)
-        {
-            return _context.Sessions.Any(e => e.Id == id);
-        }
-    }
+    //     private bool SessionExists(int id)
+    //     {
+    //         return _context.Sessions.Any(e => e.Id == id);
+    //     }
+    // }
 }
