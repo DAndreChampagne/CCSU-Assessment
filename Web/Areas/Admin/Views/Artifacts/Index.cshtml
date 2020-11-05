@@ -62,7 +62,7 @@
                 @Html.DisplayNameFor(model => model.StudentId)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.LearningObjective)
+                @Html.DisplayNameFor(model => model.FacultyId)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Level)
@@ -70,9 +70,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.CRN)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FilePath)
-            </th>
+
             <th>
                 @Html.DisplayNameFor(model => model.File)
             </th>
@@ -83,7 +81,7 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Rubric.Abbreviation)
+                @Html.DisplayFor(modelItem => item.Rubric.Name)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Name)
@@ -95,7 +93,7 @@
                 @Html.DisplayFor(modelItem => item.StudentId)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.LearningObjective)
+                @Html.DisplayFor(modelItem => item.FacultyId)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Level)
@@ -103,9 +101,7 @@
             <td>
                 @Html.DisplayFor(modelItem => item.CRN)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FilePath)
-            </td>
+
             <td>
                 @* @Html.DisplayFor(modelItem => item.File) *@
                 <a href="#" class="view-pdf" data-pdf="">View File</a>

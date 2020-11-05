@@ -229,8 +229,7 @@ namespace Assessment.Web
                         // TODO: finish seeding data
                         assessmentContext.Rubrics.AddRange(new [] {
                             new Rubric { 
-                                Id = 1, 
-                                Code = "WC", 
+                                Id = "WC", 
                                 Name = "Writen Communication", 
                                 File = System.IO.File.ReadAllBytes(Path.Combine(seedDataPath, "Rubric_WrittenCommunication.pdf")),
                                 RubricCriteria = new List<RubricCriteria> {
@@ -272,8 +271,7 @@ namespace Assessment.Web
                                 },
                             },
                             new Rubric { 
-                                Id = 2, 
-                                Code = "CT", 
+                                Id = "CT", 
                                 Name = "Critical Thinking", 
                                 File = System.IO.File.ReadAllBytes(Path.Combine(seedDataPath, "Rubric_CriticalThinking.pdf")),
                                 RubricCriteria = new List<RubricCriteria> {
@@ -315,8 +313,7 @@ namespace Assessment.Web
                                 },
                             },
                             new Rubric { 
-                                Id = 3, 
-                                Code = "QR",
+                                Id = "QR",
                                 Name = "Quantitative Reasoning", 
                                 File = System.IO.File.ReadAllBytes(Path.Combine(seedDataPath, "Rubric_QuantitativeLiteracy.pdf")),
                                 RubricCriteria = new List<RubricCriteria> {
@@ -365,8 +362,7 @@ namespace Assessment.Web
                                 },
                             },
                             new Rubric { 
-                                Id = 4, 
-                                Code = "CE", 
+                                Id = "CE", 
                                 Name = "Civic Engagement", 
                                 File = System.IO.File.ReadAllBytes(Path.Combine(seedDataPath, "Rubric_CivicEngagement.pdf")),
                                 RubricCriteria = new List<RubricCriteria> {
@@ -415,8 +411,7 @@ namespace Assessment.Web
                                 }
                             },
                             new Rubric { 
-                                Id = 5, 
-                                Code = "IL", 
+                                Id = "IL", 
                                 Name = "Information Literacy", 
                                 File = System.IO.File.ReadAllBytes(Path.Combine(seedDataPath, "Rubric_InformationLiteracy.pdf")),
                                 RubricCriteria = new List<RubricCriteria> {
@@ -458,28 +453,23 @@ namespace Assessment.Web
                                 },
                             },
                             new Rubric { 
-                                Id = 6, 
-                                Code = "SR", 
+                                Id = "SR", 
                                 Name = "Scientific Reasoning",
                             },
                             new Rubric { 
-                                Id = 7, 
-                                Code = "ED", 
+                                Id = "ED", 
                                 Name = "Ethical Dimensions",
                             },
                             new Rubric { 
-                                Id = 8, 
-                                Code = "HU", 
+                                Id = "HU", 
                                 Name = "Historical Understanding",
                             },
                             new Rubric { 
-                                Id = 9, 
-                                Code = "OC", 
+                                Id = "OC", 
                                 Name = "Oral Communication",
                             },
                             new Rubric { 
-                                Id = 10, 
-                                Code = "AK",
+                                Id = "AK",
                                 Name = "Aesthetic Knowledge",
                             },
                         });

@@ -12,7 +12,7 @@ namespace Assessment.Models {
         public int Id { get; set; }
         
         public virtual Rubric Rubric { get; set; }
-        public int RubricId { get; set; }
+        public string RubricId { get; set; }
 
 
         public string Name { get; set; }

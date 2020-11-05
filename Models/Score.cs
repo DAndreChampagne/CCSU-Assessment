@@ -14,7 +14,7 @@ namespace Assessment.Models {
         public int Id { get; set; }
 
         public virtual Rubric Rubric { get; set; }
-        public virtual int RubricId { get; set; }
+        public virtual string RubricId { get; set; }
 
         public virtual Artifact Artifact { get; set; }
         public virtual int ArtifactId { get; set; }

@@ -53,7 +53,7 @@ namespace Assessment.Web.Areas.Admin.Controllers
         public IActionResult Create()
         {
             ViewData["ArtifactId"] = new SelectList(_context.Artifacts, "Id", "Id");
-            ViewData["RubricId"] = new SelectList(_context.Rubrics, "Id", "Id");
+            ViewData["RubricId"] = new SelectList(_context.Rubrics, "Id", "Name");
             return View();
         }
 
@@ -71,7 +71,7 @@ namespace Assessment.Web.Areas.Admin.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["ArtifactId"] = new SelectList(_context.Artifacts, "Id", "Id", score.ArtifactId);
-            ViewData["RubricId"] = new SelectList(_context.Rubrics, "Id", "Id", score.RubricId);
+            ViewData["RubricId"] = new SelectList(_context.Rubrics, "Id", "Name", score.RubricId);
             return View(score);
         }
 
@@ -89,7 +89,7 @@ namespace Assessment.Web.Areas.Admin.Controllers
                 return NotFound();
             }
             ViewData["ArtifactId"] = new SelectList(_context.Artifacts, "Id", "Id", score.ArtifactId);
-            ViewData["RubricId"] = new SelectList(_context.Rubrics, "Id", "Id", score.RubricId);
+            ViewData["RubricId"] = new SelectList(_context.Rubrics, "Id", "Name", score.RubricId);
             return View(score);
         }
 
@@ -126,7 +126,7 @@ namespace Assessment.Web.Areas.Admin.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["ArtifactId"] = new SelectList(_context.Artifacts, "Id", "Id", score.ArtifactId);
-            ViewData["RubricId"] = new SelectList(_context.Rubrics, "Id", "Id", score.RubricId);
+            ViewData["RubricId"] = new SelectList(_context.Rubrics, "Id", "Name", score.RubricId);
             return View(score);
         }
 

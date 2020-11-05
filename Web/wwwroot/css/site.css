@@ -73,3 +73,33 @@ body {
   white-space: nowrap;
   line-height: 60px; /* Vertically center the text there */
 }
+
+
+
+
+
+
+/************************* Custom stuff ******************************************/
+
+footer {
+  background-color: #1a5799;
+}
+footer div.container {
+  color: #ffffff;
+}
+
+footer a:link {
+  color: #aaaaaa;
+}
+
+footer a:visited {
+  color: #aaaaaa;
+}
+
+footer a:hover {
+  color: #ffffff;
+}
+
+footer a:active {
+  color: #aaaaaa;
+}

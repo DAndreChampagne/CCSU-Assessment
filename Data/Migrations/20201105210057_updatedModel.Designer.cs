@@ -3,14 +3,16 @@ using System;
 using Assessment.Data.Contexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Assessment.Data.Migrations
 {
     [DbContext(typeof(AssessmentContext))]
-    partial class AssessmentContextModelSnapshot : ModelSnapshot
+    [Migration("20201105210057_updatedModel")]
+    partial class updatedModel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -33,6 +35,10 @@ namespace Assessment.Data.Migrations
 
                     b.Property<byte[]>("File")
                         .HasColumnType("longblob");
+
+                    b.Property<string>("FilePath")
+                        .HasColumnType("varchar(256) CHARACTER SET utf8mb4")
+                        .HasMaxLength(256);
 
                     b.Property<string>("Level")
                         .HasColumnType("varchar(2) CHARACTER SET utf8mb4")
@@ -107,12 +113,15 @@ namespace Assessment.Data.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<string>("RubricId")
+                    b.Property<int>("RubricId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("RubricId1")
                         .HasColumnType("varchar(2) CHARACTER SET utf8mb4");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("RubricId");
+                    b.HasIndex("RubricId1");
 
                     b.ToTable("RubricCriteria");
                 });
@@ -126,7 +135,10 @@ namespace Assessment.Data.Migrations
                     b.Property<int>("ArtifactId")
                         .HasColumnType("int");
 
-                    b.Property<string>("RubricId")
+                    b.Property<int>("RubricId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("RubricId1")
                         .HasColumnType("varchar(2) CHARACTER SET utf8mb4");
 
                     b.Property<int?>("Score01")
@@ -163,7 +175,7 @@ namespace Assessment.Data.Migrations
 
                     b.HasIndex("ArtifactId");
 
-                    b.HasIndex("RubricId");
+                    b.HasIndex("RubricId1");
 
                     b.ToTable("Scores");
                 });
@@ -186,7 +198,7 @@ namespace Assessment.Data.Migrations
                 {
                     b.HasOne("Assessment.Models.Rubric", "Rubric")
                         .WithMany("RubricCriteria")
-                        .HasForeignKey("RubricId");
+                        .HasForeignKey("RubricId1");
                 });
 
             modelBuilder.Entity("Assessment.Models.Score", b =>
@@ -199,7 +211,7 @@ namespace Assessment.Data.Migrations
 
                     b.HasOne("Assessment.Models.Rubric", "Rubric")
                         .WithMany()
-                        .HasForeignKey("RubricId");
+                        .HasForeignKey("RubricId1");
                 });
 #pragma warning restore 612, 618
         }

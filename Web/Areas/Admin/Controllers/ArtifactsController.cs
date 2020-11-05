@@ -108,7 +108,7 @@ namespace Assessment.Web.Areas.Admin.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["RubricId"] = new SelectList(_context.Rubrics, "Id", "Id", artifact.RubricId);
+            ViewData["RubricId"] = new SelectList(_context.Rubrics, "Id", "Name", artifact.RubricId);
             return View(artifact);
         }
 
@@ -125,7 +125,7 @@ namespace Assessment.Web.Areas.Admin.Controllers
             {
                 return NotFound();
             }
-            ViewData["RubricId"] = new SelectList(_context.Rubrics, "Id", "Id", artifact.RubricId);
+            ViewData["RubricId"] = new SelectList(_context.Rubrics, "Id", "Name", artifact.RubricId);
             return View(artifact);
         }
 
@@ -161,7 +161,7 @@ namespace Assessment.Web.Areas.Admin.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["RubricId"] = new SelectList(_context.Rubrics, "Id", "Id", artifact.RubricId);
+            ViewData["RubricId"] = new SelectList(_context.Rubrics, "Id", "Name", artifact.RubricId);
             return View(artifact);
         }
 

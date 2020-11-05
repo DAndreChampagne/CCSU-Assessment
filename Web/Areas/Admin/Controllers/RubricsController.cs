@@ -31,7 +31,7 @@ namespace Assessment.Web.Areas.Admin.Controllers
         }
 
         // GET: Admin/Rubrics/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Details(string id)
         {
             if (id == null)
             {
@@ -60,7 +60,7 @@ namespace Assessment.Web.Areas.Admin.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Code,Abbreviation,Name,Criterion01,Criterion02,Criterion03,Criterion04,Criterion05,Criterion06,Criterion07,Criterion08,Criterion09,Criterion10,Data,File")] Rubric rubric)
+        public async Task<IActionResult> Create([Bind("Id,Name,File")] Rubric rubric)
         {
             if (ModelState.IsValid)
             {
@@ -92,7 +92,7 @@ namespace Assessment.Web.Areas.Admin.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Code,Abbreviation,Name,Criterion01,Criterion02,Criterion03,Criterion04,Criterion05,Criterion06,Criterion07,Criterion08,Criterion09,Criterion10,Data,File")] Rubric rubric)
+        public async Task<IActionResult> Edit(string id, [Bind("Id,Name,File")] Rubric rubric)
         {
             if (id != rubric.Id)
             {
@@ -123,7 +123,7 @@ namespace Assessment.Web.Areas.Admin.Controllers
         }
 
         // GET: Admin/Rubrics/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public async Task<IActionResult> Delete(string id)
         {
             if (id == null)
             {
@@ -151,7 +151,7 @@ namespace Assessment.Web.Areas.Admin.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        private bool RubricExists(int id)
+        private bool RubricExists(string id)
         {
             return _context.Rubrics.Any(e => e.Id == id);
         }

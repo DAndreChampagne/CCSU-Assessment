@@ -7,6 +7,7 @@ using Assessment.Data.Contexts;
 using System.IO;
 using System.IO.Compression;
 using Assessment.Logic.Services;
+using System.Threading.Tasks;
 
 namespace Assessment.Tests.Logic.Services
 {
@@ -51,13 +52,13 @@ namespace Assessment.Tests.Logic.Services
         }
 
         [TestMethod]
-        public void CheckForExistingFiles()
+        public async Task CheckForExistingFiles()
         {
             var outputDirectory = Path.GetDirectoryName(_filePath);
             var actual = -1;
             var expected = 0;
 
-            var files = FileService.CheckForExistingFiles(_filePath, outputDirectory);
+            var files = await FileService.CheckForExistingFiles(_filePath, outputDirectory);
             files.ForEach(x => Console.WriteLine($"Existing file: {x}"));
 
             actual = files.Count();

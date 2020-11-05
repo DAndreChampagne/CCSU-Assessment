@@ -13,10 +13,7 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Abbreviation)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Code)
+                @Html.DisplayNameFor(model => model.Id)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Name)
@@ -28,14 +25,12 @@
         @foreach (var item in Model) {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Abbreviation)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Code)
+                    @Html.DisplayFor(modelItem => item.Id)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Name)
                 </td>
+
                 <td>
                     @if (item.File != null) {
                         <a class="" data-toggle="collapse" href="#rubric-data-@item.Id" role="button" aria-expanded="false" aria-controls="">View Details</a> @("|")
