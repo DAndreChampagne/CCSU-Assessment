@@ -73,7 +73,7 @@ namespace Assessment.Web.Areas.Admin.Controllers
 
         public async Task<IActionResult> UploadArtifacts(IFormFile file) {
             var path = await FileService.SaveTempFile(file);
-            var result = await FileService.ProcessZipFileIntoArtifacts(path, _context);
+            var result = await FileService.ProcessZipFileIntoArtifacts(path);
 
             await _context.Artifacts.AddRangeAsync(result.Artifacts);
             var resultCount = await _context.SaveChangesAsync();

@@ -63,12 +63,11 @@ namespace Assessment.Logic.Services
     {
 
         /// <summary>
-        /// 
+        /// Takes a ZIP file and processes them into artifact objects.
         /// </summary>
-        /// <param name="path"></param>
-        /// <param name="_context"></param>
+        /// <param name="path">Path to saved ZIP file</param>
         /// <returns></returns>
-        public static async Task<ProcessArtifactResult> ProcessZipFileIntoArtifacts(string path, AssessmentContext _context) {
+        public static async Task<ProcessArtifactResult> ProcessZipFileIntoArtifacts(string path) {
             if (String.IsNullOrEmpty(path))
                 throw new ArgumentNullException("path");
             if (!File.Exists(path))
@@ -102,15 +101,6 @@ namespace Assessment.Logic.Services
                     });
                 }    
             }
-
-            // if (result.Artifacts.Count() > 0) {
-            //     var rubrics = await _context.Rubrics
-            //         .Select(x => new { x.Id, x.Abbreviation, })
-            //         .ToListAsync();
-            //     foreach (var artifact in result.Artifacts) {
-            //         artifact.RubricId = rubrics.First(x => x.Abbreviation == artifact.LearningObjective).Id;
-            //     }
-            // }
 
             foreach (var file in filesProcessed) {
                 if (File.Exists(file)) {
