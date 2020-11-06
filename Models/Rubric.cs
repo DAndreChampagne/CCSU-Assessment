@@ -30,6 +30,8 @@ namespace Assessment.Models {
 
 
         public virtual ICollection<RubricCriteria> RubricCriteria { get; set; }
+        public virtual ICollection<Artifact> Artifacts { get; set; }
+        public virtual ICollection<Faculty> Faculty { get; set; }
 
     }
 

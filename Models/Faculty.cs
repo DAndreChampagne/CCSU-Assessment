@@ -10,18 +10,20 @@ namespace Assessment.Models {
     /// <summary>
     /// 
     /// </summary>
-    public class User : IdentityUser {
+    public class Faculty {
+        public int Id { get; set; }
+
+        public virtual Rubric Rubric { get; set; }
+        public string RubricId { get; set; }
+        
 
         [StringLength(100)]
         public string Name { get; set; }
 
 
-        [NotMapped]
-        public List<string> Roles { get; set; } = new List<string>();
+        
 
-        [NotMapped]
-        [Display(Name = "Roles")]
-        public string RoleName { get; set; }
+        public virtual ICollection<CourseSection> CourseSections { get; set; }
 
     }
 

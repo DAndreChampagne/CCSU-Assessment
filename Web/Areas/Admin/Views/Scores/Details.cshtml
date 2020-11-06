@@ -10,12 +10,17 @@
     <h4>Score</h4>
     <hr />
     <dl class="row">
-
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Rubric)
+            @Html.DisplayNameFor(model => model.RubricCriteriaId)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Rubric.Id)
+            @Html.DisplayFor(model => model.RubricCriteriaId)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.FacultyId)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.FacultyId)
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Artifact)
@@ -24,64 +29,10 @@
             @Html.DisplayFor(model => model.Artifact.Id)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Score01)
+            @Html.DisplayNameFor(model => model.ScoreValue)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Score01)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Score02)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Score02)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Score03)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Score03)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Score04)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Score04)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Score05)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Score05)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Score06)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Score06)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Score07)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Score07)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Score08)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Score08)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Score09)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Score09)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Score10)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Score10)
+            @Html.DisplayFor(model => model.ScoreValue)
         </dd>
     </dl>
 </div>

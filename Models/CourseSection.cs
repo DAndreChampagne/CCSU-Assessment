@@ -10,19 +10,20 @@ namespace Assessment.Models {
     /// <summary>
     /// 
     /// </summary>
-    public class User : IdentityUser {
+    public class CourseSection {
+        [Key, DatabaseGenerated(DatabaseGeneratedOption.None)]
+        public int CRN { get; set; }
+
+        public int FacultyId { get; set; }
+        public virtual Faculty Faculty { get; set; }
+        
 
         [StringLength(100)]
         public string Name { get; set; }
 
 
-        [NotMapped]
-        public List<string> Roles { get; set; } = new List<string>();
 
-        [NotMapped]
-        [Display(Name = "Roles")]
-        public string RoleName { get; set; }
-
+        
     }
 
 }

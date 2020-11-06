@@ -1,4 +1,4 @@
-@* @model Assessment.Models.Section
+@model Assessment.Models.CourseSection
 
 @{
     ViewData["Title"] = "Edit";
@@ -6,27 +6,22 @@
 
 <h1>Edit</h1>
 
-<h4>Section</h4>
+<h4>CourseSection</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Id" />
+            <input type="hidden" asp-for="CRN" />
             <div class="form-group">
-                <label asp-for="SessionId" class="control-label"></label>
-                <select asp-for="SessionId" class="form-control" asp-items="ViewBag.SessionId"></select>
-                <span asp-validation-for="SessionId" class="text-danger"></span>
+                <label asp-for="FacultyId" class="control-label"></label>
+                <select asp-for="FacultyId" class="form-control" asp-items="ViewBag.FacultyId"></select>
+                <span asp-validation-for="FacultyId" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Name" class="control-label"></label>
                 <input asp-for="Name" class="form-control" />
                 <span asp-validation-for="Name" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="CRN" class="control-label"></label>
-                <input asp-for="CRN" class="form-control" />
-                <span asp-validation-for="CRN" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
@@ -41,4 +36,4 @@
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-} *@
+}

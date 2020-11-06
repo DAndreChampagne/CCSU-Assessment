@@ -24,6 +24,8 @@ namespace Assessment.Data.Contexts {
         }
 
         // public DbSet<School> Schools { get; set; }
+        public DbSet<Faculty> Faculty { get; set; }
+        public DbSet<CourseSection> CourseSections { get; set; }
         public DbSet<Rubric> Rubrics { get; set; }
         public DbSet<Score> Scores { get; set; }
         public DbSet<RubricCriteria> RubricCriteria { get; set; }

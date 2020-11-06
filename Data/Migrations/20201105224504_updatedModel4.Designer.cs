@@ -3,14 +3,16 @@ using System;
 using Assessment.Data.Contexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Assessment.Data.Migrations
 {
     [DbContext(typeof(AssessmentContext))]
-    partial class AssessmentContextModelSnapshot : ModelSnapshot
+    [Migration("20201105224504_updatedModel4")]
+    partial class updatedModel4
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -67,7 +69,10 @@ namespace Assessment.Data.Migrations
                     b.Property<int>("CRN")
                         .HasColumnType("int");
 
-                    b.Property<int>("FacultyId")
+                    b.Property<string>("FacultyId")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("FacultyId1")
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
@@ -76,7 +81,7 @@ namespace Assessment.Data.Migrations
 
                     b.HasKey("CRN");
 
-                    b.HasIndex("FacultyId");
+                    b.HasIndex("FacultyId1");
 
                     b.ToTable("CourseSections");
                 });
@@ -162,7 +167,10 @@ namespace Assessment.Data.Migrations
                     b.Property<int>("ArtifactId")
                         .HasColumnType("int");
 
-                    b.Property<int>("FacultyId")
+                    b.Property<string>("FacultyId")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("FacultyId1")
                         .HasColumnType("int");
 
                     b.Property<string>("RubricCriteriaId")
@@ -178,7 +186,7 @@ namespace Assessment.Data.Migrations
 
                     b.HasIndex("ArtifactId");
 
-                    b.HasIndex("FacultyId");
+                    b.HasIndex("FacultyId1");
 
                     b.HasIndex("RubricCriteriaId1");
 
@@ -208,9 +216,7 @@ namespace Assessment.Data.Migrations
                 {
                     b.HasOne("Assessment.Models.Faculty", "Faculty")
                         .WithMany("CourseSections")
-                        .HasForeignKey("FacultyId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("FacultyId1");
                 });
 
             modelBuilder.Entity("Assessment.Models.Faculty", b =>
@@ -237,9 +243,7 @@ namespace Assessment.Data.Migrations
 
                     b.HasOne("Assessment.Models.Faculty", "Faculty")
                         .WithMany()
-                        .HasForeignKey("FacultyId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("FacultyId1");
 
                     b.HasOne("Assessment.Models.RubricCriteria", "RubricCriteria")
                         .WithMany("Scores")

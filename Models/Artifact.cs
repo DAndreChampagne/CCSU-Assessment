@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Assessment.Models {
     
@@ -12,10 +13,17 @@ namespace Assessment.Models {
 
         public int Id { get; set; }
 
-        public virtual Rubric Rubric { get; set; }
-
-        [Display(Name = "Learning Objective")]
         public virtual string RubricId { get; set; }
+        public virtual Rubric Rubric { get; set; }
+        
+
+        public int FacultyId { get; set; }
+        public virtual Faculty Faculty { get; set; }
+
+        public int CRN { get; set; }
+        [ForeignKey("CRN")]
+        public virtual CourseSection CourseSection { get; set; }
+
 
         [StringLength(50)]
         public string Name { get; set; }
@@ -27,25 +35,13 @@ namespace Assessment.Models {
         [Display(Name = "Student ID")]
         public string StudentId { get; set; }
 
-        [StringLength(10)]
-        [Display(Name = "Faculty ID")]
-        public string FacultyId { get; set; }
-
         [StringLength(2)]
         public string Level { get; set; }
 
-        [StringLength(10)]
-        public string CRN { get; set; }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <value></value>        
         public byte[] File { get; set; }
 
 
 
-        public virtual ICollection<Rubric> Rubrics { get; set; }
         public virtual ICollection<Score> Scores { get; set; }
     }
 

@@ -1,5 +1,6 @@
 
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace Assessment.Models {
@@ -15,6 +16,7 @@ namespace Assessment.Models {
         public string RubricId { get; set; }
 
 
+        // TODO: this can be further normalized
         public string Name { get; set; }
 
         [Display(Name = "Score of 4")]
@@ -32,6 +34,8 @@ namespace Assessment.Models {
         [Display(Name = "Score of 0")]
         public string Desciption0 { get; set; }
 
+
+        public virtual ICollection<Score> Scores { get; set; }
     }
 
 }

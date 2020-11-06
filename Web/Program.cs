@@ -198,31 +198,6 @@ namespace Assessment.Web
 
 #endregion                        
 
-#region Sessions
-
-                    // if (!assessmentContext.Sessions.Any()) {
-                    //     assessmentContext.Sessions.AddRange(new [] {
-                    //         new Session { Id=1, Year = 2021, Semester = Semester.Fall, Name = "Fall 2020", StartDate = new DateTime(2020, 08, 24), EndDate = new DateTime(2020, 12, 23), },
-                    //         new Session { Id=2, Year = 2021, Semester = Semester.Spring, Name = "Spring 2021", StartDate = new DateTime(2021, 01, 19), EndDate = new DateTime(2021, 5, 31), },
-                    //     });
-                        
-                    //     assessmentContext.SaveChanges();
-                    // }
-
-#endregion
-
-#region Sections
-
-                    // if (!assessmentContext.Sections.Any()) {
-                    //     assessmentContext.Sections.AddRange(new [] {
-                    //         new Section { SessionId=1, CRN = 12345, Name = "CS 510-OL1" }
-                    //     });
-                        
-                    //     assessmentContext.SaveChanges();
-                    // }
-                    
-#endregion
-
 #region Rubrics
 
                     if (!assessmentContext.Rubrics.Any()) {
@@ -478,6 +453,38 @@ namespace Assessment.Web
                     }
                     
 #endregion
+
+#region Faculty
+                    if (!assessmentContext.Faculty.Any()) {
+                        assessmentContext.Faculty.AddRange(new [] {
+                            new Faculty {  Id = 15937, RubricId  = "IL", Name = "Professor 15937", },
+                            new Faculty {  Id = 73915, RubricId  = "QR", Name = "Professor 73915", },
+                            new Faculty {  Id = 585256, RubricId  = "WC", Name = "Professor 585256", },
+                            new Faculty {  Id = 95137, RubricId  = "SR", Name = "Professor 95137", },
+                            new Faculty {  Id = 281739, RubricId  = "CT", Name = "Professor 281739", },
+                            new Faculty {  Id = 678432, RubricId  = "CE", Name = "Professor 678432", },
+                        });
+                        
+                        assessmentContext.SaveChanges();
+                    }
+#endregion
+
+#region CourseSections
+                    if (!assessmentContext.CourseSections.Any()) {
+                        assessmentContext.CourseSections.AddRange(new [] {
+                            new CourseSection { CRN = 85258, FacultyId = 15937, Name = "Course 85258" },
+                            new CourseSection { CRN = 78987, FacultyId = 73915, Name = "Course 78987" },
+                            new CourseSection { CRN = 67616, FacultyId = 585256, Name = "Course 67616" },
+                            new CourseSection { CRN = 35719, FacultyId = 95137, Name = "Course 35719" },
+                            new CourseSection { CRN = 19732, FacultyId = 281739, Name = "Course 19732" },
+                            new CourseSection { CRN = 41850, FacultyId = 678432, Name = "Course 41850" },
+                        });
+                        
+                        assessmentContext.SaveChanges();
+                    }
+#endregion
+
+
 
                 } catch (Exception ex) {
                     var logger = services.GetRequiredService<ILogger<Program>>();

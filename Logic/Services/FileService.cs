@@ -94,10 +94,10 @@ namespace Assessment.Logic.Services
                     result.Artifacts.Add(new Artifact {
                         Term = values[0],
                         StudentId = values[1],
-                        FacultyId = values[2],
+                        FacultyId = Int32.Parse(values[2]),
                         RubricId = values[3],
                         Level = values[4],
-                        CRN = values[5],
+                        CRN = Int32.Parse(values[5]),
                         File = await File.ReadAllBytesAsync(f),
                     });
                 }    

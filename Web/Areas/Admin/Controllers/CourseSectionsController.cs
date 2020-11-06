@@ -11,23 +11,23 @@ using Assessment.Models;
 namespace Assessment.Web.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    public class ScoresController : Controller
+    public class CourseSectionsController : Controller
     {
         private readonly AssessmentContext _context;
 
-        public ScoresController(AssessmentContext context)
+        public CourseSectionsController(AssessmentContext context)
         {
             _context = context;
         }
 
-        // GET: Admin/Scores
+        // GET: Admin/CourseSections
         public async Task<IActionResult> Index()
         {
-            var assessmentContext = _context.Scores.Include(s => s.Artifact);
+            var assessmentContext = _context.CourseSections.Include(c => c.Faculty);
             return View(await assessmentContext.ToListAsync());
         }
 
-        // GET: Admin/Scores/Details/5
+        // GET: Admin/CourseSections/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -35,42 +35,42 @@ namespace Assessment.Web.Areas.Admin.Controllers
                 return NotFound();
             }
 
-            var score = await _context.Scores
-                .Include(s => s.Artifact)
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (score == null)
+            var courseSection = await _context.CourseSections
+                .Include(c => c.Faculty)
+                .FirstOrDefaultAsync(m => m.CRN == id);
+            if (courseSection == null)
             {
                 return NotFound();
             }
 
-            return View(score);
+            return View(courseSection);
         }
 
-        // GET: Admin/Scores/Create
+        // GET: Admin/CourseSections/Create
         public IActionResult Create()
         {
-            ViewData["ArtifactId"] = new SelectList(_context.Artifacts, "Id", "Id");
+            ViewData["FacultyId"] = new SelectList(_context.Faculty, "Id", "Id");
             return View();
         }
 
-        // POST: Admin/Scores/Create
+        // POST: Admin/CourseSections/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,RubricCriteriaId,FacultyId,ArtifactId,ScoreValue")] Score score)
+        public async Task<IActionResult> Create([Bind("CRN,FacultyId,Name")] CourseSection courseSection)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(score);
+                _context.Add(courseSection);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ArtifactId"] = new SelectList(_context.Artifacts, "Id", "Id", score.ArtifactId);
-            return View(score);
+            ViewData["FacultyId"] = new SelectList(_context.Faculty, "Id", "Id", courseSection.FacultyId);
+            return View(courseSection);
         }
 
-        // GET: Admin/Scores/Edit/5
+        // GET: Admin/CourseSections/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -78,23 +78,23 @@ namespace Assessment.Web.Areas.Admin.Controllers
                 return NotFound();
             }
 
-            var score = await _context.Scores.FindAsync(id);
-            if (score == null)
+            var courseSection = await _context.CourseSections.FindAsync(id);
+            if (courseSection == null)
             {
                 return NotFound();
             }
-            ViewData["ArtifactId"] = new SelectList(_context.Artifacts, "Id", "Id", score.ArtifactId);
-            return View(score);
+            ViewData["FacultyId"] = new SelectList(_context.Faculty, "Id", "Id", courseSection.FacultyId);
+            return View(courseSection);
         }
 
-        // POST: Admin/Scores/Edit/5
+        // POST: Admin/CourseSections/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,RubricCriteriaId,FacultyId,ArtifactId,ScoreValue")] Score score)
+        public async Task<IActionResult> Edit(int id, [Bind("CRN,FacultyId,Name")] CourseSection courseSection)
         {
-            if (id != score.Id)
+            if (id != courseSection.CRN)
             {
                 return NotFound();
             }
@@ -103,12 +103,12 @@ namespace Assessment.Web.Areas.Admin.Controllers
             {
                 try
                 {
-                    _context.Update(score);
+                    _context.Update(courseSection);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!ScoreExists(score.Id))
+                    if (!CourseSectionExists(courseSection.CRN))
                     {
                         return NotFound();
                     }
@@ -119,11 +119,11 @@ namespace Assessment.Web.Areas.Admin.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ArtifactId"] = new SelectList(_context.Artifacts, "Id", "Id", score.ArtifactId);
-            return View(score);
+            ViewData["FacultyId"] = new SelectList(_context.Faculty, "Id", "Id", courseSection.FacultyId);
+            return View(courseSection);
         }
 
-        // GET: Admin/Scores/Delete/5
+        // GET: Admin/CourseSections/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -131,31 +131,31 @@ namespace Assessment.Web.Areas.Admin.Controllers
                 return NotFound();
             }
 
-            var score = await _context.Scores
-                .Include(s => s.Artifact)
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (score == null)
+            var courseSection = await _context.CourseSections
+                .Include(c => c.Faculty)
+                .FirstOrDefaultAsync(m => m.CRN == id);
+            if (courseSection == null)
             {
                 return NotFound();
             }
 
-            return View(score);
+            return View(courseSection);
         }
 
-        // POST: Admin/Scores/Delete/5
+        // POST: Admin/CourseSections/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var score = await _context.Scores.FindAsync(id);
-            _context.Scores.Remove(score);
+            var courseSection = await _context.CourseSections.FindAsync(id);
+            _context.CourseSections.Remove(courseSection);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool ScoreExists(int id)
+        private bool CourseSectionExists(int id)
         {
-            return _context.Scores.Any(e => e.Id == id);
+            return _context.CourseSections.Any(e => e.CRN == id);
         }
     }
 }

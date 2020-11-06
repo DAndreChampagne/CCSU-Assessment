@@ -12,64 +12,24 @@
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-
             <div class="form-group">
-                <label asp-for="RubricId" class="control-label"></label>
-                <select asp-for="RubricId" class ="form-control" asp-items="ViewBag.RubricId"></select>
+                <label asp-for="RubricCriteriaId" class="control-label"></label>
+                <input asp-for="RubricCriteriaId" class="form-control" />
+                <span asp-validation-for="RubricCriteriaId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FacultyId" class="control-label"></label>
+                <input asp-for="FacultyId" class="form-control" />
+                <span asp-validation-for="FacultyId" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="ArtifactId" class="control-label"></label>
                 <select asp-for="ArtifactId" class ="form-control" asp-items="ViewBag.ArtifactId"></select>
             </div>
             <div class="form-group">
-                <label asp-for="Score01" class="control-label"></label>
-                <input asp-for="Score01" class="form-control" />
-                <span asp-validation-for="Score01" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Score02" class="control-label"></label>
-                <input asp-for="Score02" class="form-control" />
-                <span asp-validation-for="Score02" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Score03" class="control-label"></label>
-                <input asp-for="Score03" class="form-control" />
-                <span asp-validation-for="Score03" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Score04" class="control-label"></label>
-                <input asp-for="Score04" class="form-control" />
-                <span asp-validation-for="Score04" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Score05" class="control-label"></label>
-                <input asp-for="Score05" class="form-control" />
-                <span asp-validation-for="Score05" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Score06" class="control-label"></label>
-                <input asp-for="Score06" class="form-control" />
-                <span asp-validation-for="Score06" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Score07" class="control-label"></label>
-                <input asp-for="Score07" class="form-control" />
-                <span asp-validation-for="Score07" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Score08" class="control-label"></label>
-                <input asp-for="Score08" class="form-control" />
-                <span asp-validation-for="Score08" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Score09" class="control-label"></label>
-                <input asp-for="Score09" class="form-control" />
-                <span asp-validation-for="Score09" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Score10" class="control-label"></label>
-                <input asp-for="Score10" class="form-control" />
-                <span asp-validation-for="Score10" class="text-danger"></span>
+                <label asp-for="ScoreValue" class="control-label"></label>
+                <input asp-for="ScoreValue" class="form-control" />
+                <span asp-validation-for="ScoreValue" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
