@@ -97,6 +97,7 @@ namespace Assessment.Logic.Services
                         RubricId = values[3],
                         Level = values[4],
                         CRN = Int32.Parse(values[5]),
+                        Name = entry.FullName,
                         File = await File.ReadAllBytesAsync(f),
                     });
                 }    
