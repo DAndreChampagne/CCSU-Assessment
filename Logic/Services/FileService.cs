@@ -8,9 +8,17 @@ using System.Threading.Tasks;
 using Assessment.Models;
 using Assessment.Data.Contexts;
 using Microsoft.EntityFrameworkCore;
+using ElmahCore;
 
 namespace Assessment.Logic.Services
 {
+
+    public class NotProcessedArtifact {
+        public string FileName { get; set; }
+        public string ErrorMessage { get; set; }
+    }
+
+
     /// <summary>
     /// Class object that holds results of a artifact ZIP upload.
     /// </summary>
@@ -34,7 +42,7 @@ namespace Assessment.Logic.Services
         /// </summary>
         /// <typeparam name="string"></typeparam>
         /// <returns></returns>
-        public List<string> FilesNotProcessed { get; set; } = new List<string>();
+        public List<NotProcessedArtifact> FilesNotProcessed { get; set; } = new List<NotProcessedArtifact>();
 
         /// <summary>
         /// Returns true if all files were processed, and the NotProcessedFiles count is zero.
@@ -80,14 +88,60 @@ namespace Assessment.Logic.Services
             ZipFile.ExtractToDirectory(path, tempPath, true);
 
             using (var zipFile = ZipFile.OpenRead(path)) {
-                foreach (var entry in zipFile.Entries) {
+
+                // this may be entirely unnecessary. however when I create a ZIP file on a mac,
+                // there are extra entries in the archive that need to be filtered out.
+                var entries = zipFile.Entries
+                    .Where(x => !x.FullName.StartsWith(@"__MACOSX/"))
+                    .Where(x => !x.FullName.EndsWith(@"/") && !x.FullName.EndsWith(@"\"))
+                    .ToList();
+                result.TotalFiles = entries.Count();
+
+                foreach (var entry in entries) {
                     var f = Path.Combine(tempPath, entry.FullName);
                     var values = Path.GetFileNameWithoutExtension(entry.FullName).Split("_");
 
-                    if (!File.Exists(f) || values.Length != 6) {
-                        result.FilesNotProcessed.Add(entry.FullName);
+                    if (!File.Exists(f)) {
+                        result.FilesNotProcessed.Add(new NotProcessedArtifact {
+                            FileName = entry.FullName,
+                            ErrorMessage = "Could not extract file from archive",
+                        });
                         continue;
-                    } 
+                    }
+                    if (values.Length != 6) {
+                        result.FilesNotProcessed.Add(new NotProcessedArtifact {
+                            FileName = entry.FullName,
+                            ErrorMessage = $"Number of fields in file name incorrect (expected 6, found {values.Length})"
+                        });
+                        continue;
+                    }
+
+                    int term, studentId, facultyId, level, crn;
+                    string rubricId;
+
+                    // check values to make sure they're of the expected type
+                    try {
+                        term = Int32.Parse(values[0]);
+
+                        studentId = Int32.Parse(values[1]);
+
+                        facultyId = Int32.Parse(values[2]);
+                        
+                        rubricId = values[3];
+                        if (rubricId.Length != 2)
+                            throw new ArgumentException("Expected 2 character rubric ID");
+                        
+                        level = Int32.Parse(values[4]);
+                    
+                        crn = Int32.Parse(values[5]);
+
+                    } catch (Exception ex) {
+                        result.FilesNotProcessed.Add(new NotProcessedArtifact {
+                            FileName = entry.FullName,
+                            ErrorMessage = ex.Message,
+                        });
+                        continue;
+                    }
 
                     filesProcessed.Add(f);
                     result.Artifacts.Add(new Artifact {

@@ -4,7 +4,7 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>All Rubrics</h1>
+<h1>Index</h1>
 
 <p>
     <a asp-action="Create">Create New</a>
@@ -13,86 +13,37 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Id)
+                @Html.DisplayNameFor(model => model.Name)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Name)
+                @Html.DisplayNameFor(model => model.File)
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model) {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Id)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Name)
-                </td>
-
-                <td>
-                    @if (item.File != null) {
-                        <a class="" data-toggle="collapse" href="#rubric-data-@item.Id" role="button" aria-expanded="false" aria-controls="">View Details</a> @("|")
-
-                        <a href="#" class="view-pdf" data-pdf="">View PDF</a> @("|")
-                        <div style="display: none;" class="model-body-data">
-                            <object data="data:application/pdf;base64, @System.Convert.ToBase64String(item.File, 0, item.File.Length)" type="application/pdf" width="100%" height="600px"> 
-                                <p>It appears you don't have a PDF plugin for this browser. No biggie... you can <a target="_blank" asp-action="ViewFile" asp-route-id="@item.Id">click here to download the PDF file.</a></p>
-                            </object>
-                        </div>
-                    }
-                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-                </td>
-            </tr>
-
-            
-            <tr style="font-size: .75em;">
-                @if (item.RubricCriteria?.Any() ?? false) {
-                    <td></td>
-                    <td colspan="100">
-                        <div class="collapse" id="rubric-data-@item.Id">
-                            <div class="card card-body">
-                                <table class="table table-condensed">
-                                    <thead>
-                                        <tr>
-                                            <th></th>
-                                            <th>Capstone</th>
-                                            <th colspan="2">Milestone</th>
-                                            <th>Benchmark</th>
-                                        </tr>
-                                        <tr>
-                                            <th></th>
-                                            <th>4</th>
-                                            <th>3</th>
-                                            <th>2</th>
-                                            <th>1</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach (var criteria in item.RubricCriteria) {
-                                            <tr>
-                                                <td>@Html.Raw(criteria.Name)</td>
-                                                <td>@Html.Raw(criteria.Desciption4)</td>
-                                                <td>@Html.Raw(criteria.Desciption3)</td>
-                                                <td>@Html.Raw(criteria.Desciption2)</td>
-                                                <td>@Html.Raw(criteria.Desciption1)</td>
-                                            </tr>
-                                        }
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                        
-                    </td>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @if (item.File != null) {
+                    <a href="#" class="view-pdf" data-pdf="">View File</a>
+                    <div style="display: none;" class="model-body-data">
+                        <object data="data:application/pdf;base64, @System.Convert.ToBase64String(item.File, 0, item.File.Length)" type="application/pdf" width="100%" height="600px"> 
+                            <p>It appears you don't have a PDF plugin for this browser. No biggie... you can <a target="_blank" asp-action="ViewFile" asp-route-id="@item.Id">click here to download the PDF file.</a></p>
+                        </object>
+                    </div>
                 }
-            </tr>
-
-            
-
-        }
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
     </tbody>
 </table>
 

@@ -1,4 +1,4 @@
-@model Assessment.Models.Rubric
+@model Assessment.Models.RubricCriteria
 
 @{
     ViewData["Title"] = "Details";
@@ -7,20 +7,20 @@
 <h1>Details</h1>
 
 <div>
-    <h4>Rubric</h4>
+    <h4>RubricCriteria</h4>
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Name)
+            @Html.DisplayNameFor(model => model.Rubric)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Name)
+            @Html.DisplayFor(model => model.Rubric.Id)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.File)
+            @Html.DisplayNameFor(model => model.CriteriaText)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.File)
+            @Html.DisplayFor(model => model.CriteriaText)
         </dd>
     </dl>
 </div>

@@ -18,9 +18,12 @@ cd Web
 dotnet aspnet-codegenerator controller --force --model Assessment.Models.Score --dataContext Assessment.Data.Contexts.AssessmentContext --relativeFolderPath "Areas/Admin/Controllers/" --controllerName ScoresController --useAsyncActions --referenceScriptLibraries --useDefaultLayout
 dotnet aspnet-codegenerator controller --force --model Assessment.Models.CourseSection --dataContext Assessment.Data.Contexts.AssessmentContext --relativeFolderPath "Areas/Admin/Controllers/" --controllerName CourseSectionsController --useAsyncActions --referenceScriptLibraries --useDefaultLayout
 dotnet aspnet-codegenerator controller --force --model Assessment.Models.Faculty --dataContext Assessment.Data.Contexts.AssessmentContext --relativeFolderPath "Areas/Admin/Controllers/" --controllerName FacultyController --useAsyncActions --referenceScriptLibraries --useDefaultLayout
+dotnet aspnet-codegenerator controller --force --model Assessment.Models.Rubric --dataContext Assessment.Data.Contexts.AssessmentContext --relativeFolderPath "Areas/Admin/Controllers/" --controllerName RubricsController --useAsyncActions --referenceScriptLibraries --useDefaultLayout
+dotnet aspnet-codegenerator controller --force --model Assessment.Models.RubricCriteria --dataContext Assessment.Data.Contexts.AssessmentContext --relativeFolderPath "Areas/Admin/Controllers/" --controllerName RubricCriteriaController --useAsyncActions --referenceScriptLibraries --useDefaultLayout
+dotnet aspnet-codegenerator controller --force --model Assessment.Models.RubricCriteriaElement --dataContext Assessment.Data.Contexts.AssessmentContext --relativeFolderPath "Areas/Admin/Controllers/" --controllerName RubricCriteriaElementsController --useAsyncActions --referenceScriptLibraries --useDefaultLayout
+
 
 # these have been manually updated, do not scaffold them
-dotnet aspnet-codegenerator controller --force --model Assessment.Models.Rubric --dataContext Assessment.Data.Contexts.AssessmentContext --relativeFolderPath "Areas/Admin/Controllers/" --controllerName RubricsController --useAsyncActions --referenceScriptLibraries --useDefaultLayout
 dotnet aspnet-codegenerator controller --force --model Assessment.Models.Artifact --dataContext Assessment.Data.Contexts.AssessmentContext --relativeFolderPath "Areas/Admin/Controllers/" --controllerName ArtifactsController --useAsyncActions --referenceScriptLibraries --useDefaultLayout
 dotnet aspnet-codegenerator controller --force --model Assessment.Models.User --relativeFolderPath "Areas/Admin/Controllers/" --controllerName UsersController --useAsyncActions --referenceScriptLibraries --useDefaultLayout --dataContext Assessment.Web.Areas.Identity.Data.ApplicationDbContext
 

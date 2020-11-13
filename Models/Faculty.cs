@@ -18,10 +18,13 @@ namespace Assessment.Models {
         
 
         [StringLength(100)]
-        public string Name { get; set; }
+        public string FirstName { get; set; }
 
+        [StringLength(100)]
+        public string LastName { get; set; }
 
-        
+        [NotMapped]
+        public string FullName { get { return $"{FirstName} {LastName}"; } }
 
         public virtual ICollection<CourseSection> CourseSections { get; set; }
 

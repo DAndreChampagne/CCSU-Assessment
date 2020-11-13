@@ -1,4 +1,3 @@
-
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -9,16 +8,16 @@ namespace Assessment.Models {
     /// <summary>
     /// 
     /// </summary>    
-    public class RubricCriteria {
+    public class RubricCriteriaElement {
         public int Id { get; set; }
         
-        public virtual Rubric Rubric { get; set; }
-        public string RubricId { get; set; }
+        public virtual RubricCriteria RubricCriteria { get; set; }
+        public string RubricCriteriaId { get; set; }
 
         public string CriteriaText { get; set; }
 
-        public virtual ICollection<RubricCriteriaElement> RubricCriteriaElements { get; set; }
-        public virtual ICollection<Score> Scores { get; set; }
+        [Range(0, Int32.MaxValue)]
+        public int ScoreValue { get; set; }
     }
 
 }

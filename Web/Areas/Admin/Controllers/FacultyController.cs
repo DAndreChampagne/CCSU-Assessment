@@ -58,7 +58,7 @@ namespace Assessment.Web.Areas.Admin.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,RubricId,Name")] Faculty faculty)
+        public async Task<IActionResult> Create([Bind("Id,RubricId,FirstName,LastName")] Faculty faculty)
         {
             if (ModelState.IsValid)
             {
@@ -92,7 +92,7 @@ namespace Assessment.Web.Areas.Admin.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,RubricId,Name")] Faculty faculty)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,RubricId,FirstName,LastName")] Faculty faculty)
         {
             if (id != faculty.Id)
             {

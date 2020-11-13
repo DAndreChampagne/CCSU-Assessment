@@ -1,4 +1,4 @@
-@model IEnumerable<Assessment.Models.Faculty>
+@model IEnumerable<Assessment.Models.RubricCriteria>
 
 @{
     ViewData["Title"] = "Index";
@@ -16,10 +16,7 @@
                 @Html.DisplayNameFor(model => model.Rubric)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.FirstName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.LastName)
+                @Html.DisplayNameFor(model => model.CriteriaText)
             </th>
             <th></th>
         </tr>
@@ -31,10 +28,7 @@
                 @Html.DisplayFor(modelItem => item.Rubric.Id)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.FirstName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LastName)
+                @Html.DisplayFor(modelItem => item.CriteriaText)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |

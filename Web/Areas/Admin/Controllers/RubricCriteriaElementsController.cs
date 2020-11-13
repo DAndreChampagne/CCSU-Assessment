@@ -11,85 +11,85 @@ using Assessment.Models;
 namespace Assessment.Web.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    public class RubricsController : Controller
+    public class RubricCriteriaElementsController : Controller
     {
         private readonly AssessmentContext _context;
 
-        public RubricsController(AssessmentContext context)
+        public RubricCriteriaElementsController(AssessmentContext context)
         {
             _context = context;
         }
 
-        // GET: Admin/Rubrics
+        // GET: Admin/RubricCriteriaElements
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Rubrics.ToListAsync());
+            return View(await _context.RubricCriteriaElements.ToListAsync());
         }
 
-        // GET: Admin/Rubrics/Details/5
-        public async Task<IActionResult> Details(string id)
+        // GET: Admin/RubricCriteriaElements/Details/5
+        public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var rubric = await _context.Rubrics
+            var rubricCriteriaElement = await _context.RubricCriteriaElements
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (rubric == null)
+            if (rubricCriteriaElement == null)
             {
                 return NotFound();
             }
 
-            return View(rubric);
+            return View(rubricCriteriaElement);
         }
 
-        // GET: Admin/Rubrics/Create
+        // GET: Admin/RubricCriteriaElements/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Admin/Rubrics/Create
+        // POST: Admin/RubricCriteriaElements/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,File")] Rubric rubric)
+        public async Task<IActionResult> Create([Bind("Id,RubricCriteriaId,CriteriaText,ScoreValue")] RubricCriteriaElement rubricCriteriaElement)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(rubric);
+                _context.Add(rubricCriteriaElement);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(rubric);
+            return View(rubricCriteriaElement);
         }
 
-        // GET: Admin/Rubrics/Edit/5
-        public async Task<IActionResult> Edit(string id)
+        // GET: Admin/RubricCriteriaElements/Edit/5
+        public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var rubric = await _context.Rubrics.FindAsync(id);
-            if (rubric == null)
+            var rubricCriteriaElement = await _context.RubricCriteriaElements.FindAsync(id);
+            if (rubricCriteriaElement == null)
             {
                 return NotFound();
             }
-            return View(rubric);
+            return View(rubricCriteriaElement);
         }
 
-        // POST: Admin/Rubrics/Edit/5
+        // POST: Admin/RubricCriteriaElements/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("Id,Name,File")] Rubric rubric)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,RubricCriteriaId,CriteriaText,ScoreValue")] RubricCriteriaElement rubricCriteriaElement)
         {
-            if (id != rubric.Id)
+            if (id != rubricCriteriaElement.Id)
             {
                 return NotFound();
             }
@@ -98,12 +98,12 @@ namespace Assessment.Web.Areas.Admin.Controllers
             {
                 try
                 {
-                    _context.Update(rubric);
+                    _context.Update(rubricCriteriaElement);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!RubricExists(rubric.Id))
+                    if (!RubricCriteriaElementExists(rubricCriteriaElement.Id))
                     {
                         return NotFound();
                     }
@@ -114,41 +114,41 @@ namespace Assessment.Web.Areas.Admin.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(rubric);
+            return View(rubricCriteriaElement);
         }
 
-        // GET: Admin/Rubrics/Delete/5
-        public async Task<IActionResult> Delete(string id)
+        // GET: Admin/RubricCriteriaElements/Delete/5
+        public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var rubric = await _context.Rubrics
+            var rubricCriteriaElement = await _context.RubricCriteriaElements
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (rubric == null)
+            if (rubricCriteriaElement == null)
             {
                 return NotFound();
             }
 
-            return View(rubric);
+            return View(rubricCriteriaElement);
         }
 
-        // POST: Admin/Rubrics/Delete/5
+        // POST: Admin/RubricCriteriaElements/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(string id)
+        public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var rubric = await _context.Rubrics.FindAsync(id);
-            _context.Rubrics.Remove(rubric);
+            var rubricCriteriaElement = await _context.RubricCriteriaElements.FindAsync(id);
+            _context.RubricCriteriaElements.Remove(rubricCriteriaElement);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool RubricExists(string id)
+        private bool RubricCriteriaElementExists(int id)
         {
-            return _context.Rubrics.Any(e => e.Id == id);
+            return _context.RubricCriteriaElements.Any(e => e.Id == id);
         }
     }
 }
