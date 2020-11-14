@@ -46,10 +46,10 @@ namespace Assessment.Web.Areas.Admin.Controllers
 
             var file = await _context.Artifacts
                 .Where(x => x.Id == id)
-                .Select(x => x.File)
                 .FirstOrDefaultAsync();
 
-            return File(file, System.Net.Mime.MediaTypeNames.Application.Pdf);
+            // return File(file, System.Net.Mime.MediaTypeNames.Application.Pdf);
+            return File(file.File, System.Net.Mime.MediaTypeNames.Application.Octet, file.Name);
         }
 
         // GET: Admin/Artifacts/Details/5

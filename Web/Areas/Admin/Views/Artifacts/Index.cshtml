@@ -4,58 +4,16 @@
     ViewData["Title"] = "Index";
 
     var uploadResult = ViewData["UploadResult"] as Assessment.Logic.Services.ProcessArtifactResult;
+    Console.WriteLine("");
 }
+
+<input type="hidden" id="uploadResult" value="@(uploadResult != null ? 1 : 0)" />
 
 <h1>All Artifacts</h1>
 
-@* <p>
-    <a asp-action="Create">Create New</a>
-</p> *@
+<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#uploadModal">Upload new artifacts</button>
 
-<div class="row border">
-    <form asp-area="admin" asp-controller="Artifacts" asp-action="UploadArtifacts" enctype="multipart/form-data" method="post">
-        <div class="col-sm border">
-            <label for="file">Upload artifacts</label>
-            <input type="file" name="file" accept=".zip, .zipx" class="" />
-        </div>
-        <div class="col-sm border">
-            <input class="btn btn-sm btn-secondary" type="submit" value="Upload" />
-        </div>
-    </form>
-</div>
-
-@if (uploadResult != null) {
-    <div class="row">
-        <div class="col-md">
-            @if (uploadResult.Success) {
-                <p>Processed all @uploadResult.ProcessedFiles files successfully!</p>
-            } else {
-                <div id="errorresultsmodal" class="modal" tabindex="-1" role="dialog">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title">Processed @uploadResult.ProcessedFiles of @uploadResult.TotalFiles files successfully!</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <p>Modal body text goes here.</p>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <script type="text/javascript">
-                </script>
-            }
-        </div>
-    </div>
-}
-
-<table class="table">
+<table class="table table-condensed">
     <thead>
         <tr>
             <th>
@@ -87,60 +45,137 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Rubric.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Term)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.StudentId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FacultyId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Level)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CRN)
-            </td>
+        @foreach (var item in Model) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Rubric.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Term)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StudentId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FacultyId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Level)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CRN)
+                </td>
 
-            <td>
-                @* @Html.DisplayFor(modelItem => item.File) *@
-                <a href="#" class="view-pdf" data-pdf="">View File</a>
-                <div style="display: none;" class="model-body-data">
-                    <object data="data:application/pdf;base64, @System.Convert.ToBase64String(item.File, 0, item.File.Length)" type="application/pdf" width="100%" height="600px"> 
-                        <p>It appears you don't have a PDF plugin for this browser. No biggie... you can <a target="_blank" asp-action="ViewFile" asp-route-id="@item.Id">click here to download the PDF file.</a></p>
-                    </object>
-                </div>
-            </td>
-            <td>
-                @* <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> | *@
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
+                <td>
+                    @if (System.IO.Path.GetExtension(item.Name).ToUpper() == ".PDF") {
+                        <a href="#" class="view-pdf" data-pdf="">View File</a>
+                        <div style="display: none;" class="model-body-data">
+                            <object data="data:application/pdf;base64, @System.Convert.ToBase64String(item.File, 0, item.File.Length)" type="application/pdf" width="100%" height="600px"> 
+                                <p>It appears you don't have a PDF plugin for this browser. No biggie... you can <a target="_blank" asp-action="ViewFile" asp-route-id="@item.Id">click here to download the PDF file.</a></p>
+                            </object>
+                        </div>
+                    } else if (System.IO.Path.GetExtension(item.Name).ToUpper() == ".DOC" || System.IO.Path.GetExtension(item.Name).ToUpper() == ".DOCX") {
+                        <a href="#" class="view-pdf" data-pdf="">View File</a>
+                        <div style="display: none;" class="model-body-data">
+                            <object data="data:application/octet;base64, @System.Convert.ToBase64String(item.File, 0, item.File.Length)" type="application/pdf" width="100%" height="600px"> 
+                                <p>It appears you don't have the necessary plugin for this browser. No biggie... you can <a target="_blank" asp-action="ViewFile" asp-route-id="@item.Id">click here to download the file.</a></p>
+                            </object>
+                        </div>
+                    } else {
+                        <p><a target="_blank" asp-action="ViewFile" asp-route-id="@item.Id">Download file</a></p>
+                    }
+                </td>
+                <td>
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
+
+
+<form asp-area="admin" asp-controller="Artifacts" asp-action="UploadArtifacts" enctype="multipart/form-data" method="post">
+    <div id="uploadModal" class="modal hide fade" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    <label for="file">Select file to upload:</label><br/>
+                    <input type="file" name="file" accept=".zip, .zipx" class="" />
+                </div>
+                <div class="modal-footer">
+                    <input class="btn btn-sm btn-primary" type="submit" value="Upload" />
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+
+
+
+<div id="uploadResultModal" class="modal hide fade" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            @if (uploadResult?.Success ?? false) {
+                <div class="modal-header">
+                    <span>Processed all @uploadResult.TotalFiles files successfully!</span>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                </div>
+            } else if (!uploadResult?.Success ?? false) {
+                <div class="modal-header">
+                    <span class="text-danger">Processed @uploadResult.ProcessedFiles of @uploadResult.TotalFiles.</span>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    <p class="text-danger">The following files will need to be corrected, zipped, and reuploaded.</p>
+                    <table class="table table-condensed">
+                        <thead>
+                            <tr>
+                                <th>File name</th>
+                                <th>Error Message</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in uploadResult.FilesNotProcessed) {
+                                <tr>
+                                    <td>@Html.DisplayFor(x => item.FileName)</td>
+                                    <td>@Html.DisplayFor(x => item.ErrorMessage)</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            } else {
+                <div class="modal-header">
+                    <span class="danger">You shouldn't be seeing this...</span>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
 
 
 <div id="pdfModal" class="modal hide fade" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
+                <span>View file</span>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             </div>
             <div class="modal-body">
             </div>
-            @* <div class="modal-footer">
-            </div> *@
         </div>
     </div>
 </div>
@@ -158,6 +193,10 @@
                 modalBody.html(data);
                 modal.modal('show');
             });
+
+            if ($('#uploadResult').val() == 1) {
+                $('#uploadResultModal').modal('show');
+            }
         });
     </script>
 }

@@ -25,7 +25,7 @@ namespace Assessment.Models {
         public virtual CourseSection CourseSection { get; set; }
 
 
-        [StringLength(50)]
+        [StringLength(200)]
         public string Name { get; set; }
 
         [StringLength(10)]
