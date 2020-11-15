@@ -23,7 +23,7 @@ namespace Assessment.Web.Areas.Identity
 
                 services
                     .AddDefaultIdentity<Assessment.Models.User>(options => options.SignIn.RequireConfirmedAccount = true)
-                    .AddRoles<IdentityRole>()
+                    .AddRoles<Assessment.Models.Role>()
                     .AddEntityFrameworkStores<ApplicationDbContext>();
                 
                 services.Configure<IdentityOptions>(options => {

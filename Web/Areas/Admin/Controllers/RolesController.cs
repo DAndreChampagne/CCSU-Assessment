@@ -19,9 +19,9 @@ namespace Assessment.Web.Areas.Admin.Controllers
     {
         private readonly ApplicationDbContext _context;
         private readonly UserManager<Assessment.Models.User> _userManager;
-        private readonly RoleManager<IdentityRole> _roleManager;
+        private readonly RoleManager<Assessment.Models.Role> _roleManager;
 
-        public RolesController(ApplicationDbContext context, UserManager<User> userManager, RoleManager<IdentityRole> roleManager)
+        public RolesController(ApplicationDbContext context, UserManager<User> userManager, RoleManager<Assessment.Models.Role> roleManager)
         {
             _context = context;
             _userManager = userManager;
@@ -67,7 +67,7 @@ namespace Assessment.Web.Areas.Admin.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(IdentityRole role)
+        public async Task<IActionResult> Create(Assessment.Models.Role role)
         {
             if (ModelState.IsValid)
             {
@@ -101,7 +101,7 @@ namespace Assessment.Web.Areas.Admin.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, IdentityRole role)
+        public async Task<IActionResult> Edit(string id, Assessment.Models.Role role)
         {
             if (id != role.Id)
             {
@@ -119,6 +119,7 @@ namespace Assessment.Web.Areas.Admin.Controllers
 
                     r.Name = role.Name;
                     r.NormalizedName = role.Name.ToUpperInvariant();
+                    r.Description = role.Description;
 
                     var result = await _roleManager.UpdateAsync(r);
 

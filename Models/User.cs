@@ -10,11 +10,10 @@ namespace Assessment.Models {
     /// <summary>
     /// 
     /// </summary>
-    public class User : IdentityUser {
+    public class User : IdentityUser<string> {
 
         [StringLength(100)]
         public string Name { get; set; }
-
 
         [NotMapped]
         public List<string> Roles { get; set; } = new List<string>();
@@ -22,6 +21,9 @@ namespace Assessment.Models {
         [NotMapped]
         [Display(Name = "Roles")]
         public string RoleName { get; set; }
+
+        [NotMapped]
+        public string RoleDescription { get; set; }
 
     }
 

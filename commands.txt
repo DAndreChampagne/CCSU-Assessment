@@ -8,7 +8,7 @@ dotnet ef migrations add initial
 
 cd Web
 dotnet ef migrations add CreateIdentitySchema --context Assessment.Web.Areas.Identity.Data.ApplicationDbContext
-
+dotnet ef database update --context Assessment.Web.Areas.Identity.Data.ApplicationDbContext
 
 dotnet aspnet-codegenerator identity -dc Assessment.Web.Areas.Identity.Data.ApplicationDbContext
 

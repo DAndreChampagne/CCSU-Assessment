@@ -39,7 +39,7 @@ namespace Assessment.Web
 
                     var userStore = new UserStore<User>(applicationDbContext);
                     var userManager = services.GetService<UserManager<User>>();
-                    var roleManager = services.GetService<RoleManager<IdentityRole>>();
+                    var roleManager = services.GetService<RoleManager<Assessment.Models.Role>>();
                     var hasher = userManager.PasswordHasher;
                     
                     var pwd = Path.GetFullPath("~");
@@ -59,7 +59,7 @@ namespace Assessment.Web
                     foreach (var role in roles) {
                         if (!applicationDbContext.Roles.Any(x => x.Name == role)) {
                             Task.Run(async () => {
-                                await roleManager.CreateAsync(new IdentityRole(role));
+                                await roleManager.CreateAsync(new Assessment.Models.Role(role));
                             }).Wait();
                         }
                     }

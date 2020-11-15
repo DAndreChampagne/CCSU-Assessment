@@ -20,9 +20,9 @@ namespace Assessment.Web.Areas.Admin.Controllers
         private readonly ApplicationDbContext _context;
         private readonly AssessmentContext _db;
         private readonly UserManager<Assessment.Models.User> _userManager;
-        private readonly RoleManager<IdentityRole> _roleManager;
+        private readonly RoleManager<Assessment.Models.Role> _roleManager;
 
-        public UsersController(ApplicationDbContext context, AssessmentContext db, UserManager<User> userManager, RoleManager<IdentityRole> roleManager)
+        public UsersController(ApplicationDbContext context, AssessmentContext db, UserManager<User> userManager, RoleManager<Assessment.Models.Role> roleManager)
         {
             _context = context;
             _userManager = userManager;
@@ -36,10 +36,16 @@ namespace Assessment.Web.Areas.Admin.Controllers
             var users = await _context.Users
                 .OrderBy(x => x.Name)
                 .ToListAsync();
+            var allRoles = await _context.Roles.ToListAsync();
 
             foreach (var user in users) {
                 var roles = await _userManager.GetRolesAsync(user);
                 user.RoleName = String.Join(',', roles);
+                user.RoleDescription = String.Join(',',
+                    allRoles.Where(x => roles.Contains(x.Name))
+                        .Select(x => x.Description)
+                        .ToList()
+                );
             }
 
             return View(users);

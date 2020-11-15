@@ -24,7 +24,7 @@ namespace Assessment.Tests.Web.Areas.Admin.Controllers
         private static ApplicationDbContext applicationDbContext;
         private static RolesController controller;
         private static UserManager<User> userManager;
-        private static RoleManager<IdentityRole> roleManager;
+        private static RoleManager<Assessment.Models.Role> roleManager;
         private static SqliteConnection _connection;
 
         [ClassInitialize]
@@ -49,7 +49,7 @@ namespace Assessment.Tests.Web.Areas.Admin.Controllers
             db = new AssessmentContext(options1.Options);
             applicationDbContext = new ApplicationDbContext(options2.Options);
             userManager = new UserManager<User>(new UserStore<User>(applicationDbContext), null, null, null, null, null, null, null, null);
-            roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(applicationDbContext), null, null, null, null);
+            roleManager = new RoleManager<Assessment.Models.Role>(new RoleStore<Assessment.Models.Role>(applicationDbContext), null, null, null, null);
             controller = new RolesController(applicationDbContext, userManager, roleManager);
 
             if (db.Database.GetPendingMigrations().Any()) {
@@ -61,7 +61,7 @@ namespace Assessment.Tests.Web.Areas.Admin.Controllers
                 applicationDbContext.Database.Migrate();
             }
             if (!applicationDbContext.Roles.Any()) {
-                applicationDbContext.Roles.Add(new IdentityRole {
+                applicationDbContext.Roles.Add(new Assessment.Models.Role {
                     Id = Guid.NewGuid().ToString(),
                     Name = "System Administrator",
                 });
@@ -96,7 +96,7 @@ namespace Assessment.Tests.Web.Areas.Admin.Controllers
         {
             var view = await controller.Index();
             var result = view as ViewResult;
-            var data = result.Model as List<IdentityRole>;
+            var data = result.Model as List<Assessment.Models.Role>;
             var users = applicationDbContext.Users.ToList();
             
             Assert.IsNotNull(result);
@@ -107,7 +107,7 @@ namespace Assessment.Tests.Web.Areas.Admin.Controllers
         public async Task CreateNewRole()
         {
             var expected = applicationDbContext.Roles.Count() + 1;
-            var view = await controller.Create(new IdentityRole { Name = "Test", Id = Guid.NewGuid().ToString(), });
+            var view = await controller.Create(new Assessment.Models.Role { Name = "Test", Id = Guid.NewGuid().ToString(), });
             var result = view as ViewResult;            
             
             var actual = applicationDbContext.Roles.Count();
@@ -118,7 +118,7 @@ namespace Assessment.Tests.Web.Areas.Admin.Controllers
         [TestMethod]
         public async Task EditExistingRole()
         {
-            var role = new IdentityRole { Name = "Test", Id = Guid.NewGuid().ToString(), };
+            var role = new Assessment.Models.Role { Name = "Test", Id = Guid.NewGuid().ToString(), };
             var expectedRoleCount = applicationDbContext.Roles.Count() + 1;
             var actualRoleCount = -1;
 
@@ -143,7 +143,7 @@ namespace Assessment.Tests.Web.Areas.Admin.Controllers
         [TestMethod]
         public async Task DeleteExistingRole()
         {
-            var role = new IdentityRole { Name = "Test", Id = Guid.NewGuid().ToString(), };
+            var role = new Assessment.Models.Role { Name = "Test", Id = Guid.NewGuid().ToString(), };
             var expectedRoleCount = applicationDbContext.Roles.Count();
             var actualRoleCount = -1;
 
