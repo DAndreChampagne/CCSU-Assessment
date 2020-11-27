@@ -77,7 +77,7 @@ namespace Assessment.Web
                                 EmailConfirmed = true,
                                 UserName = "Daniel.Champagne@my.ccsu.edu",
                                 NormalizedUserName = "DANIEL.CHAMPAGNE@MY.CCSU.EDU",
-                                PasswordHash = hasher.HashPassword(null, "Abcdefg!1"),
+                                // PasswordHash = hasher.HashPassword(null, "Abcdefg!1"),
                             },
                             new User {
                                 Name = "Martie Kaczmarek",
@@ -86,7 +86,7 @@ namespace Assessment.Web
                                 EmailConfirmed = true,
                                 UserName = "mkaczmarek@ccsu.edu",
                                 NormalizedUserName = "MKACZMAREK@CCSU.EDU",
-                                PasswordHash = hasher.HashPassword(null, "Abcdefg!1"),
+                                // PasswordHash = hasher.HashPassword(null, "Abcdefg!1"),
                             },
                             new User {
                                 Name = "Stan Kurkovsky",
@@ -95,7 +95,7 @@ namespace Assessment.Web
                                 EmailConfirmed = true,
                                 UserName = "kurkovsky@ccsu.edu",
                                 NormalizedUserName = "KURKOVSKY@CCSU.EDU",
-                                PasswordHash = hasher.HashPassword(null, "Abcdefg!1"),
+                                // PasswordHash = hasher.HashPassword(null, "Abcdefg!1"),
                             },
                             new User {
                                 Name = "Yvonne Kirby",
@@ -104,7 +104,7 @@ namespace Assessment.Web
                                 EmailConfirmed = true,
                                 UserName = "ykirby@ccsu.edu",
                                 NormalizedUserName = "YKIRBY@CCSU.EDU",
-                                PasswordHash = hasher.HashPassword(null, "Abcdefg!1"),
+                                // PasswordHash = hasher.HashPassword(null, "Abcdefg!1"),
                             },
                             new User {
                                 Name = "Parvathy Kumar",
@@ -113,7 +113,7 @@ namespace Assessment.Web
                                 EmailConfirmed = true,
                                 UserName = "parvathy.kumar@my.ccsu.edu",
                                 NormalizedUserName = "PARVATHY.KUMAR@MY.CCSU.EDU",
-                                PasswordHash = hasher.HashPassword(null, "Abcdefg!1"),
+                                // PasswordHash = hasher.HashPassword(null, "Abcdefg!1"),
                             },
                             new User {
                                 Name = "Mansimran Singh",
@@ -122,7 +122,7 @@ namespace Assessment.Web
                                 EmailConfirmed = true,
                                 UserName = "mansimransingh@my.ccsu.edu",
                                 NormalizedUserName = "MANSIMRANSINGH@MY.CCSU.EDU",
-                                PasswordHash = hasher.HashPassword(null, "Abcdefg!1"),
+                                // PasswordHash = hasher.HashPassword(null, "Abcdefg!1"),
                             },
                             new User {
                                 Name = "Jason Smith",
@@ -131,7 +131,7 @@ namespace Assessment.Web
                                 EmailConfirmed = true,
                                 UserName = "jason.r.smith@my.ccsu.edu",
                                 NormalizedUserName = "JASON.R.SMITH@MY.CCSU.EDU",
-                                PasswordHash = hasher.HashPassword(null, "Abcdefg!1"),
+                                // PasswordHash = hasher.HashPassword(null, "Abcdefg!1"),
                             },
                             new User {
                                 Name = "Yash Dalsania",
@@ -140,7 +140,7 @@ namespace Assessment.Web
                                 EmailConfirmed = true,
                                 UserName = "yash.dalsania@my.ccsu.edu",
                                 NormalizedUserName = "YASH.DALSANIA@MY.CCSU.EDU",
-                                PasswordHash = hasher.HashPassword(null, "Abcdefg!1"),
+                                // PasswordHash = hasher.HashPassword(null, "Abcdefg!1"),
                             },
                             new User {
                                 Name = "Luis Gutierrez",
@@ -149,7 +149,7 @@ namespace Assessment.Web
                                 EmailConfirmed = true,
                                 UserName = "luis.gutierrez@my.ccsu.edu",
                                 NormalizedUserName = "LUIS.GUTIERREZ@MY.CCSU.EDU",
-                                PasswordHash = hasher.HashPassword(null, "Abcdefg!1"),
+                                // PasswordHash = hasher.HashPassword(null, "Abcdefg!1"),
                             },
                             new User {
                                 Name = "Chenyang Lin",
@@ -158,7 +158,7 @@ namespace Assessment.Web
                                 EmailConfirmed = true,
                                 UserName = "chenyanglin@my.ccsu.edu",
                                 NormalizedUserName = "CHENYANGLIN@MY.CCSU.EDU",
-                                PasswordHash = hasher.HashPassword(null, "Abcdefg!1"),
+                                // PasswordHash = hasher.HashPassword(null, "Abcdefg!1"),
                             },
                             new User {
                                 Name = "Trung Minh Tri Nguyen",
@@ -167,7 +167,7 @@ namespace Assessment.Web
                                 EmailConfirmed = true,
                                 UserName = "trungminhtri.nguyen@my.ccsu.edu",
                                 NormalizedUserName = "TRUNGMINHTRI.NGUYEN@MY.CCSU.EDU",
-                                PasswordHash = hasher.HashPassword(null, "Abcdefg!1"),
+                                // PasswordHash = hasher.HashPassword(null, "Abcdefg!1"),
                             },
                             new User {
                                 Name = "Paul Pasquarelli",
@@ -176,12 +176,16 @@ namespace Assessment.Web
                                 EmailConfirmed = true,
                                 UserName = "pasquarellip@my.ccsu.edu",
                                 NormalizedUserName = "PASQUARELLIP@MY.CCSU.EDU",
-                                PasswordHash = hasher.HashPassword(null, "Abcdefg!1"),
+                                // PasswordHash = hasher.HashPassword(null, "Abcdefg!1"),
                             },
                         };
 
                         foreach (var user in users) {
                             Task.Run(async () => {
+
+                                user.PasswordHash = hasher.HashPassword(user, "Abcdefg!1");
+                                user.SecurityStamp = Guid.NewGuid().ToString();
+
                                 var result = await userStore.CreateAsync(user);
                                 Console.WriteLine($"Creating user {user.Name}... ({result})");
                                 if (result.Succeeded) {
@@ -205,7 +209,7 @@ namespace Assessment.Web
                         assessmentContext.Rubrics.AddRange(new [] {
                             new Rubric { 
                                 Id = "WC", 
-                                Name = "Writen Communication", 
+                                Name = "Written Communication", 
                                 File = System.IO.File.ReadAllBytes(Path.Combine(seedDataPath, "Rubric_WrittenCommunication.pdf")),
                                 RubricCriteria = new List<RubricCriteria> {
                                     // new RubricCriteria {
@@ -483,7 +487,6 @@ namespace Assessment.Web
                         assessmentContext.SaveChanges();
                     }
 #endregion
-
 
 
                 } catch (Exception ex) {

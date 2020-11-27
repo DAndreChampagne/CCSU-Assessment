@@ -23,15 +23,15 @@ namespace Assessment.Data.Contexts {
             Console.WriteLine("AssessmentContext(options)");
         }
 
-        // public DbSet<School> Schools { get; set; }
-        public DbSet<Faculty> Faculty { get; set; }
-        public DbSet<CourseSection> CourseSections { get; set; }
-        public DbSet<Rubric> Rubrics { get; set; }
-        public DbSet<RubricCriteria> RubricCriteria { get; set; }
-        public DbSet<RubricCriteriaElement> RubricCriteriaElements { get; set; }
-        public DbSet<Score> Scores { get; set; }
-        
-        public DbSet<Artifact> Artifacts { get; set; }
+        public DbSet<Assessment.Models.Faculty> Faculty { get; set; }
+        public DbSet<Assessment.Models.CourseSection> CourseSections { get; set; }
+        public DbSet<Assessment.Models.Rubric> Rubrics { get; set; }
+        public DbSet<Assessment.Models.RubricCriteria> RubricCriteria { get; set; }
+        public DbSet<Assessment.Models.RubricCriteriaElement> RubricCriteriaElements { get; set; }
+        public DbSet<Assessment.Models.Score> Scores { get; set; }
+        public DbSet<Assessment.Models.Artifact> Artifacts { get; set; }
+
+        public DbSet<Assessment.Models.Error> Errors { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

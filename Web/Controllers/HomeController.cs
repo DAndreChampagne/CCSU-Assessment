@@ -8,6 +8,9 @@ using Microsoft.Extensions.Logging;
 using Assessment.Web.Models;
 using Assessment.Logic.Services;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Diagnostics;
+using Microsoft.AspNetCore.Hosting;
+using Assessment.Data.Contexts;
 
 namespace Assessment.Web.Controllers
 {
@@ -16,10 +19,12 @@ namespace Assessment.Web.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly AssessmentContext _context;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, AssessmentContext context)
         {
             _logger = logger;
+            _context = context;
         }
 
         public IActionResult Index()
@@ -46,8 +51,21 @@ namespace Assessment.Web.Controllers
 
         [AllowAnonymous]
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
+        public IActionResult Error([FromServices] IWebHostEnvironment webHostEnvironment)
         {
+            var context = HttpContext.Features.Get<IExceptionHandlerFeature>();
+
+            _context.Errors.Add(new Assessment.Models.Error {
+                Timestamp = DateTime.UtcNow,
+                UserName = User.Identity.Name,
+                StackTrace = context.Error.StackTrace.ToString(),
+                Source = context.Error.Source,
+                Message = context.Error.Message,
+                InnerException = context.Error.InnerException?.ToString(),
+                HResult = context.Error.HResult,
+            });
+            _context.SaveChanges();
+
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
     }

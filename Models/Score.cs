@@ -14,8 +14,10 @@ namespace Assessment.Models {
         public int Id { get; set; }
 
         public virtual RubricCriteria RubricCriteria { get; set; }
+        [Display(Name = "Rubric Criteria ID")]
         public virtual string RubricCriteriaId { get; set; }
 
+        [Display(Name = "Faculty ID")]
         public int FacultyId { get; set; }
         public virtual Faculty Faculty { get; set; }
 

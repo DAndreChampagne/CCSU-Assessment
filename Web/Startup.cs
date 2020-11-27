@@ -13,12 +13,10 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using HealthChecks.UI.Client;
-using ElmahCore.Mvc;
 using Microsoft.AspNetCore.Http;
 using System.Net.Mime;
 using Newtonsoft.Json;
 using Assessment.Logic.Services;
-using ElmahCore;
 
 namespace Assessment.Web
 {
@@ -53,30 +51,10 @@ namespace Assessment.Web
 
         public void ConfigureServices(IServiceCollection services) {
 
-            services.AddElmah<XmlFileErrorLog>(options => {
-                options.ApplicationName = "OIRA";
-                options.LogPath = "~/errorlogs";
-                
-            });
-
             services.AddDbContext<AssessmentContext>(options => {
                 options.UseLoggerFactory(LoggerFactory.Create(l => l.AddConsole()));
                 options.UseMySql(DatabaseConnectionString);
             });
-
-            // services
-            //     .AddHealthChecks()
-            //     .AddDbContextCheck<AssessmentContext>(tags: new [] { "db" })
-            //     .AddCheck("constant healthy", () => { return HealthCheckResult.Healthy(); }, tags: new [] { "misc" })
-            // ;
-
-            // services.AddHealthChecksUI(options => {
-            //     options.SetEvaluationTimeInSeconds(30);
-            //     options.SetMinimumSecondsBetweenFailureNotifications(60);
-            //     options.MaximumHistoryEntriesPerEndpoint(60);
-            //     options.DisableDatabaseMigrations();
-            //     options.AddHealthCheckEndpoint(name: "OIRA Application", uri: "/hc");
-            // }).AddInMemoryStorage();
 
             services
                 .AddControllersWithViews()
@@ -88,9 +66,9 @@ namespace Assessment.Web
 
         }
 
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerFactory)
         {
-            app.UseElmah();
+            
 
             if (env.IsDevelopment())
             {
@@ -101,6 +79,7 @@ namespace Assessment.Web
                 app.UseExceptionHandler("/Home/Error");
                 app.UseHsts();
             }
+
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
@@ -111,34 +90,6 @@ namespace Assessment.Web
 
             app.UseEndpoints(endpoints =>
             {
-                // endpoints.MapHealthChecks("/hc", new HealthCheckOptions
-                // {
-                //     Predicate = check => true, //check.Tags.Contains(""), // filter by tags
-                //     AllowCachingResponses = false,
-                //     // ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse,
-                //     ResponseWriter = async (ctx, rpt) => {
-                //         var result = JsonConvert.SerializeObject(new {  
-                //             status = rpt.Status.ToString(),  
-                //             errors = rpt.Entries.Select(e => new { key = e.Key, value = Enum.GetName(typeof(HealthStatus), e.Value.Status) })  
-                //         },
-                //         Formatting.Indented,
-                //         new JsonSerializerSettings {  
-                //             NullValueHandling = NullValueHandling.Ignore  
-                //         });  
-                //         ctx.Response.ContentType = MediaTypeNames.Application.Json;  
-                //         await ctx.Response.WriteAsync(result);
-                //     },
-                // });
-
-                // endpoints.MapHealthChecksUI(options => {
-                //     options.UseRelativeApiPath = false;
-                //     options.UseRelativeResourcesPath = false;
-                //     options.AsideMenuOpened = false;
-
-                //     options.UIPath = "/health";
-                //     // opt.ApiPath = "/healthAPI";
-                // });
-
                 endpoints.MapControllerRoute(
                     name: "AreasRoute",
                     pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");

@@ -17,6 +17,7 @@ namespace Assessment.Models {
         public virtual Rubric Rubric { get; set; }
         
 
+        [Display(Name = "Faculty ID")]
         public int FacultyId { get; set; }
         public virtual Faculty Faculty { get; set; }
 

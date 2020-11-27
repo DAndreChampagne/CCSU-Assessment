@@ -15,6 +15,7 @@ namespace Assessment.Models {
 
         public Role(): base() {}
         public Role(string name, string description = null): base(name) {
+            Id = Guid.NewGuid().ToString();
             Description = description;
         }
 

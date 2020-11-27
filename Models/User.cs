@@ -12,6 +12,10 @@ namespace Assessment.Models {
     /// </summary>
     public class User : IdentityUser<string> {
 
+        public User() {
+            Id = Guid.NewGuid().ToString();
+        }
+
         [StringLength(100)]
         public string Name { get; set; }
 
@@ -23,6 +27,7 @@ namespace Assessment.Models {
         public string RoleName { get; set; }
 
         [NotMapped]
+        [Display(Name = "Role descriptions")]
         public string RoleDescription { get; set; }
 
     }

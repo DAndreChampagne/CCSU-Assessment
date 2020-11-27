@@ -15,6 +15,7 @@ namespace Assessment.Models {
         public virtual Rubric Rubric { get; set; }
         public int RubricId { get; set; }
 
+        [Display(Name = "Criteria Text")]
         public string CriteriaText { get; set; }
 
         public virtual ICollection<RubricCriteriaElement> RubricCriteriaElements { get; set; }
