@@ -24,38 +24,5 @@ dotnet aspnet-codegenerator controller --force --model Assessment.Models.RubricC
 
 
 # these have been manually updated, do not scaffold them
-dotnet aspnet-codegenerator controller --force --model Assessment.Models.Artifact --dataContext Assessment.Data.Contexts.AssessmentContext --relativeFolderPath "Areas/Admin/Controllers/" --controllerName ArtifactsController --useAsyncActions --referenceScriptLibraries --useDefaultLayout
-dotnet aspnet-codegenerator controller --force --model Assessment.Models.User --relativeFolderPath "Areas/Admin/Controllers/" --controllerName UsersController --useAsyncActions --referenceScriptLibraries --useDefaultLayout --dataContext Assessment.Web.Areas.Identity.Data.ApplicationDbContext
-
-
-
-
-
-
-<form method="post" enctype="multipart/form-data" asp-area="Admin" asp-controller="Sections" asp-action="Upload">
-    <div class="form-group files color">
-        <label>Upload Your File </label>
-        <input type="file" name="files" class="form-control" multiple />
-    </div>
-    <div>
-        <input class="btn btn-primary" type="submit" />
-    </div>
-</form>
-
-
-public async Task<IActionResult> ViewFile(int? id) {
-    if (id == null)
-        return NotFound();
-
-    var file = await _context.Artifacts
-        .Where(x => x.Id == id)
-        .Select(x => x.File)
-        .FirstOrDefaultAsync();
-
-    return File(file, System.Net.Mime.MediaTypeNames.Application.Pdf);
-}
-
-
-<object data="data:application/pdf;base64, @System.Convert.ToBase64String(item.File, 0, item.File.Length)" type="application/pdf" width="100%" height="800px"> 
-    <p>It appears you don't have a PDF plugin for this browser. No biggie... you can <a target="_blank" asp-action="ViewFile" asp-route-id="@item.Id">click here to download the PDF file.</a></p>
-</object>
+# dotnet aspnet-codegenerator controller --force --model Assessment.Models.Artifact --dataContext Assessment.Data.Contexts.AssessmentContext --relativeFolderPath "Areas/Admin/Controllers/" --controllerName ArtifactsController --useAsyncActions --referenceScriptLibraries --useDefaultLayout
+# dotnet aspnet-codegenerator controller --force --model Assessment.Models.User --relativeFolderPath "Areas/Admin/Controllers/" --controllerName UsersController --useAsyncActions --referenceScriptLibraries --useDefaultLayout --dataContext Assessment.Web.Areas.Identity.Data.ApplicationDbContext

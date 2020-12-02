@@ -71,6 +71,7 @@ namespace Assessment.Web.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
+                role.Id = Guid.NewGuid().ToString();
                 var result = await _roleManager.CreateAsync(role);
                 
                 if (result.Succeeded) {

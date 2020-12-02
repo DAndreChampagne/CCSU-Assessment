@@ -28,6 +28,7 @@ namespace Assessment.Web.Areas.Admin.Controllers
         }
 
         // GET: Admin/Artifacts
+        [ResponseCache(VaryByHeader = "User-Agent", Duration = 60)]
         public async Task<IActionResult> Index()
         {
             var assessmentContext = _context.Artifacts.Include(a => a.Rubric);
@@ -53,6 +54,7 @@ namespace Assessment.Web.Areas.Admin.Controllers
         }
 
         // GET: Admin/Artifacts/Details/5
+        [ResponseCache(VaryByHeader = "User-Agent", Duration = 60)]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -63,6 +65,7 @@ namespace Assessment.Web.Areas.Admin.Controllers
             var artifact = await _context.Artifacts
                 .Include(a => a.Rubric)
                 .FirstOrDefaultAsync(m => m.Id == id);
+
             if (artifact == null)
             {
                 return NotFound();
