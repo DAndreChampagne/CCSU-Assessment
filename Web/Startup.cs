@@ -26,14 +26,14 @@ namespace Assessment.Web
         public IWebHostEnvironment Environment { get; set; }
 
         public static string GetDatabasePassword(IConfiguration config) {
-            var pwd = 
-                System.Environment.GetEnvironmentVariable("MySQLPassword") // Get password from AWS
-                ?? config["Aws:MySQLPassword"] // Get password from dotnet secrets file
-            ;
+            var envPassword = System.Environment.GetEnvironmentVariable("MySQLPassword");
+            var localPwd = config["Aws:MySQLPassword"];
+            var pwd = envPassword ?? localPwd;
 
-            if (!String.IsNullOrEmpty(pwd))
-                return pwd;
-            throw new InvalidProgramException("Cannot determine application password");
+            if (String.IsNullOrEmpty(pwd))
+                throw new InvalidProgramException("Cannot determine application password");
+                
+            return pwd;
         }
 
         public static string GetDatabaseConnectionString(IConfiguration config) {
@@ -53,7 +53,9 @@ namespace Assessment.Web
 
             services.AddDbContext<AssessmentContext>(options => {
                 options.UseLoggerFactory(LoggerFactory.Create(l => l.AddConsole()));
-                options.UseMySql(DatabaseConnectionString);
+                options.UseMySql(DatabaseConnectionString, options => { 
+                    options.EnableRetryOnFailure();
+                });
             });
 
             services
