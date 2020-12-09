@@ -4,7 +4,7 @@ This was started in September 2020 as part of a class project for CCSU. This app
 
 ### Models project
 
-Models.csporj contains all the POCO classes that are used within the solution.
+Models.csproj contains all the POCO classes that are used within the solution.
 
 ### Data project
 
